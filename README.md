@@ -2,6 +2,8 @@
 
 **Reprends le contrôle de ta vie privée sur Windows 11.** / **Take back control of your privacy on Windows 11.**
 
+![WinGuard](docs/screenshot.png)
+
 WinGuard est une application gratuite et open source qui désactive la télémétrie, la pub, le suivi et les petits trucs intrusifs de Windows 11 — simplement, en quelques clics. Pensée pour tout le monde : tu coches ce que tu veux, tu appliques, c'est réglé. Et si un réglage ne te plaît pas, tu reviens en arrière en un clic.
 
 *WinGuard is a free, open-source app that disables Windows 11 telemetry, ads, tracking and other intrusive bits — simply, in a few clicks. Tick what you want, apply, done. Don't like a tweak? Roll it back in one click.*
