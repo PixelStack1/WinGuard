@@ -1,0 +1,3560 @@
+[
+  {
+    "id": "adid",
+    "name": "Disable Advertising ID",
+    "description": "Prevents apps from using your advertising ID for personalized ads.",
+    "nameFr": "Désactiver l'identifiant de publicité",
+    "descriptionFr": "Empêche les applications d'utiliser votre identifiant de publicité pour des annonces personnalisées.",
+    "category": "Privacy",
+    "scope": "Current User",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo",
+        "name": "Enabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AdvertisingInfo",
+        "name": "DisabledByGroupPolicy",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "tailored",
+    "name": "Disable tailored experiences",
+    "description": "Stop Microsoft using diagnostic data for personalized tips, ads and recommendations.",
+    "nameFr": "Désactiver les expériences personnalisées",
+    "descriptionFr": "Empêche Microsoft d'utiliser les données de diagnostic pour des conseils, publicités et recommandations personnalisés.",
+    "category": "Privacy",
+    "scope": "Current User",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Policies\\Microsoft\\Windows\\CloudContent",
+        "name": "DisableTailoredExperiencesWithDiagnosticData",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\Privacy",
+        "name": "TailoredExperiencesWithDiagnosticDataEnabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      }
+    ]
+  },
+  {
+    "id": "langlist",
+    "name": "Disable website access to language list",
+    "description": "Websites cannot read your language list to serve locally relevant content.",
+    "nameFr": "Bloquer l'accès des sites à la liste des langues",
+    "descriptionFr": "Empêche les sites web de lire votre liste de langues pour proposer du contenu localisé.",
+    "category": "Privacy",
+    "scope": "Current User",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Control Panel\\International\\User Profile",
+        "name": "HttpAcceptLanguageOptOut",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "trackprogs",
+    "name": "Disable tracking of app starts",
+    "description": "Windows stops tracking app launches to improve Start and search results.",
+    "nameFr": "Désactiver le suivi des lancements d'applications",
+    "descriptionFr": "Empêche Windows de suivre les lancements d'applications pour personnaliser Démarrer et la recherche.",
+    "category": "Privacy",
+    "scope": "Current User",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+        "name": "Start_TrackProgs",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      }
+    ]
+  },
+  {
+    "id": "typing",
+    "name": "Disable transmission of typing information",
+    "description": "Stops sending inking and typing data to Microsoft.",
+    "nameFr": "Désactiver l'envoi des données de saisie",
+    "descriptionFr": "Cesse d'envoyer à Microsoft les données d'écriture manuscrite et de frappe.",
+    "category": "Privacy",
+    "scope": "Current User",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\InputPersonalization",
+        "name": "RestrictImplicitInkCollection",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": "0"
+      },
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\InputPersonalization",
+        "name": "RestrictImplicitTextCollection",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": "0"
+      },
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\InputPersonalization\\TrainedDataStore",
+        "name": "HarvestContacts",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      },
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Input\\TIPC",
+        "name": "Enabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      }
+    ]
+  },
+  {
+    "id": "inkpolicy",
+    "name": "Disable handwriting personalization (policy)",
+    "description": "Prevents automatic learning of handwriting and typing patterns.",
+    "nameFr": "Désactiver la personnalisation de l'écriture (stratégie)",
+    "descriptionFr": "Empêche l'apprentissage automatique de vos habitudes d'écriture et de frappe.",
+    "category": "Privacy",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\InputPersonalization",
+        "name": "RestrictImplicitInkCollection",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\InputPersonalization",
+        "name": "RestrictImplicitTextCollection",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\InputPersonalization",
+        "name": "AllowInputPersonalization",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "feedback",
+    "name": "Disable feedback requests",
+    "description": "Windows will never ask for feedback.",
+    "nameFr": "Désactiver les demandes de commentaires",
+    "descriptionFr": "Windows ne vous demande plus votre avis.",
+    "category": "Privacy",
+    "scope": "Current User",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Siuf\\Rules",
+        "name": "NumberOfSIUFInPeriod",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",
+        "name": "DoNotShowFeedbackNotifications",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "suggestsettings",
+    "name": "Disable suggested content in Settings",
+    "description": "Hides suggested content in the Settings app.",
+    "nameFr": "Désactiver le contenu suggéré dans Paramètres",
+    "descriptionFr": "Masque le contenu suggéré dans l'application Paramètres.",
+    "category": "Privacy",
+    "scope": "Current User",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "name": "SubscribedContent-338393Enabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      },
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "name": "SubscribedContent-353694Enabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      },
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "name": "SubscribedContent-353696Enabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      }
+    ]
+  },
+  {
+    "id": "tips",
+    "name": "Disable tips, tricks and suggestions",
+    "description": "Stops Windows tips and 'get even more out of Windows' notifications.",
+    "nameFr": "Désactiver les astuces et suggestions",
+    "descriptionFr": "Supprime les astuces Windows et les notifications « Tirez encore plus parti de Windows ».",
+    "category": "Privacy",
+    "scope": "Current User",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "name": "SubscribedContent-338389Enabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      },
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "name": "SoftLandingEnabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      },
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\UserProfileEngagement",
+        "name": "ScoobeSystemSettingEnabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      }
+    ]
+  },
+  {
+    "id": "startsugg",
+    "name": "Disable app suggestions in Start",
+    "description": "Prevents promoted apps and suggestions appearing in Start.",
+    "nameFr": "Désactiver les suggestions d'applications dans Démarrer",
+    "descriptionFr": "Empêche l'affichage d'applications promues et de suggestions dans Démarrer.",
+    "category": "Privacy",
+    "scope": "Current User",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "name": "SystemPaneSuggestionsEnabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      },
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "name": "SubscribedContent-338388Enabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      },
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+        "name": "Start_IrisRecommendations",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      }
+    ]
+  },
+  {
+    "id": "consumer",
+    "name": "Disable Windows consumer features",
+    "description": "Stops automatic install of sponsored apps (Candy Crush etc.).",
+    "nameFr": "Désactiver les fonctionnalités grand public de Windows",
+    "descriptionFr": "Bloque l'installation automatique d'applications sponsorisées (Candy Crush, etc.).",
+    "category": "Privacy",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent",
+        "name": "DisableWindowsConsumerFeatures",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "name": "SilentInstalledAppsEnabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      },
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "name": "PreInstalledAppsEnabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      },
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "name": "OemPreInstalledAppsEnabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      }
+    ]
+  },
+  {
+    "id": "explorerads",
+    "name": "Disable sync provider ads in Explorer",
+    "description": "Hides OneDrive/Microsoft 365 notifications in File Explorer.",
+    "nameFr": "Désactiver les publicités du fournisseur de synchronisation dans l'Explorateur",
+    "descriptionFr": "Masque les notifications OneDrive/Microsoft 365 dans l'Explorateur de fichiers.",
+    "category": "Privacy",
+    "scope": "Current User",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+        "name": "ShowSyncProviderNotifications",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      }
+    ]
+  },
+  {
+    "id": "location",
+    "name": "Disable location services",
+    "description": "Turns off the Windows location platform entirely.",
+    "nameFr": "Désactiver les services de localisation",
+    "descriptionFr": "Désactive entièrement la plateforme de localisation de Windows.",
+    "category": "Privacy",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\LocationAndSensors",
+        "name": "DisableLocation",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\LocationAndSensors",
+        "name": "DisableWindowsLocationProvider",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "findmydevice",
+    "name": "Disable Find My Device",
+    "description": "Stops periodic location reporting for Find My Device.",
+    "nameFr": "Désactiver Localiser mon appareil",
+    "descriptionFr": "Arrête l'envoi périodique de la position pour Localiser mon appareil.",
+    "category": "Privacy",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\FindMyDevice",
+        "name": "AllowFindMyDevice",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "biometrics",
+    "name": "Disable biometrics (Windows Hello)",
+    "description": "Disables biometric sign-in. Not recommended if you use Windows Hello.",
+    "nameFr": "Désactiver la biométrie (Windows Hello)",
+    "descriptionFr": "Désactive la connexion biométrique. Déconseillé si vous utilisez Windows Hello.",
+    "category": "Privacy",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Biometrics",
+        "name": "Enabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "activityfeed",
+    "name": "Disable activity history (Timeline)",
+    "description": "Stops collecting the activity history feed.",
+    "nameFr": "Désactiver l'historique des activités (Chronologie)",
+    "descriptionFr": "Arrête la collecte du flux d'historique des activités.",
+    "category": "Activity History & Clipboard",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\System",
+        "name": "EnableActivityFeed",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "publishact",
+    "name": "Disable storing user activities",
+    "description": "Prevents publishing and uploading activities to Microsoft.",
+    "nameFr": "Désactiver la publication des activités utilisateur",
+    "descriptionFr": "Empêche la publication des activités utilisateur et leur envoi à Microsoft.",
+    "category": "Activity History & Clipboard",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\System",
+        "name": "PublishUserActivities",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\System",
+        "name": "UploadUserActivities",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "cliphistory",
+    "name": "Disable clipboard history",
+    "description": "Disables storing multiple clipboard items (Win+V).",
+    "nameFr": "Désactiver l'historique du presse-papiers",
+    "descriptionFr": "Désactive le stockage de plusieurs éléments du presse-papiers (Win+V).",
+    "category": "Activity History & Clipboard",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\System",
+        "name": "AllowClipboardHistory",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "clipsync",
+    "name": "Disable cloud clipboard sync",
+    "description": "Prevents clipboard content syncing across devices.",
+    "nameFr": "Désactiver la synchronisation cloud du presse-papiers",
+    "descriptionFr": "Empêche la synchronisation du presse-papiers entre appareils.",
+    "category": "Activity History & Clipboard",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\System",
+        "name": "AllowCrossDeviceClipboard",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "recentdocs",
+    "name": "Disable recent documents in Start/Jump Lists",
+    "description": "Doesn't track recently opened files.",
+    "nameFr": "Désactiver les documents récents (Démarrer/Listes de raccourcis)",
+    "descriptionFr": "Windows ne mémorise plus les fichiers ouverts récemment.",
+    "category": "Activity History & Clipboard",
+    "scope": "Current User",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+        "name": "Start_TrackDocs",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      }
+    ]
+  },
+  {
+    "id": "appcamera",
+    "name": "Deny app access to camera",
+    "description": "Policy: Windows apps are forced to be denied access to camera.",
+    "nameFr": "Refuser aux applications l'accès à la caméra",
+    "descriptionFr": "Empêche les applications Windows d'accéder à la caméra.",
+    "category": "App Privacy",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy",
+        "name": "LetAppsAccessCamera",
+        "kind": "DWord",
+        "enabledValue": "2",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "appmicrophone",
+    "name": "Deny app access to microphone",
+    "description": "Policy: Windows apps are forced to be denied access to microphone.",
+    "nameFr": "Refuser aux applications l'accès au microphone",
+    "descriptionFr": "Empêche les applications Windows d'accéder au microphone.",
+    "category": "App Privacy",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy",
+        "name": "LetAppsAccessMicrophone",
+        "kind": "DWord",
+        "enabledValue": "2",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "applocation",
+    "name": "Deny app access to location",
+    "description": "Policy: Windows apps are forced to be denied access to location.",
+    "nameFr": "Refuser aux applications l'accès à la localisation",
+    "descriptionFr": "Empêche les applications Windows d'accéder à votre position.",
+    "category": "App Privacy",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy",
+        "name": "LetAppsAccessLocation",
+        "kind": "DWord",
+        "enabledValue": "2",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "appaccountinfo",
+    "name": "Deny app access to account information",
+    "description": "Policy: Windows apps are forced to be denied access to account information.",
+    "nameFr": "Refuser aux applications l'accès aux informations du compte",
+    "descriptionFr": "Empêche les applications Windows d'accéder aux informations de votre compte.",
+    "category": "App Privacy",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy",
+        "name": "LetAppsAccessAccountInfo",
+        "kind": "DWord",
+        "enabledValue": "2",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "appcontacts",
+    "name": "Deny app access to contacts",
+    "description": "Policy: Windows apps are forced to be denied access to contacts.",
+    "nameFr": "Refuser aux applications l'accès aux contacts",
+    "descriptionFr": "Empêche les applications Windows d'accéder à vos contacts.",
+    "category": "App Privacy",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy",
+        "name": "LetAppsAccessContacts",
+        "kind": "DWord",
+        "enabledValue": "2",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "appcalendar",
+    "name": "Deny app access to calendar",
+    "description": "Policy: Windows apps are forced to be denied access to calendar.",
+    "nameFr": "Refuser aux applications l'accès au calendrier",
+    "descriptionFr": "Empêche les applications Windows d'accéder à votre calendrier.",
+    "category": "App Privacy",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy",
+        "name": "LetAppsAccessCalendar",
+        "kind": "DWord",
+        "enabledValue": "2",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "appcallhistory",
+    "name": "Deny app access to call history",
+    "description": "Policy: Windows apps are forced to be denied access to call history.",
+    "nameFr": "Refuser aux applications l'accès à l'historique des appels",
+    "descriptionFr": "Empêche les applications Windows d'accéder à votre historique des appels.",
+    "category": "App Privacy",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy",
+        "name": "LetAppsAccessCallHistory",
+        "kind": "DWord",
+        "enabledValue": "2",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "appemail",
+    "name": "Deny app access to email",
+    "description": "Policy: Windows apps are forced to be denied access to email.",
+    "nameFr": "Refuser aux applications l'accès aux e-mails",
+    "descriptionFr": "Empêche les applications Windows d'accéder à vos e-mails.",
+    "category": "App Privacy",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy",
+        "name": "LetAppsAccessEmail",
+        "kind": "DWord",
+        "enabledValue": "2",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "appmessaging",
+    "name": "Deny app access to messaging",
+    "description": "Policy: Windows apps are forced to be denied access to messaging.",
+    "nameFr": "Refuser aux applications l'accès à la messagerie",
+    "descriptionFr": "Empêche les applications Windows d'accéder à vos messages (SMS et MMS).",
+    "category": "App Privacy",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy",
+        "name": "LetAppsAccessMessaging",
+        "kind": "DWord",
+        "enabledValue": "2",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "appphone",
+    "name": "Deny app access to phone calls",
+    "description": "Policy: Windows apps are forced to be denied access to phone calls.",
+    "nameFr": "Refuser aux applications l'accès aux appels téléphoniques",
+    "descriptionFr": "Empêche les applications Windows d'accéder aux fonctions d'appel téléphonique.",
+    "category": "App Privacy",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy",
+        "name": "LetAppsAccessPhone",
+        "kind": "DWord",
+        "enabledValue": "2",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "appradios",
+    "name": "Deny app access to radios",
+    "description": "Policy: Windows apps are forced to be denied access to radios.",
+    "nameFr": "Refuser aux applications l'accès aux radios",
+    "descriptionFr": "Empêche les applications Windows d'accéder aux radios de l'appareil (Bluetooth, etc.).",
+    "category": "App Privacy",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy",
+        "name": "LetAppsAccessRadios",
+        "kind": "DWord",
+        "enabledValue": "2",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "appnotifications",
+    "name": "Deny app access to user notifications",
+    "description": "Policy: Windows apps are forced to be denied access to user notifications.",
+    "nameFr": "Refuser aux applications l'accès aux notifications de l'utilisateur",
+    "descriptionFr": "Empêche les applications Windows d'accéder à vos notifications.",
+    "category": "App Privacy",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy",
+        "name": "LetAppsAccessNotifications",
+        "kind": "DWord",
+        "enabledValue": "2",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "appmotion",
+    "name": "Deny app access to motion data",
+    "description": "Policy: Windows apps are forced to be denied access to motion data.",
+    "nameFr": "Refuser aux applications l'accès aux données de mouvement",
+    "descriptionFr": "Empêche les applications Windows d'accéder aux données de mouvement.",
+    "category": "App Privacy",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy",
+        "name": "LetAppsAccessMotion",
+        "kind": "DWord",
+        "enabledValue": "2",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "apptasks",
+    "name": "Deny app access to tasks",
+    "description": "Policy: Windows apps are forced to be denied access to tasks.",
+    "nameFr": "Refuser aux applications l'accès aux tâches",
+    "descriptionFr": "Empêche les applications Windows d'accéder à vos tâches.",
+    "category": "App Privacy",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy",
+        "name": "LetAppsAccessTasks",
+        "kind": "DWord",
+        "enabledValue": "2",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "appdiagnosticinfo",
+    "name": "Deny app access to diagnostic info of other apps",
+    "description": "Policy: Windows apps are forced to be denied access to diagnostic info of other apps.",
+    "nameFr": "Refuser aux applications l'accès aux informations de diagnostic des autres applications",
+    "descriptionFr": "Empêche les applications Windows d'accéder aux informations de diagnostic des autres applications.",
+    "category": "App Privacy",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy",
+        "name": "LetAppsAccessDiagnosticInfo",
+        "kind": "DWord",
+        "enabledValue": "2",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "apptrusteddevices",
+    "name": "Deny app access to unpaired devices",
+    "description": "Policy: Windows apps are forced to be denied access to unpaired devices.",
+    "nameFr": "Refuser aux applications l'accès aux appareils non appairés",
+    "descriptionFr": "Empêche les applications Windows d'accéder aux appareils non appairés.",
+    "category": "App Privacy",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy",
+        "name": "LetAppsAccessTrustedDevices",
+        "kind": "DWord",
+        "enabledValue": "2",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "appgazeinput",
+    "name": "Deny app access to eye tracking",
+    "description": "Policy: Windows apps are forced to be denied access to eye tracking.",
+    "nameFr": "Refuser aux applications l'accès au suivi oculaire",
+    "descriptionFr": "Empêche les applications Windows d'accéder au suivi oculaire.",
+    "category": "App Privacy",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy",
+        "name": "LetAppsAccessGazeInput",
+        "kind": "DWord",
+        "enabledValue": "2",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "appbg",
+    "name": "Prevent apps running in background",
+    "description": "Store apps can't run in the background.",
+    "nameFr": "Empêcher les applications de s'exécuter en arrière-plan",
+    "descriptionFr": "Les applications du Store ne peuvent pas s'exécuter en arrière-plan.",
+    "category": "App Privacy",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy",
+        "name": "LetAppsRunInBackground",
+        "kind": "DWord",
+        "enabledValue": "2",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "appvoice",
+    "name": "Deny apps voice activation",
+    "description": "Apps cannot listen for voice keywords.",
+    "nameFr": "Interdire l'activation vocale des applications",
+    "descriptionFr": "Empêche les applications d'écouter un mot-clé d'activation vocale.",
+    "category": "App Privacy",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy",
+        "name": "LetAppsActivateWithVoice",
+        "kind": "DWord",
+        "enabledValue": "2",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy",
+        "name": "LetAppsActivateWithVoiceAboveLock",
+        "kind": "DWord",
+        "enabledValue": "2",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "recall",
+    "name": "Disable Recall snapshots",
+    "description": "Windows will not save screen snapshots for Recall.",
+    "nameFr": "Désactiver les captures de Recall",
+    "descriptionFr": "Windows n'enregistrera pas de captures d'écran pour Recall.",
+    "category": "Windows Recall",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsAI",
+        "name": "DisableAIDataAnalysis",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Policies\\Microsoft\\Windows\\WindowsAI",
+        "name": "DisableAIDataAnalysis",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "recallavail",
+    "name": "Remove Recall availability",
+    "description": "Recall cannot be enabled by users.",
+    "nameFr": "Rendre Recall indisponible",
+    "descriptionFr": "Empêche les utilisateurs d'activer Recall.",
+    "category": "Windows Recall",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsAI",
+        "name": "AllowRecallEnablement",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "clicktodo",
+    "name": "Disable Click to Do",
+    "description": "Turns off Click to Do screen analysis.",
+    "nameFr": "Désactiver Click to Do",
+    "descriptionFr": "Désactive l'analyse d'écran Click to Do.",
+    "category": "Windows Recall",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsAI",
+        "name": "DisableClickToDo",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Policies\\Microsoft\\Windows\\WindowsAI",
+        "name": "DisableClickToDo",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "settingsagent",
+    "name": "Disable AI agent in Settings search",
+    "description": "Disables the AI-based Settings agent.",
+    "nameFr": "Désactiver l'agent IA de la recherche dans Paramètres",
+    "descriptionFr": "Désactive l'agent basé sur l'IA dans Paramètres.",
+    "category": "Windows Recall",
+    "scope": "Current User",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsAI",
+        "name": "DisableSettingsAgent",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "copilot",
+    "name": "Disable Windows Copilot",
+    "description": "Turns off Windows Copilot (policy for user and machine).",
+    "nameFr": "Désactiver Windows Copilot",
+    "descriptionFr": "Désactive Windows Copilot (stratégie utilisateur et machine).",
+    "category": "Copilot & AI",
+    "scope": "Current User",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Policies\\Microsoft\\Windows\\WindowsCopilot",
+        "name": "TurnOffWindowsCopilot",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsCopilot",
+        "name": "TurnOffWindowsCopilot",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "copilotbtn",
+    "name": "Hide Copilot taskbar button",
+    "description": "Removes the Copilot button from the taskbar.",
+    "nameFr": "Masquer le bouton Copilot de la barre des tâches",
+    "descriptionFr": "Retire le bouton Copilot de la barre des tâches.",
+    "category": "Copilot & AI",
+    "scope": "Current User",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+        "name": "ShowCopilotButton",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      }
+    ]
+  },
+  {
+    "id": "notepadai",
+    "name": "Disable AI features in Notepad",
+    "description": "Turns off Copilot/AI rewrite in Notepad.",
+    "nameFr": "Désactiver les fonctions IA du Bloc-notes",
+    "descriptionFr": "Désactive Copilot et la réécriture par IA dans le Bloc-notes.",
+    "category": "Copilot & AI",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\WindowsNotepad",
+        "name": "DisableAIFeatures",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "paintai",
+    "name": "Disable AI features in Paint",
+    "description": "Disables Cocreator, generative fill and image creator in Paint.",
+    "nameFr": "Désactiver les fonctions IA de Paint",
+    "descriptionFr": "Désactive Cocreator, le remplissage génératif et le créateur d'images dans Paint.",
+    "category": "Copilot & AI",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\CurrentVersion\\Policies\\Paint",
+        "name": "DisableCocreator",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\CurrentVersion\\Policies\\Paint",
+        "name": "DisableGenerativeFill",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\CurrentVersion\\Policies\\Paint",
+        "name": "DisableImageCreator",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "edgecopilot",
+    "name": "Disable Copilot sidebar in Edge",
+    "description": "Hides the Edge sidebar (Copilot).",
+    "nameFr": "Désactiver la barre latérale Copilot dans Edge",
+    "descriptionFr": "Masque la barre latérale (Copilot) d'Edge.",
+    "category": "Copilot & AI",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "name": "HubsSidebarEnabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "name": "CopilotPageContext",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "bingchat",
+    "name": "Disable Bing/AI search highlights",
+    "description": "Disables dynamic search box content and highlights.",
+    "nameFr": "Désactiver les points forts de la recherche (Bing/IA)",
+    "descriptionFr": "Désactive le contenu dynamique et les points forts de la zone de recherche.",
+    "category": "Copilot & AI",
+    "scope": "Current User",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\SearchSettings",
+        "name": "IsDynamicSearchBoxEnabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search",
+        "name": "EnableDynamicContentInWSB",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "telemetry",
+    "name": "Disable telemetry",
+    "description": "Sets diagnostic data to the minimum (0 = Security, Enterprise/Education only; others fallback to Required).",
+    "nameFr": "Désactiver la télémétrie",
+    "descriptionFr": "Réduit les données de diagnostic au minimum (0 = Sécurité, Enterprise/Education uniquement ; les autres éditions passent à Obligatoire).",
+    "category": "Telemetry & Diagnostics",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",
+        "name": "AllowTelemetry",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection",
+        "name": "AllowTelemetry",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "diagviewer",
+    "name": "Disable diagnostic data viewer",
+    "description": "Turns off the Diagnostic Data Viewer.",
+    "nameFr": "Désactiver la visionneuse de données de diagnostic",
+    "descriptionFr": "Désactive la visionneuse de données de diagnostic.",
+    "category": "Telemetry & Diagnostics",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",
+        "name": "DisableDiagnosticDataViewer",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "ota",
+    "name": "Disable OneSettings downloads",
+    "description": "Prevents downloading diagnostic config.",
+    "nameFr": "Désactiver les téléchargements OneSettings",
+    "descriptionFr": "Empêche le téléchargement de la configuration de diagnostic.",
+    "category": "Telemetry & Diagnostics",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",
+        "name": "DisableOneSettingsDownloads",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "devicename",
+    "name": "Don't send device name in telemetry",
+    "description": "The device name is not included in diagnostic data.",
+    "nameFr": "Ne pas envoyer le nom de l'appareil dans la télémétrie",
+    "descriptionFr": "Le nom de l'appareil n'est pas inclus dans les données de diagnostic.",
+    "category": "Telemetry & Diagnostics",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection",
+        "name": "AllowDeviceNameInTelemetry",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "appcompat",
+    "name": "Disable application telemetry",
+    "description": "Turns off Application Impact Telemetry and Inventory Collector.",
+    "nameFr": "Désactiver la télémétrie des applications",
+    "descriptionFr": "Désactive Application Impact Telemetry et l'Inventory Collector.",
+    "category": "Telemetry & Diagnostics",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AppCompat",
+        "name": "AITEnable",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AppCompat",
+        "name": "DisableInventory",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AppCompat",
+        "name": "DisableUAR",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "wer",
+    "name": "Disable Windows Error Reporting",
+    "description": "Crash reports are not sent to Microsoft.",
+    "nameFr": "Désactiver le rapport d'erreurs Windows",
+    "descriptionFr": "Les rapports de plantage ne sont pas envoyés à Microsoft.",
+    "category": "Telemetry & Diagnostics",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Error Reporting",
+        "name": "Disabled",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting",
+        "name": "Disabled",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": "0"
+      }
+    ]
+  },
+  {
+    "id": "ceip",
+    "name": "Disable Customer Experience Improvement Program",
+    "description": "Windows no longer participates in CEIP.",
+    "nameFr": "Désactiver le Programme d'amélioration de l'expérience utilisateur",
+    "descriptionFr": "Windows ne participe plus au CEIP.",
+    "category": "Telemetry & Diagnostics",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\SQMClient\\Windows",
+        "name": "CEIPEnable",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "handwritingerr",
+    "name": "Disable handwriting error reports",
+    "description": "Handwriting recognition errors are not sent to Microsoft.",
+    "nameFr": "Désactiver les rapports d'erreurs d'écriture manuscrite",
+    "descriptionFr": "Les erreurs de reconnaissance d'écriture ne sont pas envoyées à Microsoft.",
+    "category": "Telemetry & Diagnostics",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\HandwritingErrorReports",
+        "name": "PreventHandwritingErrorReports",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\TabletPC",
+        "name": "PreventHandwritingDataSharing",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "kms",
+    "name": "Disable KMS client online validation telemetry",
+    "description": "The KMS client does not send AVS activation data to Microsoft.",
+    "nameFr": "Désactiver la télémétrie de validation en ligne du client KMS",
+    "descriptionFr": "Le client KMS n'envoie pas de données d'activation AVS à Microsoft.",
+    "category": "Telemetry & Diagnostics",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows NT\\CurrentVersion\\Software Protection Platform",
+        "name": "NoGenTicket",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "steps",
+    "name": "Disable Steps Recorder",
+    "description": "Turns off Steps Recorder.",
+    "nameFr": "Désactiver l'Enregistreur d'actions",
+    "descriptionFr": "Désactive l'Enregistreur d'actions (Steps Recorder).",
+    "category": "Telemetry & Diagnostics",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\AppCompat",
+        "name": "DisableUAR",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "svcdiagtrack",
+    "name": "Disable Connected User Experiences and Telemetry service",
+    "description": "Service DiagTrack (original: Automatic).",
+    "nameFr": "Désactiver le service Expériences des utilisateurs connectés et télémétrie",
+    "descriptionFr": "Service DiagTrack (démarrage par défaut : Automatique).",
+    "category": "Services",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SYSTEM\\CurrentControlSet\\Services\\DiagTrack",
+        "name": "Start",
+        "kind": "DWord",
+        "enabledValue": "4",
+        "disabledValue": "2"
+      }
+    ]
+  },
+  {
+    "id": "svcdmwap",
+    "name": "Disable WAP Push Message Routing service",
+    "description": "Service dmwappushservice (original: Manual).",
+    "nameFr": "Désactiver le service de routage des messages push WAP",
+    "descriptionFr": "Service dmwappushservice (démarrage par défaut : Manuel).",
+    "category": "Services",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SYSTEM\\CurrentControlSet\\Services\\dmwappushservice",
+        "name": "Start",
+        "kind": "DWord",
+        "enabledValue": "4",
+        "disabledValue": "3"
+      }
+    ]
+  },
+  {
+    "id": "svcwer",
+    "name": "Disable Windows Error Reporting service",
+    "description": "Service WerSvc (original: Manual).",
+    "nameFr": "Désactiver le service de rapport d'erreurs Windows",
+    "descriptionFr": "Service WerSvc (démarrage par défaut : Manuel).",
+    "category": "Services",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SYSTEM\\CurrentControlSet\\Services\\WerSvc",
+        "name": "Start",
+        "kind": "DWord",
+        "enabledValue": "4",
+        "disabledValue": "3"
+      }
+    ]
+  },
+  {
+    "id": "svcmaps",
+    "name": "Disable Downloaded Maps Manager",
+    "description": "Service MapsBroker (original: Automatic delayed).",
+    "nameFr": "Désactiver le Gestionnaire des cartes téléchargées",
+    "descriptionFr": "Service MapsBroker (démarrage par défaut : Automatique (début différé)).",
+    "category": "Services",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SYSTEM\\CurrentControlSet\\Services\\MapsBroker",
+        "name": "Start",
+        "kind": "DWord",
+        "enabledValue": "4",
+        "disabledValue": "2"
+      }
+    ]
+  },
+  {
+    "id": "svcretail",
+    "name": "Disable Retail Demo service",
+    "description": "Service RetailDemo (original: Manual).",
+    "nameFr": "Désactiver le service de démonstration en magasin",
+    "descriptionFr": "Service RetailDemo (démarrage par défaut : Manuel).",
+    "category": "Services",
+    "scope": "Local Machine",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SYSTEM\\CurrentControlSet\\Services\\RetailDemo",
+        "name": "Start",
+        "kind": "DWord",
+        "enabledValue": "4",
+        "disabledValue": "3"
+      }
+    ]
+  },
+  {
+    "id": "svcgeo",
+    "name": "Disable Geolocation service",
+    "description": "Service lfsvc (original: Manual). Breaks location for all apps.",
+    "nameFr": "Désactiver le service de géolocalisation",
+    "descriptionFr": "Service lfsvc (démarrage par défaut : Manuel). Rend la localisation indisponible pour toutes les applications.",
+    "category": "Services",
+    "scope": "Local Machine",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SYSTEM\\CurrentControlSet\\Services\\lfsvc",
+        "name": "Start",
+        "kind": "DWord",
+        "enabledValue": "4",
+        "disabledValue": "3"
+      }
+    ]
+  },
+  {
+    "id": "taskcompat",
+    "name": "Disable task: Microsoft Compatibility Appraiser",
+    "description": "Scheduled task \\Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser",
+    "nameFr": "Désactiver la tâche : Microsoft Compatibility Appraiser",
+    "descriptionFr": "Tâche planifiée \\Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser",
+    "category": "Scheduled Tasks",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "ScheduledTask",
+        "target": "\\Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser"
+      }
+    ]
+  },
+  {
+    "id": "taskpdu",
+    "name": "Disable task: ProgramDataUpdater",
+    "description": "Scheduled task \\Microsoft\\Windows\\Application Experience\\ProgramDataUpdater",
+    "nameFr": "Désactiver la tâche : ProgramDataUpdater",
+    "descriptionFr": "Tâche planifiée \\Microsoft\\Windows\\Application Experience\\ProgramDataUpdater",
+    "category": "Scheduled Tasks",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "ScheduledTask",
+        "target": "\\Microsoft\\Windows\\Application Experience\\ProgramDataUpdater"
+      }
+    ]
+  },
+  {
+    "id": "taskconsol",
+    "name": "Disable task: Consolidator",
+    "description": "Scheduled task \\Microsoft\\Windows\\Customer Experience Improvement Program\\Consolidator",
+    "nameFr": "Désactiver la tâche : Consolidator",
+    "descriptionFr": "Tâche planifiée \\Microsoft\\Windows\\Customer Experience Improvement Program\\Consolidator",
+    "category": "Scheduled Tasks",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "ScheduledTask",
+        "target": "\\Microsoft\\Windows\\Customer Experience Improvement Program\\Consolidator"
+      }
+    ]
+  },
+  {
+    "id": "taskusbceip",
+    "name": "Disable task: UsbCeip",
+    "description": "Scheduled task \\Microsoft\\Windows\\Customer Experience Improvement Program\\UsbCeip",
+    "nameFr": "Désactiver la tâche : UsbCeip",
+    "descriptionFr": "Tâche planifiée \\Microsoft\\Windows\\Customer Experience Improvement Program\\UsbCeip",
+    "category": "Scheduled Tasks",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "ScheduledTask",
+        "target": "\\Microsoft\\Windows\\Customer Experience Improvement Program\\UsbCeip"
+      }
+    ]
+  },
+  {
+    "id": "taskdiskdiag",
+    "name": "Disable task: Microsoft-Windows-DiskDiagnosticDataCollector",
+    "description": "Scheduled task \\Microsoft\\Windows\\DiskDiagnostic\\Microsoft-Windows-DiskDiagnosticDataCollector",
+    "nameFr": "Désactiver la tâche : Microsoft-Windows-DiskDiagnosticDataCollector",
+    "descriptionFr": "Tâche planifiée \\Microsoft\\Windows\\DiskDiagnostic\\Microsoft-Windows-DiskDiagnosticDataCollector",
+    "category": "Scheduled Tasks",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "ScheduledTask",
+        "target": "\\Microsoft\\Windows\\DiskDiagnostic\\Microsoft-Windows-DiskDiagnosticDataCollector"
+      }
+    ]
+  },
+  {
+    "id": "taskfeedback",
+    "name": "Disable task: DmClient",
+    "description": "Scheduled task \\Microsoft\\Windows\\Feedback\\Siuf\\DmClient",
+    "nameFr": "Désactiver la tâche : DmClient",
+    "descriptionFr": "Tâche planifiée \\Microsoft\\Windows\\Feedback\\Siuf\\DmClient",
+    "category": "Scheduled Tasks",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "ScheduledTask",
+        "target": "\\Microsoft\\Windows\\Feedback\\Siuf\\DmClient"
+      }
+    ]
+  },
+  {
+    "id": "taskfeedback2",
+    "name": "Disable task: DmClientOnScenarioDownload",
+    "description": "Scheduled task \\Microsoft\\Windows\\Feedback\\Siuf\\DmClientOnScenarioDownload",
+    "nameFr": "Désactiver la tâche : DmClientOnScenarioDownload",
+    "descriptionFr": "Tâche planifiée \\Microsoft\\Windows\\Feedback\\Siuf\\DmClientOnScenarioDownload",
+    "category": "Scheduled Tasks",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "ScheduledTask",
+        "target": "\\Microsoft\\Windows\\Feedback\\Siuf\\DmClientOnScenarioDownload"
+      }
+    ]
+  },
+  {
+    "id": "taskwer",
+    "name": "Disable task: QueueReporting",
+    "description": "Scheduled task \\Microsoft\\Windows\\Windows Error Reporting\\QueueReporting",
+    "nameFr": "Désactiver la tâche : QueueReporting",
+    "descriptionFr": "Tâche planifiée \\Microsoft\\Windows\\Windows Error Reporting\\QueueReporting",
+    "category": "Scheduled Tasks",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "ScheduledTask",
+        "target": "\\Microsoft\\Windows\\Windows Error Reporting\\QueueReporting"
+      }
+    ]
+  },
+  {
+    "id": "taskmaps",
+    "name": "Disable task: MapsUpdateTask",
+    "description": "Scheduled task \\Microsoft\\Windows\\Maps\\MapsUpdateTask",
+    "nameFr": "Désactiver la tâche : MapsUpdateTask",
+    "descriptionFr": "Tâche planifiée \\Microsoft\\Windows\\Maps\\MapsUpdateTask",
+    "category": "Scheduled Tasks",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "ScheduledTask",
+        "target": "\\Microsoft\\Windows\\Maps\\MapsUpdateTask"
+      }
+    ]
+  },
+  {
+    "id": "edgepers",
+    "name": "Disable Edge personalization reporting",
+    "description": "Browsing history isn't used for ads/news personalization.",
+    "nameFr": "Désactiver la personnalisation d'Edge basée sur la navigation",
+    "descriptionFr": "L'historique de navigation n'est pas utilisé pour personnaliser les publicités et les actualités.",
+    "category": "Edge & Bing",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "name": "PersonalizationReportingEnabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "edgedt",
+    "name": "Disable Edge diagnostic data",
+    "description": "Edge does not send optional diagnostic data.",
+    "nameFr": "Désactiver les données de diagnostic d'Edge",
+    "descriptionFr": "Edge n'envoie pas de données de diagnostic facultatives.",
+    "category": "Edge & Bing",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "name": "DiagnosticData",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "edgednt",
+    "name": "Send Do Not Track requests",
+    "description": "Edge sends the Do Not Track header to websites.",
+    "nameFr": "Envoyer les demandes Do Not Track",
+    "descriptionFr": "Edge envoie l'en-tête « Ne pas me suivre » aux sites.",
+    "category": "Edge & Bing",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "name": "ConfigureDoNotTrack",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "edgetp",
+    "name": "Set Edge tracking prevention to strict",
+    "description": "Blocks most trackers in Edge.",
+    "nameFr": "Définir la protection contre le suivi d'Edge sur Strict",
+    "descriptionFr": "Bloque la plupart des traqueurs dans Edge.",
+    "category": "Edge & Bing",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "name": "TrackingPrevention",
+        "kind": "DWord",
+        "enabledValue": "3",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "edgesugg",
+    "name": "Disable Edge search and URL suggestions",
+    "description": "What you type is not sent to the search engine.",
+    "nameFr": "Désactiver les suggestions de recherche et d'URL d'Edge",
+    "descriptionFr": "Ce que vous tapez dans la barre d'adresse n'est pas envoyé au moteur de recherche.",
+    "category": "Edge & Bing",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "name": "SearchSuggestEnabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "edgerec",
+    "name": "Disable Edge recommendations/notifications",
+    "description": "Edge no longer shows recommendations or promotional notifications.",
+    "nameFr": "Désactiver les recommandations et notifications d'Edge",
+    "descriptionFr": "Edge n'affiche plus de recommandations ni de notifications promotionnelles.",
+    "category": "Edge & Bing",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "name": "ShowRecommendationsEnabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "edgeshop",
+    "name": "Disable Edge shopping assistant",
+    "description": "Disables Edge coupons and price comparisons.",
+    "nameFr": "Désactiver l'assistant d'achat d'Edge",
+    "descriptionFr": "Désactive les coupons et comparaisons de prix d'Edge.",
+    "category": "Edge & Bing",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "name": "EdgeShoppingAssistantEnabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "edgefeeds",
+    "name": "Disable Edge new tab content/feeds",
+    "description": "The new tab page no longer shows news or sponsored content.",
+    "nameFr": "Désactiver le contenu et le flux du nouvel onglet d'Edge",
+    "descriptionFr": "Le nouvel onglet n'affiche plus d'actualités ni de contenu sponsorisé.",
+    "category": "Edge & Bing",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "name": "NewTabPageContentEnabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "name": "NewTabPageHideDefaultTopSites",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "edgemetrics",
+    "name": "Disable Edge site-usage metrics",
+    "description": "Edge does not collect site usage statistics.",
+    "nameFr": "Désactiver les métriques d'utilisation des sites d'Edge",
+    "descriptionFr": "Edge ne collecte pas de statistiques d'utilisation des sites.",
+    "category": "Edge & Bing",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "name": "SendSiteInfoToImproveServices",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "name": "MetricsReportingEnabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "edgesmartscreen",
+    "name": "Disable SmartScreen in Edge",
+    "description": "Not recommended: SmartScreen protects against malware.",
+    "nameFr": "Désactiver SmartScreen dans Edge",
+    "descriptionFr": "Déconseillé : SmartScreen protège contre les logiciels malveillants.",
+    "category": "Edge & Bing",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "name": "SmartScreenEnabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "edgestartupboost",
+    "name": "Disable Edge startup boost & background mode",
+    "description": "Edge no longer stays active in the background.",
+    "nameFr": "Désactiver le boost de démarrage et le mode arrière-plan d'Edge",
+    "descriptionFr": "Edge ne reste plus actif en arrière-plan.",
+    "category": "Edge & Bing",
+    "scope": "Local Machine",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "name": "StartupBoostEnabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "name": "BackgroundModeEnabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "cortana",
+    "name": "Disable Cortana",
+    "description": "Turns off the Cortana assistant.",
+    "nameFr": "Désactiver Cortana",
+    "descriptionFr": "Désactive l'assistant Cortana.",
+    "category": "Cortana & Search",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search",
+        "name": "AllowCortana",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search",
+        "name": "AllowCortanaAboveLock",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "websearch",
+    "name": "Disable web search in Start/Search",
+    "description": "Search won't query Bing.",
+    "nameFr": "Désactiver la recherche web dans Démarrer et la recherche",
+    "descriptionFr": "La recherche n'interroge plus Bing.",
+    "category": "Cortana & Search",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search",
+        "name": "DisableWebSearch",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search",
+        "name": "ConnectedSearchUseWeb",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Policies\\Microsoft\\Windows\\Explorer",
+        "name": "DisableSearchBoxSuggestions",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\Search",
+        "name": "BingSearchEnabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      }
+    ]
+  },
+  {
+    "id": "cloudsearch",
+    "name": "Disable cloud content search",
+    "description": "Search doesn't include content from your Microsoft/work accounts.",
+    "nameFr": "Désactiver la recherche de contenu cloud",
+    "descriptionFr": "La recherche n'inclut pas le contenu de vos comptes Microsoft et professionnels.",
+    "category": "Cortana & Search",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search",
+        "name": "AllowCloudSearch",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "searchloc",
+    "name": "Don't let search use location",
+    "description": "Search doesn't use your location.",
+    "nameFr": "Empêcher la recherche d'utiliser votre position",
+    "descriptionFr": "La recherche n'utilise pas votre position.",
+    "category": "Cortana & Search",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search",
+        "name": "AllowSearchToUseLocation",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "searchhistory",
+    "name": "Disable device search history",
+    "description": "Searches are not remembered on the device.",
+    "nameFr": "Désactiver l'historique de recherche de l'appareil",
+    "descriptionFr": "Les recherches ne sont pas mémorisées sur l'appareil.",
+    "category": "Cortana & Search",
+    "scope": "Current User",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\SearchSettings",
+        "name": "IsDeviceSearchHistoryEnabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      }
+    ]
+  },
+  {
+    "id": "lockads",
+    "name": "Disable lock screen ads & fun facts",
+    "description": "Removes tips and ads from the lock screen.",
+    "nameFr": "Désactiver les publicités et anecdotes sur l'écran de verrouillage",
+    "descriptionFr": "Supprime les astuces et publicités de l'écran de verrouillage.",
+    "category": "Lock Screen & Widgets",
+    "scope": "Current User",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "name": "RotatingLockScreenOverlayEnabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      },
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "name": "SubscribedContent-338387Enabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      }
+    ]
+  },
+  {
+    "id": "spotlight",
+    "name": "Disable Windows Spotlight",
+    "description": "Turns off Windows Spotlight images and suggestions.",
+    "nameFr": "Désactiver Windows à la une (Spotlight)",
+    "descriptionFr": "Désactive les images et suggestions Windows à la une.",
+    "category": "Lock Screen & Widgets",
+    "scope": "Current User",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Policies\\Microsoft\\Windows\\CloudContent",
+        "name": "DisableWindowsSpotlightFeatures",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager",
+        "name": "RotatingLockScreenEnabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      }
+    ]
+  },
+  {
+    "id": "lockcamera",
+    "name": "Disable camera on lock screen",
+    "description": "The camera can't be accessed from the lock screen.",
+    "nameFr": "Désactiver la caméra sur l'écran de verrouillage",
+    "descriptionFr": "La caméra n'est pas accessible depuis l'écran de verrouillage.",
+    "category": "Lock Screen & Widgets",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Personalization",
+        "name": "NoLockScreenCamera",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "widgets",
+    "name": "Disable Widgets / News and Interests",
+    "description": "Removes the widgets board and its news feed.",
+    "nameFr": "Désactiver les widgets (Actualités et centres d'intérêt)",
+    "descriptionFr": "Supprime le tableau de widgets et son flux d'actualités.",
+    "category": "Lock Screen & Widgets",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Dsh",
+        "name": "AllowNewsAndInterests",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Feeds",
+        "name": "EnableFeeds",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "lockapps",
+    "name": "Disable notifications on lock screen",
+    "description": "Notifications aren't shown while locked.",
+    "nameFr": "Désactiver les notifications sur l'écran de verrouillage",
+    "descriptionFr": "Les notifications ne s'affichent pas lorsque la session est verrouillée.",
+    "category": "Lock Screen & Widgets",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\PushNotifications",
+        "name": "LockScreenToastEnabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      }
+    ]
+  },
+  {
+    "id": "onedrive",
+    "name": "Disable OneDrive file sync",
+    "description": "Prevents OneDrive from syncing. Only if you don't use OneDrive.",
+    "nameFr": "Désactiver la synchronisation de fichiers OneDrive",
+    "descriptionFr": "Empêche OneDrive de synchroniser vos fichiers. À n'activer que si vous n'utilisez pas OneDrive.",
+    "category": "OneDrive",
+    "scope": "Local Machine",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\OneDrive",
+        "name": "DisableFileSyncNGSC",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "onedrivenet",
+    "name": "Prevent OneDrive network traffic before sign-in",
+    "description": "OneDrive doesn't communicate until the user signs in.",
+    "nameFr": "Bloquer le trafic réseau de OneDrive avant la connexion",
+    "descriptionFr": "OneDrive ne communique pas avant que l'utilisateur ne se connecte.",
+    "category": "OneDrive",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Microsoft\\OneDrive",
+        "name": "PreventNetworkTrafficPreUserSignIn",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "onedrivenag",
+    "name": "Disable OneDrive/backup nags",
+    "description": "Disables 'back up your folders' and account notifications.",
+    "nameFr": "Désactiver les rappels de sauvegarde OneDrive",
+    "descriptionFr": "Désactive « Sauvegardez vos dossiers » et les notifications de compte.",
+    "category": "OneDrive",
+    "scope": "Current User",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced",
+        "name": "Start_AccountNotifications",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\OneDrive",
+        "name": "KFMBlockOptIn",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "doh",
+    "name": "Enable DNS-over-HTTPS (allow)",
+    "description": "Lets Windows use DoH with supported resolvers (DoHPolicy=2).",
+    "nameFr": "Autoriser le DNS sur HTTPS (DoH)",
+    "descriptionFr": "Permet à Windows d'utiliser DoH avec les résolveurs compatibles (DoHPolicy=2).",
+    "category": "Network",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient",
+        "name": "DoHPolicy",
+        "kind": "DWord",
+        "enabledValue": "2",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "wifisense",
+    "name": "Disable Wi-Fi Sense hotspot auto-connect",
+    "description": "Windows doesn't auto-connect to suggested hotspots.",
+    "nameFr": "Désactiver la connexion automatique Wi-Fi Sense",
+    "descriptionFr": "Windows ne se connecte pas automatiquement aux points d'accès suggérés.",
+    "category": "Network",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Microsoft\\PolicyManager\\default\\WiFi\\AllowAutoConnectToWiFiSenseHotspots",
+        "name": "value",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Microsoft\\PolicyManager\\default\\WiFi\\AllowWiFiHotSpotReporting",
+        "name": "value",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      }
+    ]
+  },
+  {
+    "id": "llmnr",
+    "name": "Disable LLMNR multicast name resolution",
+    "description": "Reduces name leakage on the local network.",
+    "nameFr": "Désactiver la résolution de noms multicast LLMNR",
+    "descriptionFr": "Réduit les fuites de noms sur le réseau local.",
+    "category": "Network",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient",
+        "name": "EnableMulticast",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "ncsi",
+    "name": "Disable NCSI active probing",
+    "description": "Not recommended for captive portals.",
+    "nameFr": "Désactiver la détection active NCSI",
+    "descriptionFr": "Déconseillé si vous vous connectez via des portails captifs (Wi-Fi d'hôtel, etc.).",
+    "category": "Network",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\NetworkConnectivityStatusIndicator",
+        "name": "NoActiveProbe",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "dop2p",
+    "name": "Disable Delivery Optimization P2P",
+    "description": "Updates only download over HTTP from Microsoft.",
+    "nameFr": "Désactiver le mode pair à pair de l'Optimisation de la distribution",
+    "descriptionFr": "Les mises à jour sont téléchargées uniquement via HTTP depuis Microsoft.",
+    "category": "Windows Update & Store",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\DeliveryOptimization",
+        "name": "DODownloadMode",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "wudrivers",
+    "name": "Exclude drivers from Windows Update",
+    "description": "Windows Update won't install drivers.",
+    "nameFr": "Exclure les pilotes de Windows Update",
+    "descriptionFr": "Windows Update n'installe pas de pilotes.",
+    "category": "Windows Update & Store",
+    "scope": "Local Machine",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate",
+        "name": "ExcludeWUDriversInQualityUpdate",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "storeauto",
+    "name": "Disable automatic Store app updates",
+    "description": "Store apps are not updated automatically.",
+    "nameFr": "Désactiver les mises à jour automatiques des applications du Store",
+    "descriptionFr": "Les applications du Store ne se mettent pas à jour automatiquement.",
+    "category": "Windows Update & Store",
+    "scope": "Local Machine",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\WindowsStore",
+        "name": "AutoDownload",
+        "kind": "DWord",
+        "enabledValue": "2",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "speechupd",
+    "name": "Disable automatic speech model updates",
+    "description": "Speech recognition models are not downloaded automatically.",
+    "nameFr": "Désactiver les mises à jour automatiques des modèles vocaux",
+    "descriptionFr": "Les modèles de reconnaissance vocale ne sont pas téléchargés automatiquement.",
+    "category": "Windows Update & Store",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Speech",
+        "name": "AllowSpeechModelUpdate",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "autoreboot",
+    "name": "No auto-restart with logged-on users",
+    "description": "Windows Update won't restart while someone is signed in.",
+    "nameFr": "Empêcher le redémarrage automatique si une session est ouverte",
+    "descriptionFr": "Windows Update ne redémarre pas si une session est ouverte.",
+    "category": "Windows Update & Store",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU",
+        "name": "NoAutoRebootWithLoggedOnUsers",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "msaccountsync",
+    "name": "Disable settings sync",
+    "description": "Your settings are not synced through your Microsoft account.",
+    "nameFr": "Désactiver la synchronisation des paramètres (compte Microsoft)",
+    "descriptionFr": "Vos paramètres ne sont pas synchronisés via le compte Microsoft.",
+    "category": "Windows Update & Store",
+    "scope": "Local Machine",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\SettingSync",
+        "name": "DisableSettingSync",
+        "kind": "DWord",
+        "enabledValue": "2",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\SettingSync",
+        "name": "DisableSettingSyncUserOverride",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "smartscreen",
+    "name": "Disable Windows SmartScreen",
+    "description": "Turns off SmartScreen checks of downloaded files and apps. Not recommended: removes a key malware protection.",
+    "nameFr": "Désactiver Windows SmartScreen",
+    "descriptionFr": "Désactive la vérification SmartScreen des fichiers et applications téléchargés. Déconseillé : supprime une protection importante contre les logiciels malveillants.",
+    "category": "Secure Boot & Security",
+    "scope": "Local Machine",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\System",
+        "name": "EnableSmartScreen",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "mapsreport",
+    "name": "Don't send Defender malware samples",
+    "description": "Defender doesn't automatically send file samples.",
+    "nameFr": "Ne pas envoyer d'échantillons à Microsoft (Defender)",
+    "descriptionFr": "Defender n'envoie plus automatiquement d'échantillons de fichiers à Microsoft.",
+    "category": "Secure Boot & Security",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows Defender\\Spynet",
+        "name": "SubmitSamplesConsent",
+        "kind": "DWord",
+        "enabledValue": "2",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "spynet",
+    "name": "Disable Defender cloud protection (MAPS)",
+    "description": "Stops Microsoft Defender from sending samples/telemetry to Microsoft's cloud (MAPS). Not recommended: weakens real-time detection.",
+    "nameFr": "Désactiver la protection cloud de Defender (MAPS)",
+    "descriptionFr": "Empêche Microsoft Defender d'envoyer des échantillons et des données au cloud Microsoft (MAPS). Déconseillé : affaiblit la détection en temps réel.",
+    "category": "Secure Boot & Security",
+    "scope": "Local Machine",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows Defender\\Spynet",
+        "name": "SpynetReporting",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "remoteassist",
+    "name": "Disable Remote Assistance",
+    "description": "Remote Assistance connections are not allowed.",
+    "nameFr": "Désactiver l'Assistance à distance",
+    "descriptionFr": "Les connexions d'Assistance à distance ne sont pas autorisées.",
+    "category": "Secure Boot & Security",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SYSTEM\\CurrentControlSet\\Control\\Remote Assistance",
+        "name": "fAllowToGetHelp",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": "1"
+      }
+    ]
+  },
+  {
+    "id": "autorun",
+    "name": "Disable AutoRun on all drives",
+    "description": "Removable media won't launch anything automatically.",
+    "nameFr": "Désactiver l'exécution automatique sur tous les lecteurs",
+    "descriptionFr": "Les supports amovibles ne lancent rien automatiquement.",
+    "category": "Secure Boot & Security",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer",
+        "name": "NoDriveTypeAutoRun",
+        "kind": "DWord",
+        "enabledValue": "255",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "appx_microsoft.bingnews",
+    "name": "Uninstall Microsoft News",
+    "description": "Removes package Microsoft.BingNews for all users. Undo reinstalls from the Store.",
+    "nameFr": "Désinstaller Microsoft Actualités",
+    "descriptionFr": "Supprime le paquet Microsoft.BingNews pour tous les utilisateurs. L'annulation le réinstalle depuis le Store.",
+    "category": "Debloat Apps",
+    "scope": "Current User",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Appx",
+        "target": "Microsoft.BingNews",
+        "storeId": "9WZDNCRFHVFW"
+      }
+    ]
+  },
+  {
+    "id": "appx_microsoft.bingweather",
+    "name": "Uninstall Weather",
+    "description": "Removes package Microsoft.BingWeather for all users. Undo reinstalls from the Store.",
+    "nameFr": "Désinstaller Météo",
+    "descriptionFr": "Supprime le paquet Microsoft.BingWeather pour tous les utilisateurs. L'annulation le réinstalle depuis le Store.",
+    "category": "Debloat Apps",
+    "scope": "Current User",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Appx",
+        "target": "Microsoft.BingWeather",
+        "storeId": "9WZDNCRFJ3Q2"
+      }
+    ]
+  },
+  {
+    "id": "appx_microsoft.microsoftsolitairecollection",
+    "name": "Uninstall Solitaire Collection",
+    "description": "Removes package Microsoft.MicrosoftSolitaireCollection for all users. Undo reinstalls from the Store.",
+    "nameFr": "Désinstaller Solitaire Collection",
+    "descriptionFr": "Supprime le paquet Microsoft.MicrosoftSolitaireCollection pour tous les utilisateurs. L'annulation le réinstalle depuis le Store.",
+    "category": "Debloat Apps",
+    "scope": "Current User",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Appx",
+        "target": "Microsoft.MicrosoftSolitaireCollection",
+        "storeId": "9WZDNCRFHWD2"
+      }
+    ]
+  },
+  {
+    "id": "appx_microsoft.gethelp",
+    "name": "Uninstall Get Help",
+    "description": "Removes package Microsoft.GetHelp for all users. Undo reinstalls from the Store.",
+    "nameFr": "Désinstaller Obtenir de l'aide",
+    "descriptionFr": "Supprime le paquet Microsoft.GetHelp pour tous les utilisateurs. L'annulation le réinstalle depuis le Store.",
+    "category": "Debloat Apps",
+    "scope": "Current User",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Appx",
+        "target": "Microsoft.GetHelp",
+        "storeId": "9PKDZBMV1H3T"
+      }
+    ]
+  },
+  {
+    "id": "appx_microsoft.getstarted",
+    "name": "Uninstall Tips / Get Started",
+    "description": "Removes package Microsoft.Getstarted for all users. Undo requires manual reinstall.",
+    "nameFr": "Désinstaller Astuces / Prise en main",
+    "descriptionFr": "Supprime le paquet Microsoft.Getstarted pour tous les utilisateurs. L'annulation nécessite une réinstallation manuelle.",
+    "category": "Debloat Apps",
+    "scope": "Current User",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Appx",
+        "target": "Microsoft.Getstarted",
+        "storeId": null
+      }
+    ]
+  },
+  {
+    "id": "appx_microsoft.windowsfeedbackhub",
+    "name": "Uninstall Feedback Hub",
+    "description": "Removes package Microsoft.WindowsFeedbackHub for all users. Undo reinstalls from the Store.",
+    "nameFr": "Désinstaller le Hub de commentaires",
+    "descriptionFr": "Supprime le paquet Microsoft.WindowsFeedbackHub pour tous les utilisateurs. L'annulation le réinstalle depuis le Store.",
+    "category": "Debloat Apps",
+    "scope": "Current User",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Appx",
+        "target": "Microsoft.WindowsFeedbackHub",
+        "storeId": "9NBLGGH4R32N"
+      }
+    ]
+  },
+  {
+    "id": "appx_microsoft.windowsmaps",
+    "name": "Uninstall Maps",
+    "description": "Removes package Microsoft.WindowsMaps for all users. Undo reinstalls from the Store.",
+    "nameFr": "Désinstaller Cartes",
+    "descriptionFr": "Supprime le paquet Microsoft.WindowsMaps pour tous les utilisateurs. L'annulation le réinstalle depuis le Store.",
+    "category": "Debloat Apps",
+    "scope": "Current User",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Appx",
+        "target": "Microsoft.WindowsMaps",
+        "storeId": "9WZDNCRDTBVB"
+      }
+    ]
+  },
+  {
+    "id": "appx_clipchamp.clipchamp",
+    "name": "Uninstall Clipchamp",
+    "description": "Removes package Clipchamp.Clipchamp for all users. Undo reinstalls from the Store.",
+    "nameFr": "Désinstaller Clipchamp",
+    "descriptionFr": "Supprime le paquet Clipchamp.Clipchamp pour tous les utilisateurs. L'annulation le réinstalle depuis le Store.",
+    "category": "Debloat Apps",
+    "scope": "Current User",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Appx",
+        "target": "Clipchamp.Clipchamp",
+        "storeId": "9P1J8S7CCWWT"
+      }
+    ]
+  },
+  {
+    "id": "appx_microsoft.todos",
+    "name": "Uninstall Microsoft To Do",
+    "description": "Removes package Microsoft.Todos for all users. Undo reinstalls from the Store.",
+    "nameFr": "Désinstaller Microsoft To Do",
+    "descriptionFr": "Supprime le paquet Microsoft.Todos pour tous les utilisateurs. L'annulation le réinstalle depuis le Store.",
+    "category": "Debloat Apps",
+    "scope": "Current User",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Appx",
+        "target": "Microsoft.Todos",
+        "storeId": "9NBLGGH5R558"
+      }
+    ]
+  },
+  {
+    "id": "appx_microsoft.microsoftofficehub",
+    "name": "Uninstall Microsoft 365 (Office) hub",
+    "description": "Removes package Microsoft.MicrosoftOfficeHub for all users. Undo reinstalls from the Store.",
+    "nameFr": "Désinstaller le hub Microsoft 365 (Office)",
+    "descriptionFr": "Supprime le paquet Microsoft.MicrosoftOfficeHub pour tous les utilisateurs. L'annulation le réinstalle depuis le Store.",
+    "category": "Debloat Apps",
+    "scope": "Current User",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Appx",
+        "target": "Microsoft.MicrosoftOfficeHub",
+        "storeId": "9WZDNCRD29V9"
+      }
+    ]
+  },
+  {
+    "id": "appx_microsoft.people",
+    "name": "Uninstall People",
+    "description": "Removes package Microsoft.People for all users. Undo requires manual reinstall.",
+    "nameFr": "Désinstaller Contacts",
+    "descriptionFr": "Supprime le paquet Microsoft.People pour tous les utilisateurs. L'annulation nécessite une réinstallation manuelle.",
+    "category": "Debloat Apps",
+    "scope": "Current User",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Appx",
+        "target": "Microsoft.People",
+        "storeId": null
+      }
+    ]
+  },
+  {
+    "id": "appx_microsoft.yourphone",
+    "name": "Uninstall Phone Link",
+    "description": "Removes package Microsoft.YourPhone for all users. Undo reinstalls from the Store.",
+    "nameFr": "Désinstaller Mobile connecté",
+    "descriptionFr": "Supprime le paquet Microsoft.YourPhone pour tous les utilisateurs. L'annulation le réinstalle depuis le Store.",
+    "category": "Debloat Apps",
+    "scope": "Current User",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Appx",
+        "target": "Microsoft.YourPhone",
+        "storeId": "9NMPJ99VJBWV"
+      }
+    ]
+  },
+  {
+    "id": "appx_microsoft.zunemusic",
+    "name": "Uninstall Media Player",
+    "description": "Removes package Microsoft.ZuneMusic for all users. Undo requires manual reinstall.",
+    "nameFr": "Désinstaller Lecteur multimédia",
+    "descriptionFr": "Supprime le paquet Microsoft.ZuneMusic pour tous les utilisateurs. L'annulation nécessite une réinstallation manuelle.",
+    "category": "Debloat Apps",
+    "scope": "Current User",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Appx",
+        "target": "Microsoft.ZuneMusic",
+        "storeId": null
+      }
+    ]
+  },
+  {
+    "id": "appx_microsoftteams",
+    "name": "Uninstall Teams (personal)",
+    "description": "Removes package MicrosoftTeams for all users. Undo requires manual reinstall.",
+    "nameFr": "Désinstaller Teams (personnel)",
+    "descriptionFr": "Supprime le paquet MicrosoftTeams pour tous les utilisateurs. L'annulation nécessite une réinstallation manuelle.",
+    "category": "Debloat Apps",
+    "scope": "Current User",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Appx",
+        "target": "MicrosoftTeams",
+        "storeId": null
+      }
+    ]
+  },
+  {
+    "id": "appx_microsoft.549981c3f5f10",
+    "name": "Uninstall Cortana app",
+    "description": "Removes package Microsoft.549981C3F5F10 for all users. Undo requires manual reinstall.",
+    "nameFr": "Désinstaller l'application Cortana",
+    "descriptionFr": "Supprime le paquet Microsoft.549981C3F5F10 pour tous les utilisateurs. L'annulation nécessite une réinstallation manuelle.",
+    "category": "Debloat Apps",
+    "scope": "Current User",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Appx",
+        "target": "Microsoft.549981C3F5F10",
+        "storeId": null
+      }
+    ]
+  },
+  {
+    "id": "appx_microsoft.bingsearch",
+    "name": "Uninstall Bing Search",
+    "description": "Removes package Microsoft.BingSearch for all users. Undo requires manual reinstall.",
+    "nameFr": "Désinstaller Bing Search",
+    "descriptionFr": "Supprime le paquet Microsoft.BingSearch pour tous les utilisateurs. L'annulation nécessite une réinstallation manuelle.",
+    "category": "Debloat Apps",
+    "scope": "Current User",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Appx",
+        "target": "Microsoft.BingSearch",
+        "storeId": null
+      }
+    ]
+  },
+  {
+    "id": "appx_microsoft.copilot",
+    "name": "Uninstall Copilot app",
+    "description": "Removes package Microsoft.Copilot for all users. Undo requires manual reinstall.",
+    "nameFr": "Désinstaller l'application Copilot",
+    "descriptionFr": "Supprime le paquet Microsoft.Copilot pour tous les utilisateurs. L'annulation nécessite une réinstallation manuelle.",
+    "category": "Debloat Apps",
+    "scope": "Current User",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Appx",
+        "target": "Microsoft.Copilot",
+        "storeId": null
+      }
+    ]
+  },
+  {
+    "id": "appx_microsoft.outlookforwindows",
+    "name": "Uninstall New Outlook",
+    "description": "Removes package Microsoft.OutlookForWindows for all users. Undo requires manual reinstall.",
+    "nameFr": "Désinstaller le nouvel Outlook",
+    "descriptionFr": "Supprime le paquet Microsoft.OutlookForWindows pour tous les utilisateurs. L'annulation nécessite une réinstallation manuelle.",
+    "category": "Debloat Apps",
+    "scope": "Current User",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Appx",
+        "target": "Microsoft.OutlookForWindows",
+        "storeId": null
+      }
+    ]
+  },
+  {
+    "id": "hoststelemetry",
+    "name": "Block Microsoft telemetry hosts (hosts file)",
+    "description": "Adds 0.0.0.0 entries for known telemetry endpoints to the hosts file. Note: Defender may flag hosts edits; excluded hosts can be restored at any time.",
+    "nameFr": "Bloquer les hôtes de télémétrie Microsoft (fichier hosts)",
+    "descriptionFr": "Ajoute des entrées 0.0.0.0 pour les points de terminaison de télémétrie connus dans le fichier hosts. Remarque : Defender peut signaler les modifications du fichier hosts ; les entrées peuvent être retirées à tout moment.",
+    "category": "Network",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Hosts",
+        "target": "vortex.data.microsoft.com|vortex-win.data.microsoft.com|settings-win.data.microsoft.com|watson.telemetry.microsoft.com|watson.microsoft.com|telecommand.telemetry.microsoft.com|oca.telemetry.microsoft.com|sqm.telemetry.microsoft.com|telemetry.microsoft.com|df.telemetry.microsoft.com|reports.wes.df.telemetry.microsoft.com|services.wes.df.telemetry.microsoft.com|v10.events.data.microsoft.com|v20.events.data.microsoft.com|self.events.data.microsoft.com|umwatsonc.events.data.microsoft.com|ceuswatcab01.blob.core.windows.net|activity.windows.com"
+      }
+    ]
+  },
+  {
+    "id": "hostsads",
+    "name": "Block Microsoft ad & Bing tracking hosts (hosts file)",
+    "description": "Blocks ad/Bing tracking endpoints. May break Bing-powered features in Start and Edge.",
+    "nameFr": "Bloquer les hôtes publicitaires et de suivi Bing (fichier hosts)",
+    "descriptionFr": "Bloque les points de terminaison publicitaires et de suivi de Bing. Peut perturber les fonctions Bing de Démarrer et d'Edge.",
+    "category": "Network",
+    "scope": "Local Machine",
+    "recommendation": "NotRecommended",
+    "actions": [
+      {
+        "type": "Hosts",
+        "target": "ads.msn.com|adnexus.net|adnxs.com|c.msn.com|g.msn.com|a.ads1.msn.com|b.ads1.msn.com|rad.msn.com|api.msn.com|assets.msn.com|c.bing.com|bat.bing.com"
+      }
+    ]
+  },
+  {
+    "id": "fw_compattelrunner",
+    "name": "Block outbound traffic: CompatTelRunner.exe",
+    "description": "Windows Firewall outbound block rule for %SystemRoot%\\System32\\CompatTelRunner.exe.",
+    "nameFr": "Bloquer le trafic sortant : CompatTelRunner.exe",
+    "descriptionFr": "Règle du Pare-feu Windows bloquant le trafic sortant de %SystemRoot%\\System32\\CompatTelRunner.exe.",
+    "category": "Firewall",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Firewall",
+        "target": "%SystemRoot%\\System32\\CompatTelRunner.exe"
+      }
+    ]
+  },
+  {
+    "id": "fw_devicecensus",
+    "name": "Block outbound traffic: DeviceCensus.exe",
+    "description": "Windows Firewall outbound block rule for %SystemRoot%\\System32\\DeviceCensus.exe.",
+    "nameFr": "Bloquer le trafic sortant : DeviceCensus.exe",
+    "descriptionFr": "Règle du Pare-feu Windows bloquant le trafic sortant de %SystemRoot%\\System32\\DeviceCensus.exe.",
+    "category": "Firewall",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Firewall",
+        "target": "%SystemRoot%\\System32\\DeviceCensus.exe"
+      }
+    ]
+  },
+  {
+    "id": "fw_wermgr",
+    "name": "Block outbound traffic: wermgr.exe",
+    "description": "Windows Firewall outbound block rule for %SystemRoot%\\System32\\wermgr.exe.",
+    "nameFr": "Bloquer le trafic sortant : wermgr.exe",
+    "descriptionFr": "Règle du Pare-feu Windows bloquant le trafic sortant de %SystemRoot%\\System32\\wermgr.exe.",
+    "category": "Firewall",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Firewall",
+        "target": "%SystemRoot%\\System32\\wermgr.exe"
+      }
+    ]
+  },
+  {
+    "id": "fw_werfault",
+    "name": "Block outbound traffic: WerFault.exe",
+    "description": "Windows Firewall outbound block rule for %SystemRoot%\\System32\\WerFault.exe.",
+    "nameFr": "Bloquer le trafic sortant : WerFault.exe",
+    "descriptionFr": "Règle du Pare-feu Windows bloquant le trafic sortant de %SystemRoot%\\System32\\WerFault.exe.",
+    "category": "Firewall",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Firewall",
+        "target": "%SystemRoot%\\System32\\WerFault.exe"
+      }
+    ]
+  },
+  {
+    "id": "postupgrade",
+    "name": "Block post-update privacy reset prompts",
+    "description": "Stops the 'Finish setting up your device' and privacy OOBE screens that re-enable data collection after feature updates.",
+    "nameFr": "Bloquer les invites de réinitialisation de la confidentialité après mise à jour",
+    "descriptionFr": "Empêche les écrans « Terminer la configuration de votre appareil » et l'OOBE de confidentialité, qui réactivent la collecte de données après les mises à jour de fonctionnalités.",
+    "category": "Windows Update & Store",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\OOBE",
+        "name": "DisablePrivacyExperience",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent",
+        "name": "DisableCloudOptimizedContent",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "edgefeedback",
+    "name": "Disable Edge feedback & Microsoft recommendations",
+    "description": "Turns off the Edge feedback tool and personalized Microsoft spotlight experiences in Edge.",
+    "nameFr": "Désactiver les commentaires et suggestions Edge",
+    "descriptionFr": "Désactive l'outil de commentaires d'Edge et les expériences personnalisées Microsoft dans Edge.",
+    "category": "Edge & Bing",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "name": "UserFeedbackAllowed",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "name": "SpotlightExperiencesAndRecommendationsEnabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "edgebingbar",
+    "name": "Disable Microsoft Search in Bing from Edge address bar",
+    "description": "Edge no longer sends address-bar queries to Microsoft Search in Bing.",
+    "nameFr": "Désactiver Microsoft Search dans Bing (barre Edge)",
+    "descriptionFr": "Edge n'envoie plus les saisies de la barre d'adresse à Microsoft Search dans Bing.",
+    "category": "Edge & Bing",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Edge",
+        "name": "AddressBarMicrosoftSearchInBingProviderEnabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "storeopenwith",
+    "name": "Disable Store lookup for unknown file types",
+    "description": "Windows no longer queries the Microsoft Store (sending the file extension) when opening an unknown file type.",
+    "nameFr": "Désactiver la recherche Store pour les fichiers inconnus",
+    "descriptionFr": "Windows n'interroge plus le Microsoft Store (en envoyant l'extension) à l'ouverture d'un type de fichier inconnu.",
+    "category": "Windows Update & Store",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer",
+        "name": "NoUseStoreOpenWith",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "onlinespeech",
+    "name": "Disable online speech recognition",
+    "description": "Voice input is no longer sent to Microsoft cloud speech services (offline recognition still works).",
+    "nameFr": "Désactiver la reconnaissance vocale en ligne",
+    "descriptionFr": "La voix n'est plus envoyée aux services vocaux cloud de Microsoft (la reconnaissance hors ligne fonctionne toujours).",
+    "category": "Privacy",
+    "scope": "Current User",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Speech_OneCore\\Settings\\OnlineSpeechPrivacy",
+        "name": "HasAccepted",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "inkcloud",
+    "name": "Disable inking & typing personalization upload",
+    "description": "Revokes acceptance of the inking/typing privacy policy so handwriting and typing data are not sent to Microsoft.",
+    "nameFr": "Désactiver l'envoi des données d'écriture manuscrite",
+    "descriptionFr": "Révoque l'acceptation de la politique de confidentialité relative à l'écriture manuscrite et à la saisie, afin que ces données ne soient pas envoyées à Microsoft.",
+    "category": "Privacy",
+    "scope": "Current User",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Personalization\\Settings",
+        "name": "AcceptedPrivacyPolicy",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "locationfull",
+    "name": "Deny location access system-wide",
+    "description": "Sets the global location consent to Deny and disables location scripting. Maps/weather will not locate you.",
+    "nameFr": "Refuser l'accès à la localisation partout",
+    "descriptionFr": "Définit le consentement global à la localisation sur Refuser et désactive les scripts de localisation. Les applications Cartes et Météo ne pourront plus vous localiser.",
+    "category": "Privacy",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\location",
+        "name": "Value",
+        "kind": "String",
+        "enabledValue": "Deny",
+        "disabledValue": "Allow"
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\LocationAndSensors",
+        "name": "DisableLocationScripting",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "werextra",
+    "name": "Harden Windows Error Reporting",
+    "description": "Stops sending additional crash data, disables WER logging and legacy PC Health error reports.",
+    "nameFr": "Renforcer le rapport d'erreurs Windows",
+    "descriptionFr": "Arrête l'envoi de données de plantage supplémentaires et désactive la journalisation WER ainsi que les anciens rapports PC Health.",
+    "category": "Telemetry & Diagnostics",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting",
+        "name": "DontSendAdditionalData",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting",
+        "name": "LoggingDisabled",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\PCHealth\\ErrorReporting",
+        "name": "DoReport",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "feedbackfreq",
+    "name": "Never ask for feedback",
+    "description": "Sets Windows feedback frequency to Never (no periodic Feedback Hub prompts).",
+    "nameFr": "Ne jamais demander de commentaires",
+    "descriptionFr": "Règle la fréquence des commentaires Windows sur Jamais (plus d'invites du Hub de commentaires).",
+    "category": "Privacy",
+    "scope": "Current User",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Siuf\\Rules",
+        "name": "PeriodInNanoSeconds",
+        "kind": "QWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "syncgroups",
+    "name": "Disable settings sync to Microsoft account",
+    "description": "Stops syncing theme, passwords, language, accessibility and other Windows settings to your Microsoft account.",
+    "nameFr": "Désactiver la synchronisation des paramètres Windows avec le compte Microsoft",
+    "descriptionFr": "Arrête la synchronisation du thème, des mots de passe, de la langue, de l'accessibilité et des autres paramètres avec votre compte Microsoft.",
+    "category": "Activity History & Clipboard",
+    "scope": "Current User",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\SettingSync\\Groups\\Personalization",
+        "name": "Enabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\SettingSync\\Groups\\Credentials",
+        "name": "Enabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\SettingSync\\Groups\\Language",
+        "name": "Enabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\SettingSync\\Groups\\Accessibility",
+        "name": "Enabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\SettingSync\\Groups\\Windows",
+        "name": "Enabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\SettingSync\\Groups\\BrowserSettings",
+        "name": "Enabled",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "cdp",
+    "name": "Disable cross-device experiences (cloud Timeline)",
+    "description": "Turns off Connected Devices Platform 'Continue on PC' and cloud activity sharing. Nearby sharing/Phone Link handoff will stop.",
+    "nameFr": "Désactiver les expériences multi-appareils",
+    "descriptionFr": "Désactive la plateforme d'appareils connectés (« Continuer sur le PC ») et le partage d'activités dans le cloud. Le Partage de proximité et Lien avec le téléphone cesseront de fonctionner.",
+    "category": "Activity History & Clipboard",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\System",
+        "name": "EnableCdp",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "bgappsuser",
+    "name": "Disable background apps (user)",
+    "description": "Prevents Store apps from running in the background for the current user.",
+    "nameFr": "Désactiver les applications en arrière-plan (utilisateur)",
+    "descriptionFr": "Empêche les applications du Store de s'exécuter en arrière-plan pour l'utilisateur actuel.",
+    "category": "App Privacy",
+    "scope": "Current User",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications",
+        "name": "GlobalUserDisabled",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows\\CurrentVersion\\Search",
+        "name": "BackgroundAppGlobalToggle",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "arso",
+    "name": "Disable auto sign-in & app restart after updates",
+    "description": "Windows no longer uses your sign-in info to finish updates automatically or reopen apps after restart.",
+    "nameFr": "Désactiver la reconnexion automatique après une mise à jour",
+    "descriptionFr": "Windows n'utilise plus vos informations de connexion pour terminer les mises à jour ni rouvrir les applications après un redémarrage.",
+    "category": "Privacy",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System",
+        "name": "DisableAutomaticRestartSignOn",
+        "kind": "DWord",
+        "enabledValue": "1",
+        "disabledValue": null
+      },
+      {
+        "type": "Registry",
+        "hive": "HKCU",
+        "path": "Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon",
+        "name": "RestartApps",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "smb1",
+    "name": "Disable SMBv1 server",
+    "description": "Disables the obsolete, insecure SMBv1 protocol on the file-sharing server (SMBv2/3 stay enabled).",
+    "nameFr": "Désactiver le serveur SMBv1",
+    "descriptionFr": "Désactive côté serveur le protocole SMBv1, obsolète et non sécurisé (SMBv2/3 restent actifs).",
+    "category": "Network",
+    "scope": "Local Machine",
+    "recommendation": "Recommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters",
+        "name": "SMB1",
+        "kind": "DWord",
+        "enabledValue": "0",
+        "disabledValue": null
+      }
+    ]
+  },
+  {
+    "id": "netbios",
+    "name": "Disable NetBIOS name broadcasts",
+    "description": "Sets NetBIOS over TCP/IP to P-node so the PC stops broadcasting/answering NetBIOS name queries on the LAN. Very old NAS devices may need IP addresses.",
+    "nameFr": "Désactiver les diffusions de noms NetBIOS",
+    "descriptionFr": "Configure NetBIOS sur TCP/IP en mode nœud P : le PC n'émet plus de diffusions et ne répond plus aux requêtes de noms NetBIOS. Les NAS très anciens devront peut-être être joints par leur adresse IP.",
+    "category": "Network",
+    "scope": "Local Machine",
+    "recommendation": "LimitedRecommended",
+    "actions": [
+      {
+        "type": "Registry",
+        "hive": "HKLM",
+        "path": "SYSTEM\\CurrentControlSet\\Services\\NetBT\\Parameters",
+        "name": "NodeType",
+        "kind": "DWord",
+        "enabledValue": "2",
+        "disabledValue": null
+      }
+    ]
+  }
+]
