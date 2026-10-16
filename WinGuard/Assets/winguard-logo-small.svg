@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>WinGuard (small)</title>
+  <defs>
+    <linearGradient id="rim" gradientUnits="userSpaceOnUse" x1="90" y1="60" x2="420" y2="460">
+      <stop offset="0" stop-color="#C084FC"/><stop offset="1" stop-color="#5B6CFF"/></linearGradient>
+    <path id="shield" d="M256 24 C314 66 378 82 448 86 L448 236 C448 360 366 440 256 492 C146 440 64 360 64 236 L64 86 C134 82 198 66 256 24 Z"/>
+  </defs>
+  <use href="#shield" fill="url(#rim)"/>
+  <use href="#shield" fill="#2A247E" transform="translate(256 256) scale(0.80) translate(-256 -256)"/>
+  <g fill="none" stroke="#F3EDFF" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M232 250 A52 52 0 1 1 280 250 L306 358 L206 358 Z" stroke-width="40"/>
+  </g>
+</svg>

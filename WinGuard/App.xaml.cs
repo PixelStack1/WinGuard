@@ -20,7 +20,7 @@ public partial class App : Application
             args.SetObserved();
         };
 
-        string ver = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion ?? "1.0.0";
+        string ver = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion ?? "1.0.1";
         AppLog.Info($"WinGuard {ver} starting (args: {string.Join(' ', e.Args)}) on {Environment.OSVersion}");
 
         if (e.Args.Any(a => a.Equals("--reapply", StringComparison.OrdinalIgnoreCase)))

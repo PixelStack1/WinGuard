@@ -1,5 +1,5 @@
 #define AppName "WinGuard"
-#define AppVersion "1.0.0"
+#define AppVersion "1.0.1"
 #define AppExe "WinGuard.exe"
 #define PublishDir "Z:\workspace\winguard-publish"
 
@@ -21,6 +21,7 @@ ArchitecturesInstallIn64BitMode=x64
 MinVersion=10.0
 OutputDir=Z:\workspace\winguard-setup
 OutputBaseFilename=WinGuardSetup
+SetupIconFile=Z:\workspace\winguard\WinGuard\winguard.ico
 Compression=lzma2/max
 SolidCompression=yes
 WizardStyle=modern

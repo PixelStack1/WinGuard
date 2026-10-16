@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <title>WinGuard</title>
+  <defs>
+    <linearGradient id="rim" gradientUnits="userSpaceOnUse" x1="90" y1="60" x2="420" y2="460">
+      <stop offset="0" stop-color="#C084FC"/><stop offset="0.5" stop-color="#8B5CF6"/><stop offset="1" stop-color="#5B6CFF"/></linearGradient>
+    <linearGradient id="core" gradientUnits="userSpaceOnUse" x1="130" y1="100" x2="380" y2="430">
+      <stop offset="0" stop-color="#5B3BC9"/><stop offset="0.55" stop-color="#2E2A8A"/><stop offset="1" stop-color="#1C1F66"/></linearGradient>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="10"/></filter>
+    <path id="shield" d="M256 36 C312 76 370 92 432 96 L432 236 C432 352 356 430 256 476 C156 430 80 352 80 236 L80 96 C142 92 200 76 256 36 Z"/>
+  </defs>
+  <use href="#shield" fill="url(#rim)" opacity="0.5" filter="url(#glow)"/>
+  <use href="#shield" fill="url(#rim)"/>
+  <use href="#shield" fill="url(#core)" stroke="#241A66" stroke-width="10" transform="translate(256 256) scale(0.84) translate(-256 -256)"/>
+  <g fill="none" stroke="#EDE4FF" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M238 252 A44 44 0 1 1 274 252 L298 346 L214 346 Z" stroke-width="20"/>
+    <path d="M232 296 L258 324 L330 226" stroke-width="22"/>
+  </g>
+</svg>
