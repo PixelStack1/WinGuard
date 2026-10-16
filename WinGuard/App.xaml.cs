@@ -32,6 +32,15 @@ public partial class App : Application
             return;
         }
 
+        if (e.Args.Any(a => a.Equals("--uninstall", StringComparison.OrdinalIgnoreCase)))
+        {
+            ShutdownMode = ShutdownMode.OnExplicitShutdown;
+            try { await Services.UninstallCleanup.RunAsync(); }
+            catch (Exception ex) { AppLog.Error("Uninstall cleanup failed", ex); }
+            Shutdown();
+            return;
+        }
+
         int st = Array.FindIndex(e.Args, a => a.Equals("--selftest", StringComparison.OrdinalIgnoreCase));
         if (st >= 0)
         {

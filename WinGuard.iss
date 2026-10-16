@@ -48,5 +48,10 @@ Name: "{autodesktop}\{#AppName}"; Filename: "{app}\{#AppExe}"; Tasks: desktopico
 ; Force elevation (in addition to the requireAdministrator manifest)
 Root: HKLM; Subkey: "Software\Microsoft\Windows NT\CurrentVersion\AppCompatFlags\Layers"; ValueType: string; ValueName: "{app}\{#AppExe}"; ValueData: "~ RUNASADMIN"; Flags: uninsdeletevalue
 
+[UninstallRun]
+Filename: "{app}\{#AppExe}"; Parameters: "--uninstall"; Flags: runhidden waituntilterminated; RunOnceId: "WinGuardCleanup"
+Filename: "{sys}\schtasks.exe"; Parameters: "/Delete /TN ""WinGuard Auto-Reapply"" /F"; Flags: runhidden; RunOnceId: "DelTask1"
+Filename: "{sys}\schtasks.exe"; Parameters: "/Delete /TN ""WinGuard Auto-Reapply (Daily)"" /F"; Flags: runhidden; RunOnceId: "DelTask2"
+
 [Run]
 Filename: "{app}\{#AppExe}"; Description: "{cm:LaunchProgram,{#AppName}}"; Flags: nowait postinstall skipifsilent shellexec
