@@ -31,7 +31,7 @@ public static class SelfTest
         {
             var (a0, n0) = await engine.DetectAsync(s);
             string head = $"{s.Id,-34} start={(a0 ? "ON" : "off")}{(n0 != NativeKind.None ? "/" + n0 : "")}";
-            if (DetectOnly.Contains(s.Id) || s.Actions.Any(a => a.Type == ActionType.Appx) || n0 != NativeKind.None)
+            if (DetectOnly.Contains(s.Id) || (s.Actions.Any(a => a.Type == ActionType.Appx) && onlyIds.Length == 0) || n0 != NativeKind.None)
             { sb.AppendLine(head + "  detect-only"); skipped++; continue; }
             var logs = new List<string>();
             bool first = !a0;

@@ -27,7 +27,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nRemet à zéro et coupe l'identifiant publicitaire unique que Windows attribue à ton compte. Les applis du Store et certains sites ne peuvent plus relier ton activité entre applis pour cibler la pub. Tu verras toujours de la pub, mais non personnalisée.\n\nCe qui est modifié — ton compte uniquement :\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo\\Enabled = 0 (DWord). Annulation : remis à 1.\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AdvertisingInfo\\DisabledByGroupPolicy = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nTurns off the unique advertising ID Windows gives your account. Store apps can no longer link your activity across apps to target ads. You still see ads, just not personalised ones.\n\nWhat changes — your account only:\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\AdvertisingInfo\\Enabled = 0 (DWord). Undo: set back to 1.\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AdvertisingInfo\\DisabledByGroupPolicy = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "tailored",
@@ -57,7 +59,9 @@
         "enabledValue": "0",
         "disabledValue": "1"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nMicrosoft n'utilise plus tes données de diagnostic pour te proposer des astuces, pubs et recommandations « sur mesure » dans Windows. Aucune fonction n'est perdue.\n\nCe qui est modifié — ton compte uniquement :\n• Registre : HKCU\\Software\\Policies\\Microsoft\\Windows\\CloudContent\\DisableTailoredExperiencesWithDiagnosticData = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Privacy\\TailoredExperiencesWithDiagnosticDataEnabled = 0 (DWord). Annulation : remis à 1.\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nMicrosoft stops using your diagnostic data to show you 'tailored' tips, ads and recommendations in Windows. No feature is lost.\n\nWhat changes — your account only:\n• Registry: HKCU\\Software\\Policies\\Microsoft\\Windows\\CloudContent\\DisableTailoredExperiencesWithDiagnosticData = 1 (DWord). Undo: value deleted (Windows default).\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Privacy\\TailoredExperiencesWithDiagnosticDataEnabled = 0 (DWord). Undo: set back to 1.\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "langlist",
@@ -78,7 +82,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLe navigateur/Windows n'expose plus ta liste de langues aux sites web via l'en-tête Accept-Language. Les sites peuvent te proposer une autre langue par défaut ; tu peux la changer à la main.\n\nCe qui est modifié — ton compte uniquement :\n• Registre : HKCU\\Control Panel\\International\\User Profile\\HttpAcceptLanguageOptOut = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nWindows no longer exposes your language list to websites (Accept-Language). Some sites may pick a different default language; you can switch it manually.\n\nWhat changes — your account only:\n• Registry: HKCU\\Control Panel\\International\\User Profile\\HttpAcceptLanguageOptOut = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "trackprogs",
@@ -99,7 +105,9 @@
         "enabledValue": "0",
         "disabledValue": "1"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nWindows arrête de mémoriser quelles applis tu lances. Conséquence : la liste « Les plus utilisées » de Démarrer et certaines suggestions de recherche disparaissent.\n\nCe qui est modifié — ton compte uniquement :\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\Start_TrackProgs = 0 (DWord). Annulation : remis à 1.\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nWindows stops recording which apps you launch. As a result the Start 'Most used' list and some search suggestions disappear.\n\nWhat changes — your account only:\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\Start_TrackProgs = 0 (DWord). Undo: set back to 1.\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "typing",
@@ -147,7 +155,9 @@
         "enabledValue": "0",
         "disabledValue": "1"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nCoupe la collecte implicite de ce que tu tapes et écris (dictionnaire personnalisé, contacts récoltés) et l'envoi à Microsoft pour « améliorer la frappe ». La saisie prédictive locale devient moins personnalisée.\n\nCe qui est modifié — ton compte uniquement :\n• Registre : HKCU\\Software\\Microsoft\\InputPersonalization\\RestrictImplicitInkCollection = 1 (DWord). Annulation : remis à 0.\n• Registre : HKCU\\Software\\Microsoft\\InputPersonalization\\RestrictImplicitTextCollection = 1 (DWord). Annulation : remis à 0.\n• Registre : HKCU\\Software\\Microsoft\\InputPersonalization\\TrainedDataStore\\HarvestContacts = 0 (DWord). Annulation : remis à 1.\n• Registre : HKCU\\Software\\Microsoft\\Input\\TIPC\\Enabled = 0 (DWord). Annulation : remis à 1.\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nStops implicit collection of what you type and handwrite (personal dictionary, harvested contacts) and sending it to Microsoft to 'improve typing'. Local predictive text becomes less personalised.\n\nWhat changes — your account only:\n• Registry: HKCU\\Software\\Microsoft\\InputPersonalization\\RestrictImplicitInkCollection = 1 (DWord). Undo: set back to 0.\n• Registry: HKCU\\Software\\Microsoft\\InputPersonalization\\RestrictImplicitTextCollection = 1 (DWord). Undo: set back to 0.\n• Registry: HKCU\\Software\\Microsoft\\InputPersonalization\\TrainedDataStore\\HarvestContacts = 0 (DWord). Undo: set back to 1.\n• Registry: HKCU\\Software\\Microsoft\\Input\\TIPC\\Enabled = 0 (DWord). Undo: set back to 1.\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "inkpolicy",
@@ -186,7 +196,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nMême effet que le réglage utilisateur, mais imposé par stratégie à toute la machine : la personnalisation de l'écriture/frappe est désactivée pour tous les comptes et grisée dans Paramètres.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\InputPersonalization\\RestrictImplicitInkCollection = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\InputPersonalization\\RestrictImplicitTextCollection = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\InputPersonalization\\AllowInputPersonalization = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nSame as the per-user setting but enforced by policy for the whole machine: input personalisation is off for every account and greyed out in Settings.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\InputPersonalization\\RestrictImplicitInkCollection = 1 (DWord). Undo: value deleted (Windows default).\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\InputPersonalization\\RestrictImplicitTextCollection = 1 (DWord). Undo: value deleted (Windows default).\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\InputPersonalization\\AllowInputPersonalization = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "feedback",
@@ -216,7 +228,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nWindows ne t'affiche plus les fenêtres « Que pensez-vous de… ? » et les notifications de commentaires. Le Hub de commentaires reste utilisable si tu l'ouvres toi-même.\n\nCe qui est modifié — ton compte uniquement :\n• Registre : HKCU\\Software\\Microsoft\\Siuf\\Rules\\NumberOfSIUFInPeriod = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection\\DoNotShowFeedbackNotifications = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nWindows no longer pops up 'How likely are you to recommend…' surveys or feedback notifications. Feedback Hub still works if you open it yourself.\n\nWhat changes — your account only:\n• Registry: HKCU\\Software\\Microsoft\\Siuf\\Rules\\NumberOfSIUFInPeriod = 0 (DWord). Undo: value deleted (Windows default).\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection\\DoNotShowFeedbackNotifications = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "suggestsettings",
@@ -255,7 +269,9 @@
         "enabledValue": "0",
         "disabledValue": "1"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nMasque les encarts de contenu suggéré (promos, découvertes) dans l'application Paramètres. Purement cosmétique, aucune fonction perdue.\n\nCe qui est modifié — ton compte uniquement :\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager\\SubscribedContent-338393Enabled = 0 (DWord). Annulation : remis à 1.\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager\\SubscribedContent-353694Enabled = 0 (DWord). Annulation : remis à 1.\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager\\SubscribedContent-353696Enabled = 0 (DWord). Annulation : remis à 1.\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nHides the suggested-content cards (promos, 'discover') in the Settings app. Cosmetic only, nothing is lost.\n\nWhat changes — your account only:\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager\\SubscribedContent-338393Enabled = 0 (DWord). Undo: set back to 1.\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager\\SubscribedContent-353694Enabled = 0 (DWord). Undo: set back to 1.\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager\\SubscribedContent-353696Enabled = 0 (DWord). Undo: set back to 1.\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "tips",
@@ -294,7 +310,9 @@
         "enabledValue": "0",
         "disabledValue": "1"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nSupprime les notifications d'astuces, l'écran « Tirez encore plus parti de Windows » après les mises à jour et les suggestions de prise en main.\n\nCe qui est modifié — ton compte uniquement :\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager\\SubscribedContent-338389Enabled = 0 (DWord). Annulation : remis à 1.\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager\\SoftLandingEnabled = 0 (DWord). Annulation : remis à 1.\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\UserProfileEngagement\\ScoobeSystemSettingEnabled = 0 (DWord). Annulation : remis à 1.\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nRemoves tip notifications, the 'Get even more out of Windows' screen after updates and onboarding suggestions.\n\nWhat changes — your account only:\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager\\SubscribedContent-338389Enabled = 0 (DWord). Undo: set back to 1.\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager\\SoftLandingEnabled = 0 (DWord). Undo: set back to 1.\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\UserProfileEngagement\\ScoobeSystemSettingEnabled = 0 (DWord). Undo: set back to 1.\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "startsugg",
@@ -333,7 +351,9 @@
         "enabledValue": "0",
         "disabledValue": "1"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nRetire les applis sponsorisées et les « recommandations » de Démarrer. Les fichiers récents que tu as ouverts ne sont pas concernés.\n\nCe qui est modifié — ton compte uniquement :\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager\\SystemPaneSuggestionsEnabled = 0 (DWord). Annulation : remis à 1.\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager\\SubscribedContent-338388Enabled = 0 (DWord). Annulation : remis à 1.\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\Start_IrisRecommendations = 0 (DWord). Annulation : remis à 1.\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nRemoves sponsored apps and 'recommendations' from Start. Your own recent files are not affected.\n\nWhat changes — your account only:\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager\\SystemPaneSuggestionsEnabled = 0 (DWord). Undo: set back to 1.\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager\\SubscribedContent-338388Enabled = 0 (DWord). Undo: set back to 1.\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\Start_IrisRecommendations = 0 (DWord). Undo: set back to 1.\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "consumer",
@@ -381,7 +401,9 @@
         "enabledValue": "0",
         "disabledValue": "1"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nEmpêche Windows d'installer tout seul des jeux/applis sponsorisés (Candy Crush, etc.) et les applis « suggérées » par le constructeur sur ce compte et les nouveaux comptes. Les applis déjà installées restent.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent\\DisableWindowsConsumerFeatures = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager\\SilentInstalledAppsEnabled = 0 (DWord). Annulation : remis à 1.\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager\\PreInstalledAppsEnabled = 0 (DWord). Annulation : remis à 1.\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager\\OemPreInstalledAppsEnabled = 0 (DWord). Annulation : remis à 1.\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nPrevents Windows from silently installing sponsored games/apps (Candy Crush, etc.) and OEM 'suggested' apps for this and new accounts. Apps already installed stay.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent\\DisableWindowsConsumerFeatures = 1 (DWord). Undo: value deleted (Windows default).\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager\\SilentInstalledAppsEnabled = 0 (DWord). Undo: set back to 1.\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager\\PreInstalledAppsEnabled = 0 (DWord). Undo: set back to 1.\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager\\OemPreInstalledAppsEnabled = 0 (DWord). Undo: set back to 1.\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "explorerads",
@@ -402,7 +424,9 @@
         "enabledValue": "0",
         "disabledValue": "1"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nMasque les bandeaux OneDrive / Microsoft 365 qui apparaissent en haut de l'Explorateur de fichiers. Aucune fonction perdue.\n\nCe qui est modifié — ton compte uniquement :\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\ShowSyncProviderNotifications = 0 (DWord). Annulation : remis à 1.\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nHides the OneDrive / Microsoft 365 banners at the top of File Explorer. Nothing is lost.\n\nWhat changes — your account only:\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\ShowSyncProviderNotifications = 0 (DWord). Undo: set back to 1.\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "location",
@@ -432,7 +456,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nCoupe toute la plateforme de localisation : plus aucune appli ni Windows (fuseau horaire auto, Météo, Cartes, Localiser mon appareil) ne peut connaître ta position. Le réglage de localisation est grisé dans Paramètres.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\LocationAndSensors\\DisableLocation = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\LocationAndSensors\\DisableWindowsLocationProvider = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nTurns off the whole location platform: no app nor Windows (automatic time zone, Weather, Maps, Find my device) can get your position. The location switch is greyed out in Settings.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\LocationAndSensors\\DisableLocation = 1 (DWord). Undo: value deleted (Windows default).\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\LocationAndSensors\\DisableWindowsLocationProvider = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "findmydevice",
@@ -453,7 +479,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nWindows n'envoie plus périodiquement la position du PC à ton compte Microsoft. Contrepartie : tu ne pourras pas localiser le PC à distance s'il est perdu ou volé.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\FindMyDevice\\AllowFindMyDevice = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nWindows stops periodically sending the PC's location to your Microsoft account. Trade-off: you can't locate the PC remotely if it's lost or stolen.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\FindMyDevice\\AllowFindMyDevice = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "biometrics",
@@ -474,7 +502,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive les capteurs biométriques : la connexion par visage ou empreinte (Windows Hello) ne fonctionne plus, il faut utiliser le code PIN ou le mot de passe.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Biometrics\\Enabled = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nDisables biometric sensors: face/fingerprint sign-in (Windows Hello) stops working, you sign in with PIN or password.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Biometrics\\Enabled = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "activityfeed",
@@ -495,7 +525,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nWindows ne construit plus l'historique des activités (fichiers, sites, applis utilisés) qui servait à la Chronologie et à « reprendre là où vous en étiez ».\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System\\EnableActivityFeed = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nWindows stops building the activity history (files, sites, apps used) used by Timeline and 'pick up where you left off'.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System\\EnableActivityFeed = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "publishact",
@@ -525,7 +557,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLes activités ne sont plus publiées ni envoyées à ton compte Microsoft. Les fonctions de reprise sur un autre appareil ne voient plus ce que tu fais sur ce PC.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System\\PublishUserActivities = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System\\UploadUserActivities = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nActivities are no longer published or uploaded to your Microsoft account. Cross-device resume features no longer see what you do on this PC.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System\\PublishUserActivities = 0 (DWord). Undo: value deleted (Windows default).\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System\\UploadUserActivities = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "cliphistory",
@@ -546,7 +580,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive Win+V : le presse-papiers ne garde plus qu'un seul élément, rien n'est conservé en historique. Utile si tu copies des mots de passe ; gênant si tu utilises l'historique.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System\\AllowClipboardHistory = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nDisables Win+V: the clipboard keeps a single item, nothing is kept in history. Good if you copy passwords; annoying if you rely on clipboard history.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System\\AllowClipboardHistory = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "clipsync",
@@ -567,7 +603,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nCe que tu copies n'est plus envoyé dans le cloud pour être collé sur tes autres appareils. Le presse-papiers local fonctionne normalement.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System\\AllowCrossDeviceClipboard = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nWhat you copy is no longer sent to the cloud to paste on your other devices. The local clipboard works normally.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System\\AllowCrossDeviceClipboard = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "recentdocs",
@@ -588,7 +626,9 @@
         "enabledValue": "0",
         "disabledValue": "1"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nWindows ne mémorise plus les fichiers ouverts récemment : « Récent » dans Démarrer, l'Accès rapide et les listes de raccourcis de la barre des tâches restent vides.\n\nCe qui est modifié — ton compte uniquement :\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\Start_TrackDocs = 0 (DWord). Annulation : remis à 1.\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nWindows stops remembering recently opened files: 'Recent' in Start, Quick access and taskbar jump lists stay empty.\n\nWhat changes — your account only:\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\Start_TrackDocs = 0 (DWord). Undo: set back to 1.\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "appcamera",
@@ -609,7 +649,9 @@
         "enabledValue": "2",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLes applis du Store (Caméra, Teams Store, WhatsApp Store…) ne peuvent plus utiliser la webcam ; le réglage est grisé. Les logiciels de bureau classiques (Discord, OBS, navigateurs) ne sont pas bloqués par cette stratégie.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessCamera = 2 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nStore apps (Camera, Store Teams, Store WhatsApp…) can no longer use the webcam; the setting is greyed out. Classic desktop programs (Discord, OBS, browsers) are not blocked by this policy.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessCamera = 2 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "appmicrophone",
@@ -630,7 +672,9 @@
         "enabledValue": "2",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLes applis du Store ne peuvent plus utiliser le micro (Enregistreur vocal, appels dans des applis Store, dictée). Les logiciels de bureau classiques ne sont pas concernés.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessMicrophone = 2 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nStore apps can no longer use the microphone (Voice Recorder, calls in Store apps, dictation). Classic desktop programs are not affected.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessMicrophone = 2 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "applocation",
@@ -651,7 +695,9 @@
         "enabledValue": "2",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLes applis du Store ne peuvent plus lire ta position (Météo, Cartes ne te localisent plus). La localisation reste disponible pour Windows lui-même.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessLocation = 2 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nStore apps can no longer read your location (Weather, Maps can't locate you). Location stays available to Windows itself.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessLocation = 2 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "appaccountinfo",
@@ -672,7 +718,9 @@
         "enabledValue": "2",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLes applis du Store ne peuvent plus lire ton nom, ta photo et les infos de ton compte. Certaines applis te demanderont ces infos à la main.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessAccountInfo = 2 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nStore apps can no longer read your name, picture and account info. Some apps will ask for it manually.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessAccountInfo = 2 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "appcontacts",
@@ -693,7 +741,9 @@
         "enabledValue": "2",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLes applis du Store n'ont plus accès à tes contacts. Les applis Courrier/Contacts/Teams Store ne pourront plus proposer tes contacts.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessContacts = 2 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nStore apps lose access to your contacts. Mail/People/Store Teams can no longer suggest contacts.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessContacts = 2 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "appcalendar",
@@ -714,7 +764,9 @@
         "enabledValue": "2",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLes applis du Store n'ont plus accès à ton calendrier (le widget Calendrier et les rappels d'applis tierces ne voient plus tes événements).\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessCalendar = 2 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nStore apps lose access to your calendar (calendar widgets and third-party reminders no longer see your events).\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessCalendar = 2 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "appcallhistory",
@@ -735,7 +787,9 @@
         "enabledValue": "2",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLes applis du Store ne peuvent plus lire l'historique des appels (utile surtout avec Mobile connecté).\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessCallHistory = 2 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nStore apps can no longer read call history (mainly relevant with Phone Link).\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessCallHistory = 2 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "appemail",
@@ -756,7 +810,9 @@
         "enabledValue": "2",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLes applis du Store ne peuvent plus lire tes e-mails stockés par l'appli Courrier. L'appli de messagerie elle-même continue de fonctionner.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessEmail = 2 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nStore apps can no longer read e-mail stored by the Mail app. The mail app itself keeps working.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessEmail = 2 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "appmessaging",
@@ -777,7 +833,9 @@
         "enabledValue": "2",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLes applis du Store ne peuvent plus lire ni envoyer de SMS/MMS. Lien avec le téléphone ne pourra plus afficher tes SMS.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessMessaging = 2 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nStore apps can no longer read or send SMS/MMS. Phone Link can no longer show your texts.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessMessaging = 2 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "appphone",
@@ -798,7 +856,9 @@
         "enabledValue": "2",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLes applis du Store ne peuvent plus passer d'appels téléphoniques. Lien avec le téléphone ne pourra plus passer d'appels depuis le PC.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessPhone = 2 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nStore apps can no longer place phone calls. Phone Link can no longer make calls from the PC.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessPhone = 2 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "appradios",
@@ -819,7 +879,9 @@
         "enabledValue": "2",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLes applis du Store ne peuvent plus allumer/éteindre le Bluetooth ou le Wi-Fi elles-mêmes. Tu gardes le contrôle depuis Paramètres ; le Bluetooth continue de fonctionner.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessRadios = 2 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nStore apps can no longer turn Bluetooth or Wi-Fi on/off themselves. You keep control from Settings; Bluetooth keeps working.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessRadios = 2 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "appnotifications",
@@ -840,7 +902,9 @@
         "enabledValue": "2",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLes applis du Store ne peuvent plus lire les notifications des autres applis (ex. Lien avec le téléphone, montres connectées qui relaient les notifs).\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessNotifications = 2 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nStore apps can no longer read other apps' notifications (e.g. Phone Link, smartwatch apps relaying notifications).\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessNotifications = 2 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "appmotion",
@@ -861,7 +925,9 @@
         "enabledValue": "2",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLes applis du Store ne peuvent plus lire les capteurs de mouvement (accéléromètre, podomètre). Sans effet sur un PC fixe.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessMotion = 2 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nStore apps can no longer read motion sensors (accelerometer, step counter). No effect on a desktop PC.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessMotion = 2 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "apptasks",
@@ -882,7 +948,9 @@
         "enabledValue": "2",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLes applis du Store ne peuvent plus lire tes tâches (To Do, Outlook). L'appli qui gère les tâches continue de fonctionner.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessTasks = 2 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nStore apps can no longer read your tasks (To Do, Outlook). The task app itself keeps working.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessTasks = 2 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "appdiagnosticinfo",
@@ -903,7 +971,9 @@
         "enabledValue": "2",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLes applis du Store ne peuvent plus voir quelles autres applis tournent ni leurs infos de diagnostic. Aucune perte pour un usage normal.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessDiagnosticInfo = 2 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nStore apps can no longer see which other apps are running or their diagnostic info. No loss for normal use.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessDiagnosticInfo = 2 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "apptrusteddevices",
@@ -924,7 +994,9 @@
         "enabledValue": "2",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLes applis du Store ne peuvent plus communiquer avec des appareils non appairés (balises, objets connectés détectés à proximité).\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessTrustedDevices = 2 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nStore apps can no longer talk to unpaired devices (beacons, nearby smart devices).\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessTrustedDevices = 2 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "appgazeinput",
@@ -945,7 +1017,9 @@
         "enabledValue": "2",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLes applis du Store ne peuvent plus utiliser un oculomètre (eye tracker). À éviter si tu utilises le contrôle par le regard pour l'accessibilité.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessGazeInput = 2 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nStore apps can no longer use an eye tracker. Avoid if you use eye control for accessibility.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsAccessGazeInput = 2 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "appbg",
@@ -966,7 +1040,9 @@
         "enabledValue": "2",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nInterdit à toutes les applis du Store de tourner en arrière-plan : moins de réveils, moins de données envoyées, un peu d'autonomie gagnée. Contrepartie : notifications en retard (Courrier, Teams Store, WhatsApp Store), synchro moins fréquente. WinGuard garde l'Outil Capture d'écran autorisé pour qu'Impr. écran fonctionne normalement.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsRunInBackground = 2 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nForbids all Store apps from running in the background: fewer wake-ups, less data sent, a bit more battery. Trade-off: delayed notifications (Mail, Store Teams, Store WhatsApp), less frequent sync. WinGuard keeps Snipping Tool allowed so Print Screen keeps working normally.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsRunInBackground = 2 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "appvoice",
@@ -996,7 +1072,9 @@
         "enabledValue": "2",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLes applis ne peuvent plus écouter en permanence un mot-clé (« Hey Cortana », assistants tiers), même écran verrouillé. Le micro n'est plus ouvert en tâche de fond pour ça.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsActivateWithVoice = 2 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsActivateWithVoiceAboveLock = 2 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nApps can no longer listen for a wake word ('Hey Cortana', third-party assistants), including on the lock screen. The mic is no longer kept open in the background for that.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsActivateWithVoice = 2 (DWord). Undo: value deleted (Windows default).\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppPrivacy\\LetAppsActivateWithVoiceAboveLock = 2 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "recall",
@@ -1026,7 +1104,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nRecall (PC Copilot+) n'enregistre plus de captures d'écran périodiques de ce que tu fais. Sur un PC sans Recall, ce réglage ne change rien mais empêche une activation future.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsAI\\DisableAIDataAnalysis = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKCU\\Software\\Policies\\Microsoft\\Windows\\WindowsAI\\DisableAIDataAnalysis = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nRecall (Copilot+ PCs) stops taking periodic screenshots of what you do. On a PC without Recall it changes nothing but blocks future enabling.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsAI\\DisableAIDataAnalysis = 1 (DWord). Undo: value deleted (Windows default).\n• Registry: HKCU\\Software\\Policies\\Microsoft\\Windows\\WindowsAI\\DisableAIDataAnalysis = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "recallavail",
@@ -1047,7 +1127,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nRend la fonctionnalité Recall indisponible : elle ne peut pas être activée et Windows peut retirer ses composants. Plus restrictif que la simple désactivation des captures.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsAI\\AllowRecallEnablement = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nMakes Recall unavailable: it can't be turned on and Windows may remove its components. Stricter than just turning off snapshots.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsAI\\AllowRecallEnablement = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "clicktodo",
@@ -1077,7 +1159,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive Click to Do (Win+clic) qui analyse le contenu de ton écran par IA pour proposer des actions. Rien n'est analysé à l'écran.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsAI\\DisableClickToDo = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKCU\\Software\\Policies\\Microsoft\\Windows\\WindowsAI\\DisableClickToDo = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nTurns off Click to Do (Win+click), which analyses on-screen content with AI to suggest actions. Nothing on screen gets analysed.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsAI\\DisableClickToDo = 1 (DWord). Undo: value deleted (Windows default).\n• Registry: HKCU\\Software\\Policies\\Microsoft\\Windows\\WindowsAI\\DisableClickToDo = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "settingsagent",
@@ -1098,7 +1182,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLa recherche de Paramètres n'utilise plus l'agent IA qui interprète tes phrases et modifie des réglages pour toi ; tu retrouves la recherche classique par mots-clés.\n\nCe qui est modifié — ton compte uniquement :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsAI\\DisableSettingsAgent = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nSettings search no longer uses the AI agent that interprets your sentences and changes settings for you; you get classic keyword search.\n\nWhat changes — your account only:\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsAI\\DisableSettingsAgent = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "copilot",
@@ -1128,7 +1214,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive Windows Copilot par stratégie (raccourci Win+C, panneau intégré). Sur les versions récentes où Copilot est une appli séparée, la stratégie peut être ignorée : utilise aussi « Désinstaller l'application Copilot ».\n\nCe qui est modifié — ton compte uniquement :\n• Registre : HKCU\\Software\\Policies\\Microsoft\\Windows\\WindowsCopilot\\TurnOffWindowsCopilot = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsCopilot\\TurnOffWindowsCopilot = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nTurns off Windows Copilot via policy (Win+C, built-in pane). On recent builds where Copilot is a separate app, the policy may be ignored: also use 'Uninstall the Copilot app'.\n\nWhat changes — your account only:\n• Registry: HKCU\\Software\\Policies\\Microsoft\\Windows\\WindowsCopilot\\TurnOffWindowsCopilot = 1 (DWord). Undo: value deleted (Windows default).\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsCopilot\\TurnOffWindowsCopilot = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "copilotbtn",
@@ -1149,7 +1237,9 @@
         "enabledValue": "0",
         "disabledValue": "1"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nRetire simplement le bouton Copilot de la barre des tâches. Copilot reste installé et accessible autrement.\n\nCe qui est modifié — ton compte uniquement :\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\ShowCopilotButton = 0 (DWord). Annulation : remis à 1.\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nJust removes the Copilot button from the taskbar. Copilot stays installed and reachable otherwise.\n\nWhat changes — your account only:\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\ShowCopilotButton = 0 (DWord). Undo: set back to 1.\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "notepadai",
@@ -1170,7 +1260,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nRetire Copilot, « Réécrire » et « Résumer » du Bloc-notes : rien de ce que tu écris n'est envoyé à un service IA.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\WindowsNotepad\\DisableAIFeatures = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nRemoves Copilot, 'Rewrite' and 'Summarise' from Notepad: nothing you type is sent to an AI service.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\WindowsNotepad\\DisableAIFeatures = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "paintai",
@@ -1209,7 +1301,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nRetire Cocreator, le remplissage génératif et le créateur d'images de Paint. Les outils de dessin classiques restent.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CurrentVersion\\Policies\\Paint\\DisableCocreator = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CurrentVersion\\Policies\\Paint\\DisableGenerativeFill = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CurrentVersion\\Policies\\Paint\\DisableImageCreator = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nRemoves Cocreator, generative fill and Image Creator from Paint. Classic drawing tools remain.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CurrentVersion\\Policies\\Paint\\DisableCocreator = 1 (DWord). Undo: value deleted (Windows default).\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CurrentVersion\\Policies\\Paint\\DisableGenerativeFill = 1 (DWord). Undo: value deleted (Windows default).\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CurrentVersion\\Policies\\Paint\\DisableImageCreator = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "edgecopilot",
@@ -1239,7 +1333,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nMasque la barre latérale d'Edge (dont Copilot) et empêche Copilot de lire le contenu de la page ouverte. Les autres outils de la barre latérale disparaissent aussi.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\HubsSidebarEnabled = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\CopilotPageContext = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nHides Edge's sidebar (including Copilot) and stops Copilot from reading the open page. Other sidebar tools disappear too.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\HubsSidebarEnabled = 0 (DWord). Undo: value deleted (Windows default).\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\CopilotPageContext = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "bingchat",
@@ -1269,7 +1365,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLa zone de recherche de la barre des tâches n'affiche plus les « points forts » animés, illustrations du jour et contenus Bing/IA. Recherche locale inchangée.\n\nCe qui est modifié — ton compte uniquement :\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\SearchSettings\\IsDynamicSearchBoxEnabled = 0 (DWord). Annulation : remis à 1.\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search\\EnableDynamicContentInWSB = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nThe taskbar search box stops showing animated 'highlights', daily illustrations and Bing/AI content. Local search unchanged.\n\nWhat changes — your account only:\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\SearchSettings\\IsDynamicSearchBoxEnabled = 0 (DWord). Undo: set back to 1.\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search\\EnableDynamicContentInWSB = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "telemetry",
@@ -1299,7 +1397,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nRamène la télémétrie au niveau minimum autorisé par ton édition (Sécurité sur Entreprise/Éducation, « Obligatoire » sur Famille/Pro). Contreparties : Windows Insider et certaines applis qui exigent les données facultatives cessent de fonctionner ; « Données de diagnostic » est grisé.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection\\AllowTelemetry = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection\\AllowTelemetry = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nLowers telemetry to the minimum your edition allows (Security on Enterprise/Education, 'Required' on Home/Pro). Trade-offs: Windows Insider and features requiring optional data stop working; 'Diagnostic data' is greyed out.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection\\AllowTelemetry = 0 (DWord). Undo: value deleted (Windows default).\n• Registry: HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\DataCollection\\AllowTelemetry = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "diagviewer",
@@ -1320,7 +1420,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive la Visionneuse de données de diagnostic et supprime la possibilité de consulter/effacer les données collectées depuis Paramètres. Ne réduit pas la collecte elle-même.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection\\DisableDiagnosticDataViewer = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nDisables the Diagnostic Data Viewer and the option to view/delete collected data from Settings. Doesn't reduce collection itself.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection\\DisableDiagnosticDataViewer = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "ota",
@@ -1341,7 +1443,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nWindows ne télécharge plus la configuration OneSettings qui ajuste à distance ce que la télémétrie collecte. Réduit la collecte pilotée par Microsoft.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection\\DisableOneSettingsDownloads = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nWindows no longer downloads OneSettings configuration that remotely tunes what telemetry collects. Reduces Microsoft-driven collection.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection\\DisableOneSettingsDownloads = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "devicename",
@@ -1362,7 +1466,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLe nom de ton PC n'est plus inclus dans les données de diagnostic envoyées à Microsoft.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection\\AllowDeviceNameInTelemetry = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nYour PC's name is no longer included in diagnostic data sent to Microsoft.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DataCollection\\AllowDeviceNameInTelemetry = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "appcompat",
@@ -1401,7 +1507,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nCoupe l'Application Impact Telemetry, l'inventaire des programmes installés et l'Enregistreur d'actions. Windows ne remonte plus quelles applis tu utilises pour la compatibilité.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppCompat\\AITEnable = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppCompat\\DisableInventory = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppCompat\\DisableUAR = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nTurns off Application Impact Telemetry, the installed-program inventory and Steps Recorder. Windows no longer reports which apps you use for compatibility.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppCompat\\AITEnable = 0 (DWord). Undo: value deleted (Windows default).\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppCompat\\DisableInventory = 1 (DWord). Undo: value deleted (Windows default).\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppCompat\\DisableUAR = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "wer",
@@ -1431,7 +1539,9 @@
         "enabledValue": "1",
         "disabledValue": "0"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLes rapports de plantage ne sont plus envoyés à Microsoft. Contrepartie : tu ne recevras plus de « solutions » suggérées après un plantage, et les développeurs ne reçoivent pas ton crash.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Error Reporting\\Disabled = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKLM\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\\Disabled = 1 (DWord). Annulation : remis à 0.\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nCrash reports are no longer sent to Microsoft. Trade-off: no suggested 'solutions' after a crash, and developers don't get your crash data.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Error Reporting\\Disabled = 1 (DWord). Undo: value deleted (Windows default).\n• Registry: HKLM\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\\Disabled = 1 (DWord). Undo: set back to 0.\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "ceip",
@@ -1452,7 +1562,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nWindows ne participe plus au Programme d'amélioration de l'expérience utilisateur (statistiques d'usage anonymisées).\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\SQMClient\\Windows\\CEIPEnable = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nWindows stops taking part in the Customer Experience Improvement Program (anonymised usage stats).\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\SQMClient\\Windows\\CEIPEnable = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "handwritingerr",
@@ -1482,7 +1594,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLes échantillons d'écriture mal reconnus ne sont plus envoyés à Microsoft. Utile seulement si tu écris au stylet.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\HandwritingErrorReports\\PreventHandwritingErrorReports = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\TabletPC\\PreventHandwritingDataSharing = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nMisrecognised handwriting samples are no longer sent to Microsoft. Only relevant if you use a pen.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\HandwritingErrorReports\\PreventHandwritingErrorReports = 1 (DWord). Undo: value deleted (Windows default).\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\TabletPC\\PreventHandwritingDataSharing = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "kms",
@@ -1503,7 +1617,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLe client d'activation n'envoie plus de données de validation en ligne (AVS) à Microsoft. L'activation de Windows elle-même n'est pas touchée.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\CurrentVersion\\Software Protection Platform\\NoGenTicket = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nThe activation client no longer sends online validation (AVS) data to Microsoft. Windows activation itself is unaffected.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\CurrentVersion\\Software Protection Platform\\NoGenTicket = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "steps",
@@ -1524,7 +1640,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive l'Enregistreur d'actions (psr.exe), qui capture tes clics et écrans pour un support technique. Tu ne pourras plus l'utiliser pour envoyer un tutoriel à un technicien.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppCompat\\DisableUAR = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nDisables Steps Recorder (psr.exe), which captures your clicks and screens for tech support. You can no longer use it to send a recording to a technician.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\AppCompat\\DisableUAR = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "svcdiagtrack",
@@ -1545,7 +1663,9 @@
         "enabledValue": "4",
         "disabledValue": "2"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive le service DiagTrack, celui qui envoie réellement la télémétrie. Effet le plus fort contre la collecte. Contrepartie : certains diagnostics et Windows Insider ne marchent plus. Effectif après redémarrage.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SYSTEM\\CurrentControlSet\\Services\\DiagTrack\\Start = 4 (DWord). Annulation : remis à 2.\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nDisables the DiagTrack service, the one that actually uploads telemetry. Strongest effect against collection. Trade-off: some diagnostics and Windows Insider stop working. Takes effect after reboot.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SYSTEM\\CurrentControlSet\\Services\\DiagTrack\\Start = 4 (DWord). Undo: set back to 2.\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "svcdmwap",
@@ -1566,7 +1686,9 @@
         "enabledValue": "4",
         "disabledValue": "3"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive le service de routage des messages push WAP, utilisé par la télémétrie et la gestion d'appareils (MDM). Sans impact sur un PC personnel ; à éviter sur un PC géré par une entreprise. Effectif après redémarrage.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SYSTEM\\CurrentControlSet\\Services\\dmwappushservice\\Start = 4 (DWord). Annulation : remis à 3.\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nDisables the WAP push message routing service, used by telemetry and device management (MDM). No impact on a personal PC; avoid on a company-managed PC. Takes effect after reboot.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SYSTEM\\CurrentControlSet\\Services\\dmwappushservice\\Start = 4 (DWord). Undo: set back to 3.\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "svcwer",
@@ -1587,7 +1709,9 @@
         "enabledValue": "4",
         "disabledValue": "3"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive le service Rapport d'erreurs Windows : plus aucun rapport de plantage n'est préparé ni envoyé, et les fichiers de vidage associés ne sont plus créés. Gênant pour diagnostiquer des plantages récurrents. Effectif après redémarrage.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SYSTEM\\CurrentControlSet\\Services\\WerSvc\\Start = 4 (DWord). Annulation : remis à 3.\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nDisables the Windows Error Reporting service: no crash report is prepared or sent and related dumps aren't created. Makes recurring crashes harder to diagnose. Takes effect after reboot.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SYSTEM\\CurrentControlSet\\Services\\WerSvc\\Start = 4 (DWord). Undo: set back to 3.\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "svcmaps",
@@ -1608,7 +1732,9 @@
         "enabledValue": "4",
         "disabledValue": "2"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive le gestionnaire des cartes téléchargées. Les cartes hors ligne ne se mettent plus à jour et l'appli Cartes hors ligne ne fonctionne plus. Effectif après redémarrage.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SYSTEM\\CurrentControlSet\\Services\\MapsBroker\\Start = 4 (DWord). Annulation : remis à 2.\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nDisables the Downloaded Maps Manager. Offline maps no longer update and offline use of Maps stops. Takes effect after reboot.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SYSTEM\\CurrentControlSet\\Services\\MapsBroker\\Start = 4 (DWord). Undo: set back to 2.\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "svcretail",
@@ -1629,7 +1755,9 @@
         "enabledValue": "4",
         "disabledValue": "3"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive le service de démonstration en magasin (mode vitrine). Inutile chez toi, mais déconseillé car il est déjà inactif par défaut : gain nul. Effectif après redémarrage.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SYSTEM\\CurrentControlSet\\Services\\RetailDemo\\Start = 4 (DWord). Annulation : remis à 3.\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nDisables the Retail Demo service (store display mode). Useless at home, but not recommended since it's already idle by default: zero gain. Takes effect after reboot.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SYSTEM\\CurrentControlSet\\Services\\RetailDemo\\Start = 4 (DWord). Undo: set back to 3.\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "svcgeo",
@@ -1650,7 +1778,9 @@
         "enabledValue": "4",
         "disabledValue": "3"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive le service de géolocalisation : plus aucune appli ni Windows ne peut obtenir ta position, fuseau horaire automatique inclus. Déconseillé car le réglage « Désactiver les services de localisation » fait la même chose proprement. Effectif après redémarrage.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SYSTEM\\CurrentControlSet\\Services\\lfsvc\\Start = 4 (DWord). Annulation : remis à 3.\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nDisables the Geolocation service: no app nor Windows can get your location, automatic time zone included. Not recommended because 'Disable location services' does the same cleanly. Takes effect after reboot.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SYSTEM\\CurrentControlSet\\Services\\lfsvc\\Start = 4 (DWord). Undo: set back to 3.\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "taskcompat",
@@ -1666,7 +1796,9 @@
         "type": "ScheduledTask",
         "target": "\\Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser|\\Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser Exp"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive la tâche qui analyse régulièrement tes programmes et ton matériel et envoie un inventaire à Microsoft (compatibilité des mises à jour). Sur 24H2+ elle s'appelle « Microsoft Compatibility Appraiser Exp ». Contrepartie : Windows Update évalue moins bien la compatibilité avant une mise à niveau majeure.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Tâche planifiée désactivée : \\Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser / \\Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser Exp. Annulation : réactivée seulement si WinGuard l'a désactivée.\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nDisables the task that regularly scans your programs and hardware and sends an inventory to Microsoft (upgrade compatibility). On 24H2+ it's named 'Microsoft Compatibility Appraiser Exp'. Trade-off: Windows Update assesses compatibility less well before a major upgrade.\n\nWhat changes — the whole PC (all accounts):\n• Scheduled task disabled: \\Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser / \\Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser Exp. Undo: re-enabled only if WinGuard disabled it.\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "taskpdu",
@@ -1682,7 +1814,9 @@
         "type": "ScheduledTask",
         "target": "\\Microsoft\\Windows\\Application Experience\\ProgramDataUpdater"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive la tâche qui collecte des données d'utilisation des programmes pour le Programme d'amélioration. Absente des versions récentes de Windows 11 (badge « Absente de ton PC »).\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Tâche planifiée désactivée : \\Microsoft\\Windows\\Application Experience\\ProgramDataUpdater. Annulation : réactivée seulement si WinGuard l'a désactivée.\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nDisables the task that collects program usage data for CEIP. Missing on recent Windows 11 builds ('Not on your PC' badge).\n\nWhat changes — the whole PC (all accounts):\n• Scheduled task disabled: \\Microsoft\\Windows\\Application Experience\\ProgramDataUpdater. Undo: re-enabled only if WinGuard disabled it.\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "taskconsol",
@@ -1698,7 +1832,9 @@
         "type": "ScheduledTask",
         "target": "\\Microsoft\\Windows\\Customer Experience Improvement Program\\Consolidator"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive la tâche qui regroupe et envoie les données du Programme d'amélioration de l'expérience utilisateur. Aucune fonction perdue.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Tâche planifiée désactivée : \\Microsoft\\Windows\\Customer Experience Improvement Program\\Consolidator. Annulation : réactivée seulement si WinGuard l'a désactivée.\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nDisables the task that bundles and uploads Customer Experience Improvement Program data. Nothing is lost.\n\nWhat changes — the whole PC (all accounts):\n• Scheduled task disabled: \\Microsoft\\Windows\\Customer Experience Improvement Program\\Consolidator. Undo: re-enabled only if WinGuard disabled it.\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "taskusbceip",
@@ -1714,7 +1850,9 @@
         "type": "ScheduledTask",
         "target": "\\Microsoft\\Windows\\Customer Experience Improvement Program\\UsbCeip"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive la tâche qui collecte des statistiques sur l'utilisation du bus USB pour le CEIP. Tes périphériques USB fonctionnent normalement.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Tâche planifiée désactivée : \\Microsoft\\Windows\\Customer Experience Improvement Program\\UsbCeip. Annulation : réactivée seulement si WinGuard l'a désactivée.\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nDisables the task that collects USB bus usage stats for CEIP. Your USB devices work normally.\n\nWhat changes — the whole PC (all accounts):\n• Scheduled task disabled: \\Microsoft\\Windows\\Customer Experience Improvement Program\\UsbCeip. Undo: re-enabled only if WinGuard disabled it.\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "taskdiskdiag",
@@ -1730,7 +1868,9 @@
         "type": "ScheduledTask",
         "target": "\\Microsoft\\Windows\\DiskDiagnostic\\Microsoft-Windows-DiskDiagnosticDataCollector"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive la collecte et l'envoi de données de diagnostic disque à Microsoft. La surveillance SMART locale et les alertes de disque ne sont pas concernées.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Tâche planifiée désactivée : \\Microsoft\\Windows\\DiskDiagnostic\\Microsoft-Windows-DiskDiagnosticDataCollector. Annulation : réactivée seulement si WinGuard l'a désactivée.\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nDisables collecting and uploading disk diagnostic data to Microsoft. Local SMART monitoring and disk alerts are not affected.\n\nWhat changes — the whole PC (all accounts):\n• Scheduled task disabled: \\Microsoft\\Windows\\DiskDiagnostic\\Microsoft-Windows-DiskDiagnosticDataCollector. Undo: re-enabled only if WinGuard disabled it.\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "taskfeedback",
@@ -1746,7 +1886,9 @@
         "type": "ScheduledTask",
         "target": "\\Microsoft\\Windows\\Feedback\\Siuf\\DmClient"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive la tâche du client de commentaires (SIUF) qui télécharge les questionnaires et envoie les réponses. Moins d'invites de commentaires.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Tâche planifiée désactivée : \\Microsoft\\Windows\\Feedback\\Siuf\\DmClient. Annulation : réactivée seulement si WinGuard l'a désactivée.\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nDisables the feedback client (SIUF) task that downloads surveys and uploads answers. Fewer feedback prompts.\n\nWhat changes — the whole PC (all accounts):\n• Scheduled task disabled: \\Microsoft\\Windows\\Feedback\\Siuf\\DmClient. Undo: re-enabled only if WinGuard disabled it.\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "taskfeedback2",
@@ -1762,7 +1904,9 @@
         "type": "ScheduledTask",
         "target": "\\Microsoft\\Windows\\Feedback\\Siuf\\DmClientOnScenarioDownload"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive la variante de la tâche de commentaires déclenchée par le téléchargement de scénarios de diagnostic. Aucune fonction perdue.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Tâche planifiée désactivée : \\Microsoft\\Windows\\Feedback\\Siuf\\DmClientOnScenarioDownload. Annulation : réactivée seulement si WinGuard l'a désactivée.\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nDisables the feedback task variant triggered by diagnostic scenario downloads. Nothing is lost.\n\nWhat changes — the whole PC (all accounts):\n• Scheduled task disabled: \\Microsoft\\Windows\\Feedback\\Siuf\\DmClientOnScenarioDownload. Undo: re-enabled only if WinGuard disabled it.\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "taskwer",
@@ -1778,7 +1922,9 @@
         "type": "ScheduledTask",
         "target": "\\Microsoft\\Windows\\Windows Error Reporting\\QueueReporting"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive la tâche qui envoie en file d'attente les rapports d'erreurs en attente. Les rapports déjà créés restent sur le disque sans être envoyés.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Tâche planifiée désactivée : \\Microsoft\\Windows\\Windows Error Reporting\\QueueReporting. Annulation : réactivée seulement si WinGuard l'a désactivée.\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nDisables the task that uploads queued error reports. Already-created reports stay on disk unsent.\n\nWhat changes — the whole PC (all accounts):\n• Scheduled task disabled: \\Microsoft\\Windows\\Windows Error Reporting\\QueueReporting. Undo: re-enabled only if WinGuard disabled it.\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "taskmaps",
@@ -1794,7 +1940,9 @@
         "type": "ScheduledTask",
         "target": "\\Microsoft\\Windows\\Maps\\MapsUpdateTask"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive la mise à jour automatique des cartes hors ligne. Si tu utilises Cartes hors ligne, elles deviendront obsolètes.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Tâche planifiée désactivée : \\Microsoft\\Windows\\Maps\\MapsUpdateTask. Annulation : réactivée seulement si WinGuard l'a désactivée.\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nDisables automatic offline map updates. If you use offline Maps they'll become outdated.\n\nWhat changes — the whole PC (all accounts):\n• Scheduled task disabled: \\Microsoft\\Windows\\Maps\\MapsUpdateTask. Undo: re-enabled only if WinGuard disabled it.\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "edgepers",
@@ -1815,7 +1963,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nEdge n'utilise plus ton historique de navigation pour personnaliser les pubs, les actualités et les services Microsoft.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\PersonalizationReportingEnabled = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nEdge no longer uses your browsing history to personalise ads, news and Microsoft services.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\PersonalizationReportingEnabled = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "edgedt",
@@ -1836,7 +1986,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nEdge n'envoie plus que les données de diagnostic obligatoires (plus de données facultatives sur ton usage). Le réglage est grisé dans Edge.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\DiagnosticData = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nEdge sends only required diagnostic data (no optional usage data). The option is greyed out in Edge.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\DiagnosticData = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "edgednt",
@@ -1857,7 +2009,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nEdge envoie l'en-tête « Do Not Track » à chaque site. Les sites ne sont pas obligés de le respecter : effet limité, mais sans inconvénient.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\ConfigureDoNotTrack = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nEdge sends the 'Do Not Track' header to every site. Sites don't have to honour it: limited effect, no downside.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\ConfigureDoNotTrack = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "edgetp",
@@ -1878,7 +2032,9 @@
         "enabledValue": "3",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nMet la protection contre le suivi d'Edge sur Strict : bloque la majorité des traqueurs tiers. Contrepartie : certains sites (paiement, connexions intégrées, vidéos) peuvent mal fonctionner.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\TrackingPrevention = 3 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nSets Edge tracking prevention to Strict: blocks most third-party trackers. Trade-off: some sites (payments, embedded logins, videos) may break.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\TrackingPrevention = 3 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "edgesugg",
@@ -1899,7 +2055,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nCe que tu tapes dans la barre d'adresse n'est plus envoyé au moteur de recherche pendant la frappe. Tu perds les suggestions de recherche en direct.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\SearchSuggestEnabled = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nWhat you type in the address bar is no longer sent to the search engine as you type. You lose live search suggestions.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\SearchSuggestEnabled = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "edgerec",
@@ -1920,7 +2078,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nEdge n'affiche plus de recommandations ni de notifications promotionnelles (offres, fonctions Microsoft).\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\ShowRecommendationsEnabled = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nEdge stops showing recommendations and promotional notifications (offers, Microsoft features).\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\ShowRecommendationsEnabled = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "edgeshop",
@@ -1941,7 +2101,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive l'assistant d'achat d'Edge (coupons, comparaison de prix, cashback), qui analysait les pages produit que tu visites.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\EdgeShoppingAssistantEnabled = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nDisables Edge's shopping assistant (coupons, price comparison, cashback), which analysed product pages you visit.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\EdgeShoppingAssistantEnabled = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "edgefeeds",
@@ -1971,7 +2133,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLe nouvel onglet d'Edge n'affiche plus le flux d'actualités MSN ni les sites suggérés/sponsorisés. Page plus légère, moins de requêtes vers MSN.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\NewTabPageContentEnabled = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\NewTabPageHideDefaultTopSites = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nEdge's new tab no longer shows the MSN news feed or suggested/sponsored sites. Lighter page, fewer requests to MSN.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\NewTabPageContentEnabled = 0 (DWord). Undo: value deleted (Windows default).\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\NewTabPageHideDefaultTopSites = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "edgemetrics",
@@ -2001,7 +2165,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nEdge n'envoie plus de statistiques d'usage ni les infos des sites visités « pour améliorer les services ».\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\SendSiteInfoToImproveServices = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\MetricsReportingEnabled = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nEdge stops sending usage statistics and info about visited sites 'to improve services'.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\SendSiteInfoToImproveServices = 0 (DWord). Undo: value deleted (Windows default).\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\MetricsReportingEnabled = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "edgesmartscreen",
@@ -2022,7 +2188,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive SmartScreen dans Edge : les sites et téléchargements ne sont plus vérifiés contre la liste Microsoft. Gain de confidentialité faible, perte de protection réelle contre le phishing et les malwares.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\SmartScreenEnabled = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nDisables SmartScreen in Edge: sites and downloads are no longer checked against Microsoft's list. Small privacy gain, real loss of protection against phishing and malware.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\SmartScreenEnabled = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "edgestartupboost",
@@ -2052,7 +2220,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nEdge ne se lance plus en arrière-plan au démarrage de Windows et ne reste plus actif une fois fermé. Libère un peu de mémoire, mais Edge s'ouvre plus lentement et les extensions d'arrière-plan s'arrêtent.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\StartupBoostEnabled = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\BackgroundModeEnabled = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nEdge no longer preloads at Windows start-up or keeps running after you close it. Frees some memory, but Edge opens slower and background extensions stop.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\StartupBoostEnabled = 0 (DWord). Undo: value deleted (Windows default).\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\BackgroundModeEnabled = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "cortana",
@@ -2082,7 +2252,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive l'assistant Cortana, y compris sur l'écran de verrouillage. Sur Windows 11 récent Cortana est déjà abandonnée : effet surtout préventif.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search\\AllowCortana = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search\\AllowCortanaAboveLock = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nDisables the Cortana assistant, including on the lock screen. On recent Windows 11 Cortana is already retired: mostly preventive.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search\\AllowCortana = 0 (DWord). Undo: value deleted (Windows default).\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search\\AllowCortanaAboveLock = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "websearch",
@@ -2130,7 +2302,9 @@
         "enabledValue": "0",
         "disabledValue": "1"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLa recherche de Démarrer ne montre plus de résultats Bing ni de suggestions web : ce que tu tapes reste sur le PC. Contrepartie : plus de réponses web rapides depuis Démarrer.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search\\DisableWebSearch = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search\\ConnectedSearchUseWeb = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKCU\\Software\\Policies\\Microsoft\\Windows\\Explorer\\DisableSearchBoxSuggestions = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Search\\BingSearchEnabled = 0 (DWord). Annulation : remis à 1.\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nStart search no longer shows Bing results or web suggestions: what you type stays on the PC. Trade-off: no quick web answers from Start.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search\\DisableWebSearch = 1 (DWord). Undo: value deleted (Windows default).\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search\\ConnectedSearchUseWeb = 0 (DWord). Undo: value deleted (Windows default).\n• Registry: HKCU\\Software\\Policies\\Microsoft\\Windows\\Explorer\\DisableSearchBoxSuggestions = 1 (DWord). Undo: value deleted (Windows default).\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Search\\BingSearchEnabled = 0 (DWord). Undo: set back to 1.\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "cloudsearch",
@@ -2151,7 +2325,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLa recherche Windows n'inclut plus le contenu de OneDrive, Outlook et de ton compte pro/école. Seuls les fichiers locaux sont cherchés.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search\\AllowCloudSearch = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nWindows search no longer includes OneDrive, Outlook and work/school account content. Only local files are searched.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search\\AllowCloudSearch = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "searchloc",
@@ -2172,7 +2348,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLa recherche n'utilise plus ta position pour les résultats « près de chez vous ».\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search\\AllowSearchToUseLocation = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nSearch no longer uses your location for 'near you' results.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Search\\AllowSearchToUseLocation = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "searchhistory",
@@ -2193,7 +2371,9 @@
         "enabledValue": "0",
         "disabledValue": "1"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLes recherches faites sur ce PC ne sont plus mémorisées : plus de « recherches récentes » dans Démarrer.\n\nCe qui est modifié — ton compte uniquement :\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\SearchSettings\\IsDeviceSearchHistoryEnabled = 0 (DWord). Annulation : remis à 1.\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nSearches on this PC are no longer remembered: no 'recent searches' in Start.\n\nWhat changes — your account only:\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\SearchSettings\\IsDeviceSearchHistoryEnabled = 0 (DWord). Undo: set back to 1.\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "lockads",
@@ -2223,7 +2403,9 @@
         "enabledValue": "0",
         "disabledValue": "1"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nRetire les anecdotes, astuces et pubs affichées par-dessus l'image de l'écran de verrouillage.\n\nCe qui est modifié — ton compte uniquement :\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager\\RotatingLockScreenOverlayEnabled = 0 (DWord). Annulation : remis à 1.\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager\\SubscribedContent-338387Enabled = 0 (DWord). Annulation : remis à 1.\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nRemoves facts, tips and ads shown over the lock screen picture.\n\nWhat changes — your account only:\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager\\RotatingLockScreenOverlayEnabled = 0 (DWord). Undo: set back to 1.\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager\\SubscribedContent-338387Enabled = 0 (DWord). Undo: set back to 1.\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "spotlight",
@@ -2253,7 +2435,9 @@
         "enabledValue": "0",
         "disabledValue": "1"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive Windows à la une : plus d'images du jour Bing sur l'écran de verrouillage/bureau ni de suggestions associées. Tu repasses à une image ou un diaporama choisi par toi.\n\nCe qui est modifié — ton compte uniquement :\n• Registre : HKCU\\Software\\Policies\\Microsoft\\Windows\\CloudContent\\DisableWindowsSpotlightFeatures = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager\\RotatingLockScreenEnabled = 0 (DWord). Annulation : remis à 1.\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nDisables Windows Spotlight: no more daily Bing pictures on lock screen/desktop nor related suggestions. You go back to a picture or slideshow of your choice.\n\nWhat changes — your account only:\n• Registry: HKCU\\Software\\Policies\\Microsoft\\Windows\\CloudContent\\DisableWindowsSpotlightFeatures = 1 (DWord). Undo: value deleted (Windows default).\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\ContentDeliveryManager\\RotatingLockScreenEnabled = 0 (DWord). Undo: set back to 1.\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "lockcamera",
@@ -2274,37 +2458,28 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLa caméra ne peut plus être ouverte depuis l'écran de verrouillage (sans te connecter).\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Personalization\\NoLockScreenCamera = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nThe camera can no longer be opened from the lock screen (without signing in).\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Personalization\\NoLockScreenCamera = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "widgets",
-    "name": "Disable Widgets / News and Interests",
-    "description": "Removes the widgets board and its news feed.",
-    "nameFr": "Désactiver les widgets (Actualités et centres d'intérêt)",
-    "descriptionFr": "Supprime le tableau de widgets et son flux d'actualités.",
+    "name": "Uninstall Widgets (Windows Web Experience Pack)",
+    "description": "Removes the widgets board, its news feed and taskbar weather. Undo reinstalls it from the Store.",
+    "nameFr": "Désinstaller les widgets (Windows Web Experience Pack)",
+    "descriptionFr": "Supprime le tableau de widgets, son flux d'actualités et la météo de la barre des tâches. L'annulation le réinstalle depuis le Store.",
     "category": "Lock Screen & Widgets",
     "scope": "Local Machine",
-    "recommendation": "Recommended",
+    "recommendation": "LimitedRecommended",
     "actions": [
       {
-        "type": "Registry",
-        "hive": "HKLM",
-        "path": "SOFTWARE\\Policies\\Microsoft\\Dsh",
-        "name": "AllowNewsAndInterests",
-        "kind": "DWord",
-        "enabledValue": "0",
-        "disabledValue": null
-      },
-      {
-        "type": "Registry",
-        "hive": "HKLM",
-        "path": "SOFTWARE\\Policies\\Microsoft\\Windows\\Windows Feeds",
-        "name": "EnableFeeds",
-        "kind": "DWord",
-        "enabledValue": "0",
-        "disabledValue": null
+        "type": "Appx",
+        "target": "MicrosoftWindows.Client.WebExperience",
+        "storeId": "9MSSGKG348SP"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésinstalle le paquet Widgets (Windows Web Experience Pack, MicrosoftWindows.Client.WebExperience) pour tous les utilisateurs : plus de tableau de widgets, plus de flux MSN, plus de météo dans la barre des tâches, et le processus Widgets ne tourne plus en arrière-plan. Les anciennes stratégies (Dsh / Windows Feeds) ne sont plus utilisées : Windows verrouille ces clés.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Paquet supprimé pour tous les utilisateurs : MicrosoftWindows.Client.WebExperience (Remove-AppxPackage -AllUsers). Annulation : réinstallation depuis le Store (winget, ID 9MSSGKG348SP) ; si ça échoue, WinGuard te propose d'ouvrir le Store. Si l'appli n'était pas installée, rien n'est fait (badge « Non installé »).\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nUninstalls the Widgets package (Windows Web Experience Pack, MicrosoftWindows.Client.WebExperience) for all users: no widgets board, no MSN feed, no taskbar weather, and the Widgets process no longer runs in the background. The old policies (Dsh / Windows Feeds) are no longer used: Windows locks those keys.\n\nWhat changes — the whole PC (all accounts):\n• Package removed for all users: MicrosoftWindows.Client.WebExperience (Remove-AppxPackage -AllUsers). Undo: reinstall from the Store (winget, ID 9MSSGKG348SP); if it fails WinGuard offers to open the Store. If the app wasn't installed, nothing is done ('Not installed' badge).\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "lockapps",
@@ -2325,7 +2500,9 @@
         "enabledValue": "0",
         "disabledValue": "1"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLes notifications (messages, e-mails) ne s'affichent plus quand la session est verrouillée : personne ne peut les lire par-dessus ton épaule.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\PushNotifications\\LockScreenToastEnabled = 0 (DWord). Annulation : remis à 1.\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nNotifications (messages, e-mails) no longer show while the session is locked: nobody can read them over your shoulder.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\PushNotifications\\LockScreenToastEnabled = 0 (DWord). Undo: set back to 1.\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "onedrive",
@@ -2346,7 +2523,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nBloque complètement la synchronisation OneDrive : tes fichiers ne sont plus envoyés ni récupérés, et les fichiers « à la demande » deviennent inaccessibles. Déconseillé si tu utilises OneDrive (risque de croire tes fichiers sauvegardés alors qu'ils ne le sont plus).\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\OneDrive\\DisableFileSyncNGSC = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nCompletely blocks OneDrive sync: files are no longer uploaded or downloaded and on-demand files become unavailable. Not recommended if you use OneDrive (you might think files are backed up when they aren't).\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\OneDrive\\DisableFileSyncNGSC = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "onedrivenet",
@@ -2367,7 +2546,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nOneDrive ne contacte plus Internet avant que tu te connectes à ta session. Aucune perte : il se synchronise normalement après connexion.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Microsoft\\OneDrive\\PreventNetworkTrafficPreUserSignIn = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nOneDrive no longer contacts the internet before you sign in. Nothing lost: it syncs normally after sign-in.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Microsoft\\OneDrive\\PreventNetworkTrafficPreUserSignIn = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "onedrivenag",
@@ -2397,7 +2578,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nSupprime les rappels « Sauvegardez vos dossiers avec OneDrive » et les notifications de compte dans Démarrer. OneDrive continue de marcher si tu l'utilises.\n\nCe qui est modifié — ton compte uniquement :\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\Start_AccountNotifications = 0 (DWord). Annulation : remis à 1.\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\OneDrive\\KFMBlockOptIn = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nRemoves 'Back up your folders with OneDrive' reminders and account notifications in Start. OneDrive keeps working if you use it.\n\nWhat changes — your account only:\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Explorer\\Advanced\\Start_AccountNotifications = 0 (DWord). Undo: set back to 1.\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\OneDrive\\KFMBlockOptIn = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "doh",
@@ -2418,7 +2601,9 @@
         "enabledValue": "2",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nAutorise Windows à chiffrer tes requêtes DNS (DNS sur HTTPS) quand ton serveur DNS le supporte (Cloudflare, Google, Quad9…) : ton FAI ou le Wi-Fi public ne voit plus les noms de sites demandés. Sans effet si ton DNS ne supporte pas DoH.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient\\DoHPolicy = 2 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nLets Windows encrypt DNS lookups (DNS over HTTPS) when your DNS server supports it (Cloudflare, Google, Quad9…): your ISP or public Wi-Fi no longer sees which site names you request. No effect if your DNS doesn't support DoH.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient\\DoHPolicy = 2 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "wifisense",
@@ -2448,7 +2633,9 @@
         "enabledValue": "0",
         "disabledValue": "1"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nWindows ne se connecte plus automatiquement aux hotspots Wi-Fi « suggérés » et n'envoie plus d'infos sur les réseaux que tu utilises.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Microsoft\\PolicyManager\\default\\WiFi\\AllowAutoConnectToWiFiSenseHotspots\\value = 0 (DWord). Annulation : remis à 1.\n• Registre : HKLM\\SOFTWARE\\Microsoft\\PolicyManager\\default\\WiFi\\AllowWiFiHotSpotReporting\\value = 0 (DWord). Annulation : remis à 1.\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nWindows no longer auto-connects to 'suggested' Wi-Fi hotspots or reports info about networks you use.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Microsoft\\PolicyManager\\default\\WiFi\\AllowAutoConnectToWiFiSenseHotspots\\value = 0 (DWord). Undo: set back to 1.\n• Registry: HKLM\\SOFTWARE\\Microsoft\\PolicyManager\\default\\WiFi\\AllowWiFiHotSpotReporting\\value = 0 (DWord). Undo: set back to 1.\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "llmnr",
@@ -2469,7 +2656,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive LLMNR, un protocole qui diffuse les noms recherchés sur le réseau local quand le DNS échoue (exploité pour voler des identifiants sur les réseaux publics). Rare impact : de vieux appareils locaux joignables par nom devront l'être par IP.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient\\EnableMulticast = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nDisables LLMNR, a protocol that broadcasts name lookups on the local network when DNS fails (abused to steal credentials on public networks). Rare impact: old local devices reached by name may need their IP.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows NT\\DNSClient\\EnableMulticast = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "ncsi",
@@ -2490,7 +2679,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nWindows ne contacte plus les serveurs Microsoft (msftconnecttest.com) pour vérifier ta connexion. Contreparties : l'icône réseau peut afficher « Pas d'Internet » à tort, et la page de connexion des Wi-Fi publics (hôtel, gare) ne s'ouvre plus toute seule.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\NetworkConnectivityStatusIndicator\\NoActiveProbe = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nWindows no longer contacts Microsoft servers (msftconnecttest.com) to check connectivity. Trade-offs: the network icon may wrongly show 'No internet', and captive portal pages (hotel, station Wi-Fi) no longer pop up.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\NetworkConnectivityStatusIndicator\\NoActiveProbe = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "dop2p",
@@ -2511,7 +2702,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLes mises à jour ne sont plus échangées avec d'autres PC (local ou Internet) : téléchargement uniquement depuis Microsoft. Ton débit montant n'est plus utilisé pour les autres ; les mises à jour peuvent être un peu plus longues sur un réseau avec plusieurs PC.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeliveryOptimization\\DODownloadMode = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nUpdates are no longer exchanged with other PCs (local or internet): download only from Microsoft. Your upload isn't used for others; updates may be a bit slower on networks with several PCs.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\DeliveryOptimization\\DODownloadMode = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "wudrivers",
@@ -2532,7 +2725,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nWindows Update n'installe plus de pilotes. Évite qu'un pilote générique écrase le tien (GPU), mais tu dois mettre à jour tous tes pilotes toi-même, y compris les correctifs de sécurité.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\ExcludeWUDriversInQualityUpdate = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nWindows Update no longer installs drivers. Prevents a generic driver overwriting yours (GPU), but you must update all drivers yourself, including security fixes.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\ExcludeWUDriversInQualityUpdate = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "storeauto",
@@ -2553,7 +2748,9 @@
         "enabledValue": "2",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLes applis du Store ne se mettent plus à jour automatiquement. Déconseillé : tu dois les mettre à jour à la main, sinon elles gardent leurs failles de sécurité.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\WindowsStore\\AutoDownload = 2 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nStore apps no longer update automatically. Not recommended: you must update them manually or they keep security holes.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\WindowsStore\\AutoDownload = 2 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "speechupd",
@@ -2574,7 +2771,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nWindows ne télécharge plus automatiquement de nouveaux modèles de reconnaissance vocale. La dictée existante continue de marcher, mais ne s'améliore plus.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Speech\\AllowSpeechModelUpdate = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nWindows no longer auto-downloads new speech recognition models. Existing dictation keeps working but won't improve.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Speech\\AllowSpeechModelUpdate = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "autoreboot",
@@ -2595,7 +2794,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nWindows Update ne redémarre plus le PC tout seul tant que quelqu'un est connecté : plus de travail perdu pendant la nuit. Contrepartie : les mises à jour attendent que tu redémarres toi-même.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU\\NoAutoRebootWithLoggedOnUsers = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nWindows Update no longer restarts the PC by itself while someone is signed in: no lost work overnight. Trade-off: updates wait until you restart yourself.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\WindowsUpdate\\AU\\NoAutoRebootWithLoggedOnUsers = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "msaccountsync",
@@ -2625,7 +2826,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nInterdit toute synchronisation de paramètres via le compte Microsoft, sans possibilité de la réactiver dans Paramètres. Déconseillé : la version utilisateur « Désactiver la synchronisation des paramètres Windows » suffit et reste réversible depuis Paramètres.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\SettingSync\\DisableSettingSync = 2 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\SettingSync\\DisableSettingSyncUserOverride = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nForbids all settings sync through the Microsoft account, with no way to turn it back on in Settings. Not recommended: the per-user 'Disable Windows settings sync' is enough and stays reversible from Settings.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\SettingSync\\DisableSettingSync = 2 (DWord). Undo: value deleted (Windows default).\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\SettingSync\\DisableSettingSyncUserOverride = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "smartscreen",
@@ -2646,7 +2849,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive la vérification SmartScreen des fichiers et applis téléchargés dans tout Windows. Gain de confidentialité minime (les hachages des fichiers ne sont plus envoyés), perte de protection importante : un malware inconnu ne sera plus signalé à l'ouverture. Fortement déconseillé.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System\\EnableSmartScreen = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nDisables SmartScreen checks of downloaded files and apps across Windows. Minimal privacy gain (file hashes no longer sent), major protection loss: unknown malware is no longer flagged when opened. Strongly discouraged.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System\\EnableSmartScreen = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "mapsreport",
@@ -2667,7 +2872,9 @@
         "enabledValue": "2",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDefender ne transmet plus automatiquement d'échantillons de fichiers suspects à Microsoft (il demandera ou s'abstiendra). La protection reste active, mais l'analyse cloud de nouveaux malwares est moins rapide.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows Defender\\Spynet\\SubmitSamplesConsent = 2 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nDefender no longer automatically submits suspicious file samples to Microsoft. Protection stays on, but cloud analysis of new malware is slower.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows Defender\\Spynet\\SubmitSamplesConsent = 2 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "spynet",
@@ -2688,7 +2895,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nCoupe la protection cloud de Defender (MAPS) : Defender ne consulte plus le cloud Microsoft pour identifier les menaces nouvelles. Affaiblit nettement la détection en temps réel. Fortement déconseillé.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows Defender\\Spynet\\SpynetReporting = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nTurns off Defender cloud protection (MAPS): Defender no longer queries Microsoft's cloud to identify new threats. Clearly weakens real-time detection. Strongly discouraged.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows Defender\\Spynet\\SpynetReporting = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "remoteassist",
@@ -2709,7 +2918,9 @@
         "enabledValue": "0",
         "disabledValue": "1"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nInterdit les demandes d'Assistance à distance (msra) : personne ne peut prendre la main sur ton PC par ce biais. Le Bureau à distance et les outils tiers (AnyDesk, TeamViewer) ne sont pas concernés.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SYSTEM\\CurrentControlSet\\Control\\Remote Assistance\\fAllowToGetHelp = 0 (DWord). Annulation : remis à 1.\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nBlocks Remote Assistance (msra) requests: nobody can take control of your PC through it. Remote Desktop and third-party tools (AnyDesk, TeamViewer) are not affected.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SYSTEM\\CurrentControlSet\\Control\\Remote Assistance\\fAllowToGetHelp = 0 (DWord). Undo: set back to 1.\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "autorun",
@@ -2730,7 +2941,9 @@
         "enabledValue": "255",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nClés USB, CD et disques externes ne lancent plus rien automatiquement à l'insertion : protège contre les malwares qui se propagent par USB. Tu ouvres le contenu toi-même dans l'Explorateur.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\NoDriveTypeAutoRun = 255 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nUSB sticks, CDs and external drives no longer run anything when inserted: protects against malware spreading via USB. You open the content yourself in Explorer.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\Explorer\\NoDriveTypeAutoRun = 255 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "appx_microsoft.bingnews",
@@ -2747,7 +2960,9 @@
         "target": "Microsoft.BingNews",
         "storeId": "9WZDNCRFHVFW"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésinstalle l'appli Actualités (flux MSN). Aucune dépendance système.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Paquet supprimé pour tous les utilisateurs : Microsoft.BingNews (Remove-AppxPackage -AllUsers). Annulation : réinstallation depuis le Store (winget, ID 9WZDNCRFHVFW) ; si ça échoue, WinGuard te propose d'ouvrir le Store. Si l'appli n'était pas installée, rien n'est fait (badge « Non installé »).\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nUninstalls the News app (MSN feed). No system dependency.\n\nWhat changes — the whole PC (all accounts):\n• Package removed for all users: Microsoft.BingNews (Remove-AppxPackage -AllUsers). Undo: reinstall from the Store (winget, ID 9WZDNCRFHVFW); if it fails WinGuard offers to open the Store. If the app wasn't installed, nothing is done ('Not installed' badge).\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "appx_microsoft.bingweather",
@@ -2764,7 +2979,9 @@
         "target": "Microsoft.BingWeather",
         "storeId": "9WZDNCRFJ3Q2"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésinstalle l'appli Météo. La météo de la barre des tâches (Widgets) n'en dépend pas.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Paquet supprimé pour tous les utilisateurs : Microsoft.BingWeather (Remove-AppxPackage -AllUsers). Annulation : réinstallation depuis le Store (winget, ID 9WZDNCRFJ3Q2) ; si ça échoue, WinGuard te propose d'ouvrir le Store. Si l'appli n'était pas installée, rien n'est fait (badge « Non installé »).\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nUninstalls the Weather app. Taskbar weather (Widgets) doesn't depend on it.\n\nWhat changes — the whole PC (all accounts):\n• Package removed for all users: Microsoft.BingWeather (Remove-AppxPackage -AllUsers). Undo: reinstall from the Store (winget, ID 9WZDNCRFJ3Q2); if it fails WinGuard offers to open the Store. If the app wasn't installed, nothing is done ('Not installed' badge).\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "appx_microsoft.microsoftsolitairecollection",
@@ -2781,7 +2998,9 @@
         "target": "Microsoft.MicrosoftSolitaireCollection",
         "storeId": "9WZDNCRFHWD2"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésinstalle le jeu Solitaire Collection (avec pubs). Tes scores/progression liés au compte Xbox restent en ligne.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Paquet supprimé pour tous les utilisateurs : Microsoft.MicrosoftSolitaireCollection (Remove-AppxPackage -AllUsers). Annulation : réinstallation depuis le Store (winget, ID 9WZDNCRFHWD2) ; si ça échoue, WinGuard te propose d'ouvrir le Store. Si l'appli n'était pas installée, rien n'est fait (badge « Non installé »).\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nUninstalls the Solitaire Collection game (with ads). Xbox-linked scores stay online.\n\nWhat changes — the whole PC (all accounts):\n• Package removed for all users: Microsoft.MicrosoftSolitaireCollection (Remove-AppxPackage -AllUsers). Undo: reinstall from the Store (winget, ID 9WZDNCRFHWD2); if it fails WinGuard offers to open the Store. If the app wasn't installed, nothing is done ('Not installed' badge).\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "appx_microsoft.gethelp",
@@ -2798,7 +3017,9 @@
         "target": "Microsoft.GetHelp",
         "storeId": "9PKDZBMV1H3T"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésinstalle l'appli Obtenir de l'aide. Les dépanneurs de Paramètres l'utilisent parfois pour ouvrir l'aide : ils renverront alors vers le web.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Paquet supprimé pour tous les utilisateurs : Microsoft.GetHelp (Remove-AppxPackage -AllUsers). Annulation : réinstallation depuis le Store (winget, ID 9PKDZBMV1H3T) ; si ça échoue, WinGuard te propose d'ouvrir le Store. Si l'appli n'était pas installée, rien n'est fait (badge « Non installé »).\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nUninstalls the Get Help app. Settings troubleshooters sometimes open it; they'll fall back to the web.\n\nWhat changes — the whole PC (all accounts):\n• Package removed for all users: Microsoft.GetHelp (Remove-AppxPackage -AllUsers). Undo: reinstall from the Store (winget, ID 9PKDZBMV1H3T); if it fails WinGuard offers to open the Store. If the app wasn't installed, nothing is done ('Not installed' badge).\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "appx_microsoft.getstarted",
@@ -2815,7 +3036,9 @@
         "target": "Microsoft.Getstarted",
         "storeId": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésinstalle l'appli Astuces / Prise en main. Aucune perte fonctionnelle.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Paquet supprimé pour tous les utilisateurs : Microsoft.Getstarted (Remove-AppxPackage -AllUsers). Annulation : réinstallation MANUELLE depuis le Microsoft Store (pas d'ID Store automatique). Si l'appli n'était pas installée, rien n'est fait (badge « Non installé »).\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nUninstalls the Tips / Get Started app. No functional loss.\n\nWhat changes — the whole PC (all accounts):\n• Package removed for all users: Microsoft.Getstarted (Remove-AppxPackage -AllUsers). Undo: MANUAL reinstall from the Microsoft Store (no automatic Store ID). If the app wasn't installed, nothing is done ('Not installed' badge).\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "appx_microsoft.windowsfeedbackhub",
@@ -2832,7 +3055,9 @@
         "target": "Microsoft.WindowsFeedbackHub",
         "storeId": "9NBLGGH4R32N"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésinstalle le Hub de commentaires. Indispensable si tu es Windows Insider ; sinon inutile.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Paquet supprimé pour tous les utilisateurs : Microsoft.WindowsFeedbackHub (Remove-AppxPackage -AllUsers). Annulation : réinstallation depuis le Store (winget, ID 9NBLGGH4R32N) ; si ça échoue, WinGuard te propose d'ouvrir le Store. Si l'appli n'était pas installée, rien n'est fait (badge « Non installé »).\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nUninstalls Feedback Hub. Required if you're a Windows Insider; otherwise useless.\n\nWhat changes — the whole PC (all accounts):\n• Package removed for all users: Microsoft.WindowsFeedbackHub (Remove-AppxPackage -AllUsers). Undo: reinstall from the Store (winget, ID 9NBLGGH4R32N); if it fails WinGuard offers to open the Store. If the app wasn't installed, nothing is done ('Not installed' badge).\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "appx_microsoft.windowsmaps",
@@ -2849,7 +3074,9 @@
         "target": "Microsoft.WindowsMaps",
         "storeId": "9WZDNCRDTBVB"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésinstalle l'appli Cartes (retirée par Microsoft en 2025). Les cartes hors ligne téléchargées deviennent inutiles.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Paquet supprimé pour tous les utilisateurs : Microsoft.WindowsMaps (Remove-AppxPackage -AllUsers). Annulation : réinstallation depuis le Store (winget, ID 9WZDNCRDTBVB) ; si ça échoue, WinGuard te propose d'ouvrir le Store. Si l'appli n'était pas installée, rien n'est fait (badge « Non installé »).\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nUninstalls the Maps app (retired by Microsoft in 2025). Downloaded offline maps become useless.\n\nWhat changes — the whole PC (all accounts):\n• Package removed for all users: Microsoft.WindowsMaps (Remove-AppxPackage -AllUsers). Undo: reinstall from the Store (winget, ID 9WZDNCRDTBVB); if it fails WinGuard offers to open the Store. If the app wasn't installed, nothing is done ('Not installed' badge).\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "appx_clipchamp.clipchamp",
@@ -2866,7 +3093,9 @@
         "target": "Clipchamp.Clipchamp",
         "storeId": "9P1J8S7CCWWT"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésinstalle l'éditeur vidéo Clipchamp. Tes projets stockés en ligne dans ton compte Clipchamp restent accessibles via le web.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Paquet supprimé pour tous les utilisateurs : Clipchamp.Clipchamp (Remove-AppxPackage -AllUsers). Annulation : réinstallation depuis le Store (winget, ID 9P1J8S7CCWWT) ; si ça échoue, WinGuard te propose d'ouvrir le Store. Si l'appli n'était pas installée, rien n'est fait (badge « Non installé »).\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nUninstalls the Clipchamp video editor. Projects stored online in your Clipchamp account stay reachable via the web.\n\nWhat changes — the whole PC (all accounts):\n• Package removed for all users: Clipchamp.Clipchamp (Remove-AppxPackage -AllUsers). Undo: reinstall from the Store (winget, ID 9P1J8S7CCWWT); if it fails WinGuard offers to open the Store. If the app wasn't installed, nothing is done ('Not installed' badge).\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "appx_microsoft.todos",
@@ -2883,7 +3112,9 @@
         "target": "Microsoft.Todos",
         "storeId": "9NBLGGH5R558"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésinstalle Microsoft To Do. Tes listes restent synchronisées dans ton compte Microsoft (web, téléphone).\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Paquet supprimé pour tous les utilisateurs : Microsoft.Todos (Remove-AppxPackage -AllUsers). Annulation : réinstallation depuis le Store (winget, ID 9NBLGGH5R558) ; si ça échoue, WinGuard te propose d'ouvrir le Store. Si l'appli n'était pas installée, rien n'est fait (badge « Non installé »).\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nUninstalls Microsoft To Do. Your lists stay synced in your Microsoft account (web, phone).\n\nWhat changes — the whole PC (all accounts):\n• Package removed for all users: Microsoft.Todos (Remove-AppxPackage -AllUsers). Undo: reinstall from the Store (winget, ID 9NBLGGH5R558); if it fails WinGuard offers to open the Store. If the app wasn't installed, nothing is done ('Not installed' badge).\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "appx_microsoft.microsoftofficehub",
@@ -2900,7 +3131,9 @@
         "target": "Microsoft.MicrosoftOfficeHub",
         "storeId": "9WZDNCRD29V9"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésinstalle le hub « Microsoft 365 (Office) » (lanceur/publicité Office). Word/Excel installés ne sont pas touchés.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Paquet supprimé pour tous les utilisateurs : Microsoft.MicrosoftOfficeHub (Remove-AppxPackage -AllUsers). Annulation : réinstallation depuis le Store (winget, ID 9WZDNCRD29V9) ; si ça échoue, WinGuard te propose d'ouvrir le Store. Si l'appli n'était pas installée, rien n'est fait (badge « Non installé »).\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nUninstalls the 'Microsoft 365 (Office)' hub (Office launcher/promo). Installed Word/Excel are not affected.\n\nWhat changes — the whole PC (all accounts):\n• Package removed for all users: Microsoft.MicrosoftOfficeHub (Remove-AppxPackage -AllUsers). Undo: reinstall from the Store (winget, ID 9WZDNCRD29V9); if it fails WinGuard offers to open the Store. If the app wasn't installed, nothing is done ('Not installed' badge).\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "appx_microsoft.people",
@@ -2917,7 +3150,9 @@
         "target": "Microsoft.People",
         "storeId": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésinstalle l'appli Contacts. L'appli Courrier classique peut ne plus afficher tes contacts.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Paquet supprimé pour tous les utilisateurs : Microsoft.People (Remove-AppxPackage -AllUsers). Annulation : réinstallation MANUELLE depuis le Microsoft Store (pas d'ID Store automatique). Si l'appli n'était pas installée, rien n'est fait (badge « Non installé »).\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nUninstalls the People app. Classic Mail may no longer show your contacts.\n\nWhat changes — the whole PC (all accounts):\n• Package removed for all users: Microsoft.People (Remove-AppxPackage -AllUsers). Undo: MANUAL reinstall from the Microsoft Store (no automatic Store ID). If the app wasn't installed, nothing is done ('Not installed' badge).\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "appx_microsoft.yourphone",
@@ -2934,7 +3169,9 @@
         "target": "Microsoft.YourPhone",
         "storeId": "9NMPJ99VJBWV"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésinstalle Mobile connecté / Lien avec le téléphone : plus de SMS, appels, photos ou notifications du téléphone sur le PC.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Paquet supprimé pour tous les utilisateurs : Microsoft.YourPhone (Remove-AppxPackage -AllUsers). Annulation : réinstallation depuis le Store (winget, ID 9NMPJ99VJBWV) ; si ça échoue, WinGuard te propose d'ouvrir le Store. Si l'appli n'était pas installée, rien n'est fait (badge « Non installé »).\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nUninstalls Phone Link: no more texts, calls, photos or phone notifications on the PC.\n\nWhat changes — the whole PC (all accounts):\n• Package removed for all users: Microsoft.YourPhone (Remove-AppxPackage -AllUsers). Undo: reinstall from the Store (winget, ID 9NMPJ99VJBWV); if it fails WinGuard offers to open the Store. If the app wasn't installed, nothing is done ('Not installed' badge).\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "appx_microsoft.zunemusic",
@@ -2951,7 +3188,9 @@
         "target": "Microsoft.ZuneMusic",
         "storeId": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésinstalle le Lecteur multimédia (Media Player). Tes fichiers audio/vidéo devront s'ouvrir avec un autre lecteur (VLC…). Réinstallation manuelle depuis le Store.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Paquet supprimé pour tous les utilisateurs : Microsoft.ZuneMusic (Remove-AppxPackage -AllUsers). Annulation : réinstallation MANUELLE depuis le Microsoft Store (pas d'ID Store automatique). Si l'appli n'était pas installée, rien n'est fait (badge « Non installé »).\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nUninstalls Media Player. Your audio/video files will need another player (VLC…). Manual reinstall from the Store.\n\nWhat changes — the whole PC (all accounts):\n• Package removed for all users: Microsoft.ZuneMusic (Remove-AppxPackage -AllUsers). Undo: MANUAL reinstall from the Microsoft Store (no automatic Store ID). If the app wasn't installed, nothing is done ('Not installed' badge).\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "appx_microsoftteams",
@@ -2968,7 +3207,9 @@
         "target": "MicrosoftTeams",
         "storeId": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésinstalle Teams (personnel / Chat). Teams travail ou école (installé à part) n'est pas touché.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Paquet supprimé pour tous les utilisateurs : MicrosoftTeams (Remove-AppxPackage -AllUsers). Annulation : réinstallation MANUELLE depuis le Microsoft Store (pas d'ID Store automatique). Si l'appli n'était pas installée, rien n'est fait (badge « Non installé »).\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nUninstalls Teams (personal / Chat). Work or school Teams (installed separately) isn't affected.\n\nWhat changes — the whole PC (all accounts):\n• Package removed for all users: MicrosoftTeams (Remove-AppxPackage -AllUsers). Undo: MANUAL reinstall from the Microsoft Store (no automatic Store ID). If the app wasn't installed, nothing is done ('Not installed' badge).\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "appx_microsoft.549981c3f5f10",
@@ -2985,7 +3226,9 @@
         "target": "Microsoft.549981C3F5F10",
         "storeId": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésinstalle l'appli Cortana (abandonnée par Microsoft).\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Paquet supprimé pour tous les utilisateurs : Microsoft.549981C3F5F10 (Remove-AppxPackage -AllUsers). Annulation : réinstallation MANUELLE depuis le Microsoft Store (pas d'ID Store automatique). Si l'appli n'était pas installée, rien n'est fait (badge « Non installé »).\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nUninstalls the Cortana app (retired by Microsoft).\n\nWhat changes — the whole PC (all accounts):\n• Package removed for all users: Microsoft.549981C3F5F10 (Remove-AppxPackage -AllUsers). Undo: MANUAL reinstall from the Microsoft Store (no automatic Store ID). If the app wasn't installed, nothing is done ('Not installed' badge).\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "appx_microsoft.bingsearch",
@@ -3002,7 +3245,9 @@
         "target": "Microsoft.BingSearch",
         "storeId": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésinstalle le composant Bing Search qui alimente certaines recherches web.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Paquet supprimé pour tous les utilisateurs : Microsoft.BingSearch (Remove-AppxPackage -AllUsers). Annulation : réinstallation MANUELLE depuis le Microsoft Store (pas d'ID Store automatique). Si l'appli n'était pas installée, rien n'est fait (badge « Non installé »).\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nUninstalls the Bing Search component powering some web searches.\n\nWhat changes — the whole PC (all accounts):\n• Package removed for all users: Microsoft.BingSearch (Remove-AppxPackage -AllUsers). Undo: MANUAL reinstall from the Microsoft Store (no automatic Store ID). If the app wasn't installed, nothing is done ('Not installed' badge).\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "appx_microsoft.copilot",
@@ -3019,7 +3264,9 @@
         "target": "Microsoft.Copilot",
         "storeId": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésinstalle l'appli Copilot. Copilot reste accessible sur le web et dans Edge si non désactivé.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Paquet supprimé pour tous les utilisateurs : Microsoft.Copilot (Remove-AppxPackage -AllUsers). Annulation : réinstallation MANUELLE depuis le Microsoft Store (pas d'ID Store automatique). Si l'appli n'était pas installée, rien n'est fait (badge « Non installé »).\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nUninstalls the Copilot app. Copilot stays reachable on the web and in Edge unless disabled.\n\nWhat changes — the whole PC (all accounts):\n• Package removed for all users: Microsoft.Copilot (Remove-AppxPackage -AllUsers). Undo: MANUAL reinstall from the Microsoft Store (no automatic Store ID). If the app wasn't installed, nothing is done ('Not installed' badge).\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "appx_microsoft.outlookforwindows",
@@ -3036,7 +3283,9 @@
         "target": "Microsoft.OutlookForWindows",
         "storeId": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésinstalle le nouvel Outlook. Outlook classique (Microsoft 365) n'est pas touché ; tes mails restent sur le serveur.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Paquet supprimé pour tous les utilisateurs : Microsoft.OutlookForWindows (Remove-AppxPackage -AllUsers). Annulation : réinstallation MANUELLE depuis le Microsoft Store (pas d'ID Store automatique). Si l'appli n'était pas installée, rien n'est fait (badge « Non installé »).\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nUninstalls new Outlook. Classic Outlook (Microsoft 365) isn't affected; your mail stays on the server.\n\nWhat changes — the whole PC (all accounts):\n• Package removed for all users: Microsoft.OutlookForWindows (Remove-AppxPackage -AllUsers). Undo: MANUAL reinstall from the Microsoft Store (no automatic Store ID). If the app wasn't installed, nothing is done ('Not installed' badge).\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "hoststelemetry",
@@ -3052,7 +3301,9 @@
         "type": "Hosts",
         "target": "vortex.data.microsoft.com|vortex-win.data.microsoft.com|settings-win.data.microsoft.com|watson.telemetry.microsoft.com|watson.microsoft.com|telecommand.telemetry.microsoft.com|oca.telemetry.microsoft.com|sqm.telemetry.microsoft.com|telemetry.microsoft.com|df.telemetry.microsoft.com|reports.wes.df.telemetry.microsoft.com|services.wes.df.telemetry.microsoft.com|v10.events.data.microsoft.com|v20.events.data.microsoft.com|self.events.data.microsoft.com|umwatsonc.events.data.microsoft.com|ceuswatcab01.blob.core.windows.net|activity.windows.com"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nAjoute au fichier hosts une liste d'adresses de télémétrie Microsoft redirigées vers 0.0.0.0 : même si un composant essaie d'envoyer des données, la connexion échoue. Contreparties : Defender peut signaler la modification du fichier hosts (HostsFileHijack), et la Visionneuse de diagnostic/le Hub de commentaires peuvent mal marcher. WinGuard retire exactement ses lignes à l'annulation.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Fichier hosts : 18 domaines redirigés vers 0.0.0.0 dans un bloc marqué WinGuard. Annulation : seul ce bloc est retiré.\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nAdds a list of Microsoft telemetry hosts pointed to 0.0.0.0 in the hosts file: even if a component tries to send data, the connection fails. Trade-offs: Defender may flag the hosts change (HostsFileHijack), and Diagnostic Viewer/Feedback Hub may misbehave. WinGuard removes exactly its own lines on undo.\n\nWhat changes — the whole PC (all accounts):\n• Hosts file: 18 domains pointed to 0.0.0.0 in a WinGuard-marked block. Undo: only that block is removed.\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "hostsads",
@@ -3068,7 +3319,9 @@
         "type": "Hosts",
         "target": "ads.msn.com|adnexus.net|adnxs.com|c.msn.com|g.msn.com|a.ads1.msn.com|b.ads1.msn.com|rad.msn.com|api.msn.com|assets.msn.com|c.bing.com|bat.bing.com"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nBloque via le fichier hosts des domaines publicitaires et de suivi MSN/Bing. Contreparties : le flux MSN (Edge, widgets), la météo et certaines fonctions Bing de Démarrer cessent de fonctionner ; Defender peut signaler le fichier hosts.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Fichier hosts : 12 domaines redirigés vers 0.0.0.0 dans un bloc marqué WinGuard. Annulation : seul ce bloc est retiré.\n\nNiveau de risque :\nDéconseillé : le gain est faible ou la contrepartie importante (sécurité, fonction perdue, réinstallation manuelle). À n'activer qu'en connaissance de cause.",
+    "info": "When enabled:\nBlocks MSN/Bing ad and tracking domains through the hosts file. Trade-offs: the MSN feed (Edge, widgets), weather and some Bing features in Start stop working; Defender may flag the hosts file.\n\nWhat changes — the whole PC (all accounts):\n• Hosts file: 12 domains pointed to 0.0.0.0 in a WinGuard-marked block. Undo: only that block is removed.\n\nRisk level:\nNot recommended: small gain or significant trade-off (security, lost feature, manual reinstall). Only enable if you know why."
   },
   {
     "id": "fw_compattelrunner",
@@ -3084,7 +3337,9 @@
         "type": "Firewall",
         "target": "%SystemRoot%\\System32\\CompatTelRunner.exe"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nCrée une règle de Pare-feu Windows « WinGuard » qui bloque toute connexion sortante de CompatTelRunner.exe, le programme qui envoie l'inventaire de compatibilité. Il peut toujours tourner, mais ne peut plus rien envoyer.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Pare-feu : règle sortante « Bloquer » (groupe WinGuard) pour %SystemRoot%\\System32\\CompatTelRunner.exe. Annulation : règle supprimée.\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nCreates a 'WinGuard' Windows Firewall rule blocking all outbound traffic from CompatTelRunner.exe, the program that uploads the compatibility inventory. It can still run but can't send anything.\n\nWhat changes — the whole PC (all accounts):\n• Firewall: outbound 'Block' rule (WinGuard group) for %SystemRoot%\\System32\\CompatTelRunner.exe. Undo: rule deleted.\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "fw_devicecensus",
@@ -3100,7 +3355,9 @@
         "type": "Firewall",
         "target": "%SystemRoot%\\System32\\DeviceCensus.exe"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nRègle de Pare-feu bloquant les connexions sortantes de DeviceCensus.exe, qui inventorie ton matériel et l'envoie à Microsoft pour cibler les mises à jour.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Pare-feu : règle sortante « Bloquer » (groupe WinGuard) pour %SystemRoot%\\System32\\DeviceCensus.exe. Annulation : règle supprimée.\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nFirewall rule blocking outbound traffic from DeviceCensus.exe, which inventories your hardware and sends it to Microsoft for update targeting.\n\nWhat changes — the whole PC (all accounts):\n• Firewall: outbound 'Block' rule (WinGuard group) for %SystemRoot%\\System32\\DeviceCensus.exe. Undo: rule deleted.\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "fw_wermgr",
@@ -3116,7 +3373,9 @@
         "type": "Firewall",
         "target": "%SystemRoot%\\System32\\wermgr.exe"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nRègle de Pare-feu bloquant les connexions sortantes de wermgr.exe (envoi des rapports d'erreurs). Les rapports restent sur le disque ; plus de « solutions en ligne ».\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Pare-feu : règle sortante « Bloquer » (groupe WinGuard) pour %SystemRoot%\\System32\\wermgr.exe. Annulation : règle supprimée.\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nFirewall rule blocking outbound traffic from wermgr.exe (error report upload). Reports stay on disk; no 'online solutions'.\n\nWhat changes — the whole PC (all accounts):\n• Firewall: outbound 'Block' rule (WinGuard group) for %SystemRoot%\\System32\\wermgr.exe. Undo: rule deleted.\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "fw_werfault",
@@ -3132,7 +3391,9 @@
         "type": "Firewall",
         "target": "%SystemRoot%\\System32\\WerFault.exe"
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nRègle de Pare-feu bloquant les connexions sortantes de WerFault.exe (fenêtre « Le programme a cessé de fonctionner »). Plus d'envoi de crash immédiat.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Pare-feu : règle sortante « Bloquer » (groupe WinGuard) pour %SystemRoot%\\System32\\WerFault.exe. Annulation : règle supprimée.\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nFirewall rule blocking outbound traffic from WerFault.exe ('program has stopped working' dialog). No immediate crash upload.\n\nWhat changes — the whole PC (all accounts):\n• Firewall: outbound 'Block' rule (WinGuard group) for %SystemRoot%\\System32\\WerFault.exe. Undo: rule deleted.\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "postupgrade",
@@ -3162,7 +3423,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nEmpêche l'écran « Terminons la configuration de votre appareil » et l'assistant de confidentialité après une grosse mise à jour, qui poussent à réactiver télémétrie et services Microsoft. Masque aussi le contenu cloud « optimisé ».\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\OOBE\\DisablePrivacyExperience = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent\\DisableCloudOptimizedContent = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nPrevents the 'Let's finish setting up your device' screen and the privacy wizard after major updates, which push you to re-enable telemetry and Microsoft services. Also hides 'optimised' cloud content.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\OOBE\\DisablePrivacyExperience = 1 (DWord). Undo: value deleted (Windows default).\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\CloudContent\\DisableCloudOptimizedContent = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "edgefeedback",
@@ -3192,7 +3455,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nRetire l'outil « Envoyer des commentaires » d'Edge (qui peut joindre captures et URL) et les expériences/recommandations Microsoft personnalisées dans Edge.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\UserFeedbackAllowed = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\SpotlightExperiencesAndRecommendationsEnabled = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nRemoves Edge's 'Send feedback' tool (which can attach screenshots and URLs) and personalised Microsoft experiences/recommendations in Edge.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\UserFeedbackAllowed = 0 (DWord). Undo: value deleted (Windows default).\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\SpotlightExperiencesAndRecommendationsEnabled = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "edgebingbar",
@@ -3213,7 +3478,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nEdge n'envoie plus tes saisies de la barre d'adresse au fournisseur « Microsoft Search dans Bing » (résultats d'entreprise). Sans impact sur un compte personnel.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\AddressBarMicrosoftSearchInBingProviderEnabled = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nEdge no longer sends address bar input to the 'Microsoft Search in Bing' provider (work results). No impact on a personal account.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Edge\\AddressBarMicrosoftSearchInBingProviderEnabled = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "storeopenwith",
@@ -3234,7 +3501,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nQuand tu ouvres un type de fichier inconnu, Windows ne cherche plus d'appli dans le Store (ce qui envoyait l'extension à Microsoft) ; il te propose directement de choisir un programme.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer\\NoUseStoreOpenWith = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nWhen you open an unknown file type, Windows no longer searches the Store for an app (which sent the extension to Microsoft); it directly asks you to choose a program.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\Explorer\\NoUseStoreOpenWith = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "onlinespeech",
@@ -3255,7 +3524,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nTa voix n'est plus envoyée aux services vocaux cloud. La dictée (Win+H) en ligne et la reconnaissance vocale cloud cessent ; la reconnaissance hors ligne reste disponible.\n\nCe qui est modifié — ton compte uniquement :\n• Registre : HKCU\\Software\\Microsoft\\Speech_OneCore\\Settings\\OnlineSpeechPrivacy\\HasAccepted = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nYour voice is no longer sent to cloud speech services. Online dictation (Win+H) and cloud recognition stop; offline recognition remains.\n\nWhat changes — your account only:\n• Registry: HKCU\\Software\\Microsoft\\Speech_OneCore\\Settings\\OnlineSpeechPrivacy\\HasAccepted = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "inkcloud",
@@ -3276,7 +3547,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nRetire ton acceptation de la politique d'écriture manuscrite/saisie : Windows arrête d'envoyer ces données à Microsoft et de construire ton dictionnaire personnalisé côté cloud.\n\nCe qui est modifié — ton compte uniquement :\n• Registre : HKCU\\Software\\Microsoft\\Personalization\\Settings\\AcceptedPrivacyPolicy = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nWithdraws your acceptance of the inking/typing privacy policy: Windows stops sending that data to Microsoft and building your personal dictionary in the cloud.\n\nWhat changes — your account only:\n• Registry: HKCU\\Software\\Microsoft\\Personalization\\Settings\\AcceptedPrivacyPolicy = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "locationfull",
@@ -3306,7 +3579,9 @@
         "enabledValue": "1",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nMet le consentement global à la localisation sur « Refuser » pour tout le PC et bloque les scripts de localisation. Plus strict que le réglage par appli : Cartes, Météo et le fuseau horaire auto ne peuvent plus te localiser.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\location\\Value = Deny (String). Annulation : remis à Allow.\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\LocationAndSensors\\DisableLocationScripting = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nSets the global location consent to 'Deny' for the whole PC and blocks location scripting. Stricter than per-app settings: Maps, Weather and automatic time zone can't locate you.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\CapabilityAccessManager\\ConsentStore\\location\\Value = Deny (String). Undo: set back to Allow.\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\LocationAndSensors\\DisableLocationScripting = 1 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "werextra",
@@ -3345,7 +3620,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nLe rapport d'erreurs n'envoie plus de données supplémentaires (mémoire, fichiers) même si on le lui demande, la journalisation WER est coupée et les anciens rapports PC Health sont désactivés.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\\DontSendAdditionalData = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKLM\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\\LoggingDisabled = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\PCHealth\\ErrorReporting\\DoReport = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nError reporting no longer sends additional data (memory, files) even when asked, WER logging is off and legacy PC Health reports are disabled.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\\DontSendAdditionalData = 1 (DWord). Undo: value deleted (Windows default).\n• Registry: HKLM\\SOFTWARE\\Microsoft\\Windows\\Windows Error Reporting\\LoggingDisabled = 1 (DWord). Undo: value deleted (Windows default).\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\PCHealth\\ErrorReporting\\DoReport = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "feedbackfreq",
@@ -3366,7 +3643,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nRègle la fréquence des demandes de commentaires sur « Jamais » : le Hub de commentaires ne te sollicite plus.\n\nCe qui est modifié — ton compte uniquement :\n• Registre : HKCU\\Software\\Microsoft\\Siuf\\Rules\\PeriodInNanoSeconds = 0 (QWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nSets feedback frequency to 'Never': Feedback Hub no longer asks you.\n\nWhat changes — your account only:\n• Registry: HKCU\\Software\\Microsoft\\Siuf\\Rules\\PeriodInNanoSeconds = 0 (QWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "syncgroups",
@@ -3432,7 +3711,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nCoupe la synchro par catégorie avec ton compte Microsoft : thème, mots de passe, langue, accessibilité, autres paramètres Windows et navigateur. Sur un nouveau PC, tu devras tout reconfigurer. Réactivable dans Paramètres > Comptes.\n\nCe qui est modifié — ton compte uniquement :\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\SettingSync\\Groups\\Personalization\\Enabled = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\SettingSync\\Groups\\Credentials\\Enabled = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\SettingSync\\Groups\\Language\\Enabled = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\SettingSync\\Groups\\Accessibility\\Enabled = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\SettingSync\\Groups\\Windows\\Enabled = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\SettingSync\\Groups\\BrowserSettings\\Enabled = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nTurns off per-category sync with your Microsoft account: theme, passwords, language, accessibility, other Windows and browser settings. On a new PC you'll set everything up again. Can be turned back on in Settings > Accounts.\n\nWhat changes — your account only:\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\SettingSync\\Groups\\Personalization\\Enabled = 0 (DWord). Undo: value deleted (Windows default).\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\SettingSync\\Groups\\Credentials\\Enabled = 0 (DWord). Undo: value deleted (Windows default).\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\SettingSync\\Groups\\Language\\Enabled = 0 (DWord). Undo: value deleted (Windows default).\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\SettingSync\\Groups\\Accessibility\\Enabled = 0 (DWord). Undo: value deleted (Windows default).\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\SettingSync\\Groups\\Windows\\Enabled = 0 (DWord). Undo: value deleted (Windows default).\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\SettingSync\\Groups\\BrowserSettings\\Enabled = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "cdp",
@@ -3453,7 +3734,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive la plateforme d'appareils connectés : « Continuer sur le PC », partage d'activités, Partage de proximité et Lien avec le téléphone cessent de fonctionner.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System\\EnableCdp = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nDisables the Connected Devices Platform: 'Continue on PC', activity sharing, Nearby Share and Phone Link stop working.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Policies\\Microsoft\\Windows\\System\\EnableCdp = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   },
   {
     "id": "bgappsuser",
@@ -3483,7 +3766,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nInterrupteur global « applis en arrière-plan » pour ton compte : aucune appli du Store ne tourne quand elle n'est pas ouverte (notifications en retard, moins de synchro). WinGuard garde l'Outil Capture d'écran autorisé pour qu'Impr. écran ne reste pas bloqué en mode capture.\n\nCe qui est modifié — ton compte uniquement :\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications\\GlobalUserDisabled = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Search\\BackgroundAppGlobalToggle = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nGlobal 'background apps' switch for your account: no Store app runs unless open (delayed notifications, less sync). WinGuard keeps Snipping Tool allowed so Print Screen doesn't get stuck in capture mode.\n\nWhat changes — your account only:\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\BackgroundAccessApplications\\GlobalUserDisabled = 1 (DWord). Undo: value deleted (Windows default).\n• Registry: HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Search\\BackgroundAppGlobalToggle = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "arso",
@@ -3513,7 +3798,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nWindows n'utilise plus tes identifiants pour te reconnecter automatiquement après une mise à jour et ne rouvre plus tes applis. Plus sûr (pas de session déverrouillée sans toi), mais il faut te reconnecter et rouvrir tes applis.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\DisableAutomaticRestartSignOn = 1 (DWord). Annulation : valeur supprimée (défaut Windows).\n• Registre : HKCU\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\RestartApps = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nWindows no longer uses your credentials to sign you back in after an update or reopen your apps. Safer (no session unlocked without you), but you sign in and reopen apps yourself.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Policies\\System\\DisableAutomaticRestartSignOn = 1 (DWord). Undo: value deleted (Windows default).\n• Registry: HKCU\\Software\\Microsoft\\Windows NT\\CurrentVersion\\Winlogon\\RestartApps = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "smb1",
@@ -3534,7 +3821,9 @@
         "enabledValue": "0",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nDésactive côté serveur SMBv1, protocole de partage de fichiers obsolète exploité par WannaCry. SMBv2/3 restent actifs. Seuls de très vieux appareils (XP, anciens NAS/imprimantes) ne pourront plus accéder aux partages de ce PC. Effectif après redémarrage.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters\\SMB1 = 0 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé : gain de confidentialité réel, aucun effet gênant attendu pour un usage normal.",
+    "info": "When enabled:\nDisables the SMBv1 server, an obsolete file-sharing protocol exploited by WannaCry. SMBv2/3 stay on. Only very old devices (XP, old NAS/printers) can no longer reach this PC's shares. Takes effect after reboot.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SYSTEM\\CurrentControlSet\\Services\\LanmanServer\\Parameters\\SMB1 = 0 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nRecommended: real privacy gain, no annoying side effect expected for normal use."
   },
   {
     "id": "netbios",
@@ -3555,6 +3844,8 @@
         "enabledValue": "2",
         "disabledValue": null
       }
-    ]
+    ],
+    "infoFr": "Quand c'est activé :\nPasse NetBIOS sur TCP/IP en mode nœud P : le PC n'émet plus de diffusions de noms ni n'y répond (réduit les fuites de noms et les attaques de type relais). Les très vieux NAS/partages accessibles uniquement par nom NetBIOS devront être joints par IP. Effectif après redémarrage.\n\nCe qui est modifié — tout le PC (tous les comptes) :\n• Registre : HKLM\\SYSTEM\\CurrentControlSet\\Services\\NetBT\\Parameters\\NodeType = 2 (DWord). Annulation : valeur supprimée (défaut Windows).\n\nNiveau de risque :\nRecommandé avec limites : utile, mais peut désactiver une fonction que tu utilises (voir contreparties) ; à choisir selon ton usage.",
+    "info": "When enabled:\nSwitches NetBIOS over TCP/IP to P-node: the PC no longer broadcasts or answers name queries (fewer name leaks and relay attacks). Very old NAS/shares reachable only by NetBIOS name must be reached by IP. Takes effect after reboot.\n\nWhat changes — the whole PC (all accounts):\n• Registry: HKLM\\SYSTEM\\CurrentControlSet\\Services\\NetBT\\Parameters\\NodeType = 2 (DWord). Undo: value deleted (Windows default).\n\nRisk level:\nLimited: useful, but may turn off a feature you use (see trade-offs); pick it based on your usage."
   }
 ]

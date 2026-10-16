@@ -47,4 +47,15 @@ public partial class MainWindow : Window
     private void Maximize_Click(object sender, RoutedEventArgs e) =>
         WindowState = WindowState == WindowState.Maximized ? WindowState.Normal : WindowState.Maximized;
     private void Close_Click(object sender, RoutedEventArgs e) => Close();
+
+    /// <summary>Click on the row's "i": toggles its detailed tooltip (hover also shows it).</summary>
+    private void InfoIcon_Click(object sender, System.Windows.Input.MouseButtonEventArgs e)
+    {
+        if (sender is FrameworkElement fe && fe.ToolTip is System.Windows.Controls.ToolTip tt)
+        {
+            tt.PlacementTarget = fe;
+            tt.IsOpen = !tt.IsOpen;
+            e.Handled = true;
+        }
+    }
 }

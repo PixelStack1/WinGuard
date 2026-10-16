@@ -40,6 +40,9 @@ public sealed class Setting
     public string Description { get; set; } = "";
     public string? NameFr { get; set; }
     public string? DescriptionFr { get; set; }
+    /// <summary>Detailed explanation (effect, exact changes, trade-offs, risk) shown by the row's info icon.</summary>
+    public string? Info { get; set; }
+    public string? InfoFr { get; set; }
     public string Category { get; set; } = "";
     public string Scope { get; set; } = "Local Machine";
     public Recommendation Recommendation { get; set; }

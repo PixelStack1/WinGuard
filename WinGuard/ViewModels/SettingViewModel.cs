@@ -21,8 +21,12 @@ public sealed class SettingViewModel : ObservableObject
     {
         get { string d = Loc.Pick(Model.Description, Model.DescriptionFr); return string.IsNullOrWhiteSpace(d) ? DetailText : d; }
     }
+    public string InfoText
+    {
+        get { string d = Loc.Pick(Model.Info ?? "", Model.InfoFr); return string.IsNullOrWhiteSpace(d) ? DetailText : d; }
+    }
     public string ScopeText => Strings.Scope(Model.Scope);
-    public void RefreshLanguage() { OnPropertyChanged(nameof(Name)); OnPropertyChanged(nameof(Description)); OnPropertyChanged(nameof(ScopeText)); OnPropertyChanged(nameof(RecommendationText)); OnPropertyChanged(nameof(StateText)); OnPropertyChanged(nameof(NativeBadge)); OnPropertyChanged(nameof(NativeTooltip)); }
+    public void RefreshLanguage() { OnPropertyChanged(nameof(Name)); OnPropertyChanged(nameof(Description)); OnPropertyChanged(nameof(InfoText)); OnPropertyChanged(nameof(ScopeText)); OnPropertyChanged(nameof(RecommendationText)); OnPropertyChanged(nameof(StateText)); OnPropertyChanged(nameof(NativeBadge)); OnPropertyChanged(nameof(NativeTooltip)); }
     public string RecommendationText => Recommendation switch { Recommendation.Recommended => Loc.T("Recommended"), Recommendation.LimitedRecommended => Loc.T("Limited"), _ => Loc.T("NotRecommended") };
     public string StateText => Loc.T(_isApplied ? "On" : "Off");
     public string Category => Model.Category;
