@@ -298,6 +298,20 @@
                                             <Border CornerRadius="8" Padding="7,1" Margin="6,0,0,0" Background="#1AFFFFFF" VerticalAlignment="Center">
                                                 <TextBlock Text="{Binding ScopeText}" FontSize="9.5" Foreground="{StaticResource TextSecondary}"/>
                                             </Border>
+                                            <Border CornerRadius="8" Padding="7,1" Margin="6,0,0,0" Background="#2634D399" VerticalAlignment="Center"
+                                                    ToolTip="{Binding NativeTooltip}">
+                                                <Border.Style>
+                                                    <Style TargetType="Border">
+                                                        <Setter Property="Visibility" Value="Collapsed"/>
+                                                        <Style.Triggers>
+                                                            <DataTrigger Binding="{Binding IsNative}" Value="True">
+                                                                <Setter Property="Visibility" Value="Visible"/>
+                                                            </DataTrigger>
+                                                        </Style.Triggers>
+                                                    </Style>
+                                                </Border.Style>
+                                                <TextBlock Text="{Binding NativeBadge}" FontSize="9.5" FontWeight="Bold" Foreground="#34D399"/>
+                                            </Border>
                                         </StackPanel>
                                         <TextBlock Text="{Binding Description}" Foreground="{StaticResource TextSecondary}" FontSize="12.5"
                                                    TextWrapping="Wrap" Margin="0,4,0,0"/>

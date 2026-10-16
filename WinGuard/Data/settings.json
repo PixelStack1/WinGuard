@@ -1664,7 +1664,7 @@
     "actions": [
       {
         "type": "ScheduledTask",
-        "target": "\\Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser"
+        "target": "\\Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser|\\Microsoft\\Windows\\Application Experience\\Microsoft Compatibility Appraiser Exp"
       }
     ]
   },

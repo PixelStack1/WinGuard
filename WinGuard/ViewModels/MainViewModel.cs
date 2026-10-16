@@ -170,8 +170,11 @@ public sealed class MainViewModel : ObservableObject
         }
     }
 
-    public int AppliedCount => Settings.Count(s => s.IsApplied);
-    public string SummaryText => Loc.F("Summary", AppliedCount, Settings.Count);
+    /// <summary>Settings WinGuard applied (native "already optimal" ones excluded).</summary>
+    public int AppliedCount => Settings.Count(s => s.IsAppliedByUs);
+    public int NativeCount => Settings.Count(s => s.IsNative);
+    public string SummaryText => NativeCount == 0 ? Loc.F("Summary", AppliedCount, Settings.Count - NativeCount)
+        : Loc.F("SummaryNative", AppliedCount, Settings.Count - NativeCount, NativeCount);
     public double ProtectionPercent => PrivacyScore;
 
     private bool Filter(object o)
@@ -213,7 +216,7 @@ public sealed class MainViewModel : ObservableObject
     private void UpdateCounters()
     {
         foreach (CategoryViewModel c in Categories)
-            c.AppliedCount = c.IsAll ? AppliedCount : Settings.Count(s => s.Category == c.Name && s.IsApplied);
+            c.AppliedCount = c.IsAll ? AppliedCount : Settings.Count(s => s.Category == c.Name && s.IsAppliedByUs);
         OnPropertyChanged(nameof(AppliedCount));
         OnPropertyChanged(nameof(SummaryText));
         OnPropertyChanged(nameof(ProtectionPercent));
@@ -235,11 +238,12 @@ public sealed class MainViewModel : ObservableObject
     }
 
     /// <summary>Reads one setting's state; on any error logs it and reports "not applied" so the UI stays usable.</summary>
-    private async Task<bool> SafeIsAppliedAsync(SettingViewModel s)
+    private async Task<(bool, NativeKind)> SafeDetectAsync(SettingViewModel s)
     {
-        try { return await _engine.IsAppliedAsync(s.Model); }
-        catch (Exception ex) { AddLog(Loc.F("Log.ReadFailed", s.Name, ex.Message)); return false; }
+        try { return await _engine.DetectAsync(s.Model); }
+        catch (Exception ex) { AddLog(Loc.F("Log.ReadFailed", s.Name, ex.Message)); return (false, NativeKind.None); }
     }
+    private async Task Redetect(SettingViewModel s) { var (a, n) = await SafeDetectAsync(s); s.SetState(a, n); }
 
     public async Task RefreshAsync()
     {
@@ -247,7 +251,7 @@ public sealed class MainViewModel : ObservableObject
         {
             // Registry-only settings are fast; evaluate them first, then the process-based ones.
             foreach (SettingViewModel s in Settings.Where(s => !TweakEngine.NeedsProcess(s.Model)))
-                s.SetState(await SafeIsAppliedAsync(s));
+                await Redetect(s);
             UpdateCounters();
             var slow = Settings.Where(s => TweakEngine.NeedsProcess(s.Model)).ToList();
             // Bounded parallelism: dozens of simultaneous PowerShell processes can starve a slow PC.
@@ -255,12 +259,14 @@ public sealed class MainViewModel : ObservableObject
             var results = await Task.WhenAll(slow.Select(s => Task.Run(async () =>
             {
                 await gate.WaitAsync();
-                try { return await _engine.IsAppliedAsync(s.Model); }
-                catch (Exception ex) { AppLog.Warn($"State read failed for {s.Id}: {ex.Message}"); return false; }
+                try { return await _engine.DetectAsync(s.Model); }
+                catch (Exception ex) { AppLog.Warn($"State read failed for {s.Id}: {ex.Message}"); return (false, NativeKind.None); }
                 finally { gate.Release(); }
             })));
-            for (int i = 0; i < slow.Count; i++) slow[i].SetState(results[i]);
-            AddLog(Loc.F("Log.Refreshed", AppliedCount, Settings.Count));
+            for (int i = 0; i < slow.Count; i++) slow[i].SetState(results[i].Item1, results[i].Item2);
+            ChangeLedger.MarkInitialized();
+            AddLog(NativeCount == 0 ? Loc.F("Log.Refreshed", AppliedCount, Settings.Count)
+                : Loc.F("Log.RefreshedNative", AppliedCount, Settings.Count - NativeCount, NativeCount));
         });
     }
 
@@ -282,11 +288,13 @@ public sealed class MainViewModel : ObservableObject
             // Without a backup we don't touch anything: safer than a change that can't be undone.
             AppLog.Error("Backup creation failed", ex);
             AddLog(Loc.F("Log.BackupFailed", ex.Message));
-            foreach (var s in items) s.SetState(await SafeIsAppliedAsync(s));
+            foreach (var s in items) await Redetect(s);
             return;
         }
         AddLog(Loc.F("Log.BackupSaved", file));
+        while (_engine.ManualReinstall.TryTake(out _)) { }
         int okCount = 0, warnCount = 0, errCount = 0, n = 0;
+        var stuck = new List<string>();
         foreach (SettingViewModel s in items)
         {
             n++;
@@ -307,16 +315,32 @@ public sealed class MainViewModel : ObservableObject
             finally
             {
                 s.IsBusy = false;
-                s.SetState(await SafeIsAppliedAsync(s));
+                await Redetect(s);
+                // Never let a switch silently snap back: say so when the real state didn't follow.
+                if (s.IsAppliedByUs != enable && !(enable && s.IsNative)) stuck.Add(s.Name);
                 UpdateCounters();
             }
         }
         if (items.Count > 1) AddLog(Loc.F("Log.BatchSummary", okCount, warnCount, errCount));
+        if (stuck.Count > 0) AddLog(Loc.F(enable ? "Log.StuckOff" : "Log.StuckOn", string.Join(", ", stuck)));
+        var manual = _engine.ManualReinstall.Distinct().ToList();
+        if (!enable && manual.Count > 0)
+        {
+            AddLog(Loc.F("Log.ManualReinstall", string.Join(", ", manual)));
+            OnUi(() =>
+            {
+                if (MessageBox.Show(Loc.F("Msg.ManualReinstall", string.Join(Environment.NewLine + "  • ", manual)), "WinGuard",
+                        MessageBoxButton.YesNo, MessageBoxImage.Information) == MessageBoxResult.Yes)
+                    try { System.Diagnostics.Process.Start(new System.Diagnostics.ProcessStartInfo("ms-windows-store://home") { UseShellExecute = true }); }
+                    catch (Exception ex) { AddLog("✖ " + ex.Message); }
+                return true;
+            });
+        }
     }
 
     private async Task OnToggleAsync(SettingViewModel s, bool enable)
     {
-        if (IsBusy) { s.SetState(!enable); return; }
+        if (IsBusy || s.IsNative) { s.SetState(!enable); return; }
         if (enable && s.Recommendation == Recommendation.NotRecommended &&
             MessageBox.Show(Loc.F("Msg.NotRecommended", s.Name),
                 "WinGuard", MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.Yes)
@@ -337,7 +361,7 @@ public sealed class MainViewModel : ObservableObject
 
     private async Task UndoAllAsync()
     {
-        var items = Settings.Where(s => s.IsApplied).ToList();
+        var items = Settings.Where(s => s.IsAppliedByUs).ToList();
         if (items.Count == 0) { AddLog(Loc.T("Log.NoneToUndo")); return; }
         if (MessageBox.Show(Loc.F("Msg.UndoConfirm", items.Count), "WinGuard",
                 MessageBoxButton.OKCancel, MessageBoxImage.Question) != MessageBoxResult.OK) return;
@@ -361,6 +385,7 @@ public sealed class MainViewModel : ObservableObject
                 try { if (!await Task.Run(() => _engine.ApplyAsync(s.Model, false, AddLog))) failed++; }
                 catch (Exception ex) { failed++; AddLog(Loc.F("Log.SettingSkipped", s.Name, ex.Message)); }
             }
+            TweakEngine.SyncSnippingExemption(AddLog);
             AddLog(Loc.F("Log.BackupRestored", file.Registry.Count, failed));
         });
         await RefreshAsync();
@@ -397,7 +422,7 @@ public sealed class MainViewModel : ObservableObject
         var map = new Dictionary<string, bool>();
         foreach (var p in profile.Where(p => p is not null && !string.IsNullOrEmpty(p.Id))) map[p.Id] = p.Applied;
         var toApply = Settings.Where(s => map.TryGetValue(s.Id, out bool a) && a && !s.IsApplied).ToList();
-        var toRevert = Settings.Where(s => map.TryGetValue(s.Id, out bool a) && !a && s.IsApplied).ToList();
+        var toRevert = Settings.Where(s => map.TryGetValue(s.Id, out bool a) && !a && s.IsAppliedByUs).ToList();
         if (MessageBox.Show(Loc.F("Msg.ImportConfirm", toApply.Count, toRevert.Count), "WinGuard",
                 MessageBoxButton.OKCancel, MessageBoxImage.Question) != MessageBoxResult.OK) return;
         await RunBusy(Loc.T("Status.Importing"), async () =>

@@ -32,6 +32,16 @@ public partial class App : Application
             return;
         }
 
+        int st = Array.FindIndex(e.Args, a => a.Equals("--selftest", StringComparison.OrdinalIgnoreCase));
+        if (st >= 0)
+        {
+            ShutdownMode = ShutdownMode.OnExplicitShutdown;
+            try { await Services.SelfTest.RunAsync(e.Args.Skip(st + 1).ToArray()); }
+            catch (Exception ex) { AppLog.Error("Self-test failed", ex); }
+            Shutdown();
+            return;
+        }
+
         base.OnStartup(e);
         try { new Views.MainWindow().Show(); }
         catch (Exception ex)

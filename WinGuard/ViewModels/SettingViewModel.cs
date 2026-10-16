@@ -1,5 +1,6 @@
 using WinGuard.Localization;
 using WinGuard.Models;
+using WinGuard.Services;
 
 namespace WinGuard.ViewModels;
 
@@ -21,7 +22,7 @@ public sealed class SettingViewModel : ObservableObject
         get { string d = Loc.Pick(Model.Description, Model.DescriptionFr); return string.IsNullOrWhiteSpace(d) ? DetailText : d; }
     }
     public string ScopeText => Strings.Scope(Model.Scope);
-    public void RefreshLanguage() { OnPropertyChanged(nameof(Name)); OnPropertyChanged(nameof(Description)); OnPropertyChanged(nameof(ScopeText)); OnPropertyChanged(nameof(RecommendationText)); OnPropertyChanged(nameof(StateText)); }
+    public void RefreshLanguage() { OnPropertyChanged(nameof(Name)); OnPropertyChanged(nameof(Description)); OnPropertyChanged(nameof(ScopeText)); OnPropertyChanged(nameof(RecommendationText)); OnPropertyChanged(nameof(StateText)); OnPropertyChanged(nameof(NativeBadge)); OnPropertyChanged(nameof(NativeTooltip)); }
     public string RecommendationText => Recommendation switch { Recommendation.Recommended => Loc.T("Recommended"), Recommendation.LimitedRecommended => Loc.T("Limited"), _ => Loc.T("NotRecommended") };
     public string StateText => Loc.T(_isApplied ? "On" : "Off");
     public string Category => Model.Category;
@@ -43,18 +44,35 @@ public sealed class SettingViewModel : ObservableObject
     }
 
     /// <summary>Updates state without triggering an apply.</summary>
-    public void SetState(bool applied)
+    public void SetState(bool applied, NativeKind native = NativeKind.None)
     {
         _isApplied = applied; IsKnown = true;
+        _native = applied ? native : NativeKind.None;
         OnPropertyChanged(nameof(IsApplied)); OnPropertyChanged(nameof(StateText));
+        OnPropertyChanged(nameof(Native)); OnPropertyChanged(nameof(IsNative)); OnPropertyChanged(nameof(NativeBadge));
+        OnPropertyChanged(nameof(NativeTooltip)); OnPropertyChanged(nameof(IsEditable)); OnPropertyChanged(nameof(IsAppliedByUs));
     }
+
+    private NativeKind _native;
+    /// <summary>Already in the target state on this PC without WinGuard (app not installed, task absent/already off):
+    /// shown ON but locked, with a badge, and never counted or reverted.</summary>
+    public NativeKind Native => _native;
+    public bool IsNative => _native != NativeKind.None;
+    public bool IsAppliedByUs => _isApplied && !IsNative;
+    public string NativeBadge => _native switch
+    {
+        NativeKind.NotInstalled => Loc.T(Model.Actions.All(a => a.Type == ActionType.Appx) ? "Badge.NotInstalled" : "Badge.Absent"),
+        NativeKind.AlreadyOff => Loc.T("Badge.AlreadyOff"),
+        _ => ""
+    };
+    public string NativeTooltip => _native == NativeKind.None ? "" : Loc.T(_native == NativeKind.AlreadyOff ? "Badge.AlreadyOffTip" : "Badge.NotInstalledTip");
 
     public bool IsBusy { get => _isBusy; set { if (SetProperty(ref _isBusy, value)) OnPropertyChanged(nameof(IsEditable)); } }
     public bool IsKnown { get => _isKnown; set { if (SetProperty(ref _isKnown, value)) OnPropertyChanged(nameof(IsEditable)); } }
     private bool _isLocked;
     /// <summary>Set while a global batch runs, so individual switches can't be toggled mid-batch.</summary>
     public bool IsLocked { get => _isLocked; set { if (SetProperty(ref _isLocked, value)) OnPropertyChanged(nameof(IsEditable)); } }
-    public bool IsEditable => !_isBusy && _isKnown && !_isLocked;
+    public bool IsEditable => !_isBusy && _isKnown && !_isLocked && !IsNative;
 }
 
 public sealed class CategoryViewModel : ObservableObject

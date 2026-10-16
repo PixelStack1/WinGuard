@@ -3,11 +3,38 @@ using WinGuard.Models;
 namespace WinGuard.Services;
 
 /// <summary>Evaluates and applies settings across registry, scheduled tasks and Appx packages.</summary>
+public enum NativeKind { None, NotInstalled, AlreadyOff }
+
 public sealed class TweakEngine
 {
     public RegistryService Registry { get; } = new();
 
     public static bool NeedsProcess(Setting s) => s.Actions.Any(a => a.Type != ActionType.Registry);
+
+    /// <summary>Applied state plus, when applied, whether WinGuard actually did it or the PC was already like that
+    /// (app never installed / task absent or already disabled). Only Appx/ScheduledTask-only settings can be native.</summary>
+    public async Task<(bool Applied, NativeKind Native)> DetectAsync(Setting s)
+    {
+        bool applied = await IsAppliedAsync(s).ConfigureAwait(false);
+        if (!applied || s.Actions.Any(a => a.Type is not (ActionType.Appx or ActionType.ScheduledTask))) return (applied, NativeKind.None);
+        NativeKind kind = NativeKind.NotInstalled;
+        foreach (SettingAction a in s.Actions)
+        {
+            if (string.IsNullOrEmpty(a.Target)) return (applied, NativeKind.None);
+            if (a.Type == ActionType.Appx)
+            {
+                if (ChangeLedger.Contains(ChangeLedger.AppKey(a.Target))) return (applied, NativeKind.None);
+            }
+            else
+            {
+                (string? real, string state) = await ResolveTaskAsync(a.Target).ConfigureAwait(false);
+                if (real is not null && state == "Disabled" && ChangeLedger.IsLegacy) ChangeLedger.Add(ChangeLedger.TaskKey(real));
+                if (real is not null && ChangeLedger.Contains(ChangeLedger.TaskKey(real))) return (applied, NativeKind.None);
+                if (state != "Missing") kind = NativeKind.AlreadyOff;
+            }
+        }
+        return (applied, kind);
+    }
 
     /// <summary>True when every action is in its "privacy" state. Never throws: an action whose state can't be read counts as not applied.</summary>
     public async Task<bool> IsAppliedAsync(Setting s)
@@ -21,7 +48,7 @@ public sealed class TweakEngine
                 ok = a.Type switch
                 {
                     ActionType.Registry => Registry.IsApplied(a),
-                    ActionType.ScheduledTask => !string.IsNullOrEmpty(a.Target) && await TaskStateAsync(a.Target).ConfigureAwait(false) is "Disabled" or "Missing",
+                    ActionType.ScheduledTask => !string.IsNullOrEmpty(a.Target) && (await ResolveTaskAsync(a.Target).ConfigureAwait(false)).State is "Disabled" or "Missing",
                     ActionType.Appx => !string.IsNullOrEmpty(a.Target) && await AppxInstalledAsync(a.Target).ConfigureAwait(false) == false,
                     ActionType.Hosts => HostsService.IsApplied(s.Id),
                     ActionType.Firewall => !string.IsNullOrEmpty(a.Target) && await FirewallRuleExistsAsync(s.Id, a.Target).ConfigureAwait(false),
@@ -59,13 +86,23 @@ public sealed class TweakEngine
                     case ActionType.ScheduledTask:
                     {
                         if (string.IsNullOrEmpty(a.Target)) { Fail(Localization.Loc.F("Log.ActionFailed", a, "no target")); break; }
-                        (string dir, string name) = SplitTask(a.Target);
+                        (string? real, _) = await ResolveTaskAsync(a.Target).ConfigureAwait(false);
+                        if (real is null) { Log(Localization.Loc.F("Log.TaskMissing", a.Target)); break; }
+                        if (!enable && !ChangeLedger.Contains(ChangeLedger.TaskKey(real)) && !ForceTaskRevert)
+                        {
+                            // WinGuard never disabled this task: leave the user's/Windows' own choice alone.
+                            Log(Localization.Loc.F("Log.TaskNotOurs", real));
+                            break;
+                        }
+                        (string dir, string name) = SplitTask(real);
                         string verb = enable ? "Disable-ScheduledTask" : "Enable-ScheduledTask";
                         var r = await ProcessRunner.PowerShellAsync(
                             $"$t=Get-ScheduledTask -TaskPath {ProcessRunner.Ps(dir)} -TaskName {ProcessRunner.Ps(name)} -ErrorAction SilentlyContinue; " +
-                            $"if($t){{ try {{ $t | {verb} -ErrorAction Stop | Out-Null; 'OK' }} catch {{ 'ERR: ' + $_.Exception.Message }} }} else {{ 'Missing' }}", 120_000).ConfigureAwait(false);
-                        if (r.Output.Contains("Missing")) Log(Localization.Loc.F("Log.TaskMissing", a.Target));
-                        else if (r.ExitCode != 0 || !r.Output.Contains("OK")) Fail(Localization.Loc.F("Log.TaskFailed", a.Target, Short(r.Output)));
+                            $"if($t){{ $was=[string]$t.State; try {{ $t | {verb} -ErrorAction Stop | Out-Null; 'OK ' + $was }} catch {{ 'ERR: ' + $_.Exception.Message }} }} else {{ 'Missing' }}", 120_000).ConfigureAwait(false);
+                        if (r.Output.Contains("Missing")) Log(Localization.Loc.F("Log.TaskMissing", real));
+                        else if (r.ExitCode != 0 || !r.Output.Contains("OK")) Fail(Localization.Loc.F("Log.TaskFailed", real, Short(r.Output)));
+                        else if (enable) { if (!r.Output.Contains("OK Disabled")) ChangeLedger.Add(ChangeLedger.TaskKey(real)); }
+                        else ChangeLedger.Remove(ChangeLedger.TaskKey(real));
                         break;
                     }
 
@@ -93,19 +130,26 @@ public sealed class TweakEngine
                                 "if(-not $p){ 'Missing' } else { try { $p | Remove-AppxPackage -AllUsers -ErrorAction Stop; 'OK' } catch { 'ERR: ' + $_.Exception.Message } }").ConfigureAwait(false);
                             if (rr.Output.Contains("Missing")) Log(Localization.Loc.F("Log.AppxMissing", a.Target));
                             else if (rr.ExitCode != 0 || rr.Output.Contains("ERR:")) Fail(Localization.Loc.F("Log.AppxFailed", a.Target, Short(rr.Output)));
+                            else ChangeLedger.Add(ChangeLedger.AppKey(a.Target));
                         }
                         else if (await AppxInstalledAsync(a.Target).ConfigureAwait(false) == true)
                         {
-                            // Already present: nothing to reinstall.
+                            ChangeLedger.Remove(ChangeLedger.AppKey(a.Target)); // already present: nothing to reinstall
+                        }
+                        else if (!ChangeLedger.Contains(ChangeLedger.AppKey(a.Target)))
+                        {
+                            // Never installed on this PC (WinGuard didn't remove it): nothing to undo.
+                            Log(Localization.Loc.F("Log.AppxNotOurs", a.Target));
                         }
                         else if (!string.IsNullOrEmpty(a.StoreId))
                         {
                             Log(Localization.Loc.F("Log.Reinstalling", a.Target));
                             var rr = await ProcessRunner.RunAsync("winget",
                                 $"install --id {a.StoreId} --source msstore --accept-package-agreements --accept-source-agreements --silent").ConfigureAwait(false);
-                            if (rr.ExitCode != 0) Fail(Localization.Loc.F("Log.WingetFailed", a.Target, Short(rr.Output)));
+                            if (rr.ExitCode != 0) { Fail(Localization.Loc.F("Log.WingetFailed", a.Target, Short(rr.Output))); ManualReinstall.Add(a.Target); }
+                            else ChangeLedger.Remove(ChangeLedger.AppKey(a.Target));
                         }
-                        else Log(Localization.Loc.F("Log.NoStoreId", a.Target));
+                        else { Log(Localization.Loc.F("Log.NoStoreId", a.Target)); ManualReinstall.Add(a.Target); }
                         break;
                 }
             }
@@ -126,7 +170,52 @@ public sealed class TweakEngine
                 Fail(Localization.Loc.F("Log.ActionFailed", a, ex.Message));
             }
         }
+        if (s.Id is "appbg" or "bgappsuser") SyncSnippingExemption(log);
         return allOk;
+    }
+
+    private const string AppPrivacyKey = @"SOFTWARE\Policies\Microsoft\Windows\AppPrivacy";
+    private const string ForceAllowValue = "LetAppsRunInBackground_ForceAllowTheseApps";
+    /// <summary>Snipping Tool (Print Screen overlay) must be able to run in the background, otherwise Win11 cold-starts it on
+    /// every Print Screen and the capture overlay stays up until a second press. When background apps are blocked (policy
+    /// or the per-user global switch), WinGuard keeps Snipping Tool on the policy allow-list; it removes that entry again
+    /// once neither block is active. Never throws.</summary>
+    public static readonly string[] BackgroundExempt = { "Microsoft.ScreenSketch_8wekyb3d8bbwe" };
+
+    public static void SyncSnippingExemption(Action<string> log)
+    {
+        try
+        {
+            using var hklm = Microsoft.Win32.RegistryKey.OpenBaseKey(Microsoft.Win32.RegistryHive.LocalMachine, Microsoft.Win32.RegistryView.Registry64);
+            using var hkcu = Microsoft.Win32.Registry.CurrentUser.OpenSubKey(@"Software\Microsoft\Windows\CurrentVersion\BackgroundAccessApplications");
+            object? pol = hklm.OpenSubKey(AppPrivacyKey)?.GetValue("LetAppsRunInBackground");
+            bool blocked = (pol is int p && p == 2) || (hkcu?.GetValue("GlobalUserDisabled") is int g && g == 1);
+            using var key = hklm.CreateSubKey(AppPrivacyKey, true);
+            var list = (key.GetValue(ForceAllowValue) as string[] ?? Array.Empty<string>()).ToList();
+            bool changed = false;
+            foreach (string app in BackgroundExempt)
+            {
+                bool has = list.Contains(app, StringComparer.OrdinalIgnoreCase);
+                if (blocked && !has) { list.Add(app); changed = true; }
+                else if (!blocked && has) { list.RemoveAll(x => x.Equals(app, StringComparison.OrdinalIgnoreCase)); changed = true; }
+            }
+            // The allow-list is only honoured when the policy itself is configured: with only the per-user switch off,
+            // configure it as "user in control" (0), and remove that again later only if WinGuard set it.
+            object? cur = key.GetValue("LetAppsRunInBackground");
+            if (blocked && cur is null) { key.SetValue("LetAppsRunInBackground", 0, Microsoft.Win32.RegistryValueKind.DWord); ChangeLedger.Add("snip|pol0"); changed = true; }
+            else if (!blocked && ChangeLedger.Contains("snip|pol0"))
+            {
+                if (cur is int c0 && c0 == 0) key.DeleteValue("LetAppsRunInBackground", false);
+                ChangeLedger.Remove("snip|pol0"); changed = true;
+            }
+            if (!changed) return;
+            if (list.Count == 0) key.DeleteValue(ForceAllowValue, false);
+            else key.SetValue(ForceAllowValue, list.ToArray(), Microsoft.Win32.RegistryValueKind.MultiString);
+            string m = Localization.Loc.T(blocked ? "Log.SnipExempt" : "Log.SnipExemptRemoved");
+            try { log(m); } catch { }
+            AppLog.Info(m.Trim());
+        }
+        catch (Exception ex) { AppLog.Warn("Snipping Tool exemption sync failed: " + ex.Message); }
     }
 
     private static string Short(string s)
@@ -149,6 +238,24 @@ public sealed class TweakEngine
         int i = full.LastIndexOf('\\');
         if (i < 0) return ("\\", full);
         return (full[..(i + 1)], full[(i + 1)..]);
+    }
+
+    /// <summary>Packages WinGuard removed that couldn't be put back automatically during the current batch (UI drains it).</summary>
+    public System.Collections.Concurrent.ConcurrentBag<string> ManualReinstall { get; } = new();
+
+    /// <summary>Self-test only: revert tasks even if the ledger doesn't list them.</summary>
+    public bool ForceTaskRevert { get; set; }
+
+    /// <summary>A task target may list alternates separated by '|' (Windows renamed some tasks, e.g. 24H2's
+    /// "Microsoft Compatibility Appraiser Exp"). Returns the first one that exists and its state, or (null, "Missing").</summary>
+    private static async Task<(string? Real, string State)> ResolveTaskAsync(string target)
+    {
+        foreach (string t in target.Split('|', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
+        {
+            string st = await TaskStateAsync(t).ConfigureAwait(false);
+            if (st != "Missing") return (t, st);
+        }
+        return (null, "Missing");
     }
 
     private static async Task<string> TaskStateAsync(string full)
