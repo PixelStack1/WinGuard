@@ -1,7 +1,10 @@
+; Build the payload from the repo root first:
+;   dotnet publish WinGuard\WinGuard.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o publish
+; Or: dotnet publish WinGuard\WinGuard.csproj -c Release /p:PublishProfile=SingleFile
 #define AppName "WinGuard"
-#define AppVersion "1.0.1"
+#define AppVersion "1.0.2"
 #define AppExe "WinGuard.exe"
-#define PublishDir "Z:\workspace\winguard-publish"
+#define PublishDir "publish"
 
 [Setup]
 AppId={{8C2F4E1A-5B7D-4E9A-9F3C-A1B2C3D4E5F6}
@@ -19,9 +22,9 @@ PrivilegesRequired=admin
 ArchitecturesAllowed=x64
 ArchitecturesInstallIn64BitMode=x64
 MinVersion=10.0
-OutputDir=Z:\workspace\winguard-setup
+OutputDir=dist
 OutputBaseFilename=WinGuardSetup
-SetupIconFile=Z:\workspace\winguard\WinGuard\winguard.ico
+SetupIconFile=WinGuard\winguard.ico
 Compression=lzma2/max
 SolidCompression=yes
 WizardStyle=modern

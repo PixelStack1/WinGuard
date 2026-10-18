@@ -21,7 +21,6 @@ public sealed class MainViewModel : ObservableObject
     private CategoryViewModel? _selectedCategory;
     private bool _isBusy;
     private string _status = Loc.T("Ready");
-    private bool _restorePointBeforeApply = true;
     private bool _autoReapply;
 
     public ObservableCollection<SettingViewModel> Settings { get; } = new();
@@ -124,7 +123,6 @@ public sealed class MainViewModel : ObservableObject
         }
     }
     public string Status { get => _status; set => SetProperty(ref _status, value); }
-    public bool RestorePointBeforeApply { get => _restorePointBeforeApply; set => SetProperty(ref _restorePointBeforeApply, value); }
     public bool AutoReapply
     {
         get => _autoReapply;
@@ -153,7 +151,7 @@ public sealed class MainViewModel : ObservableObject
     {
         try
         {
-            var snapshot = OnUi(() => Settings.Select(s => new ProfileEntry { Id = s.Id, Applied = s.IsApplied }).ToList());
+            var snapshot = OnUi(() => Settings.Select(s => new ProfileEntry { Id = s.Id, Applied = s.IsAppliedByUs }).ToList());
             AutoReapplyService.SaveProfile(snapshot);
         }
         catch (Exception ex) { AddLog(Loc.F("Log.ProfileSaveFailed", ex.Message)); }
@@ -264,7 +262,6 @@ public sealed class MainViewModel : ObservableObject
                 finally { gate.Release(); }
             })));
             for (int i = 0; i < slow.Count; i++) slow[i].SetState(results[i].Item1, results[i].Item2);
-            ChangeLedger.MarkInitialized();
             AddLog(NativeCount == 0 ? Loc.F("Log.Refreshed", AppliedCount, Settings.Count)
                 : Loc.F("Log.RefreshedNative", AppliedCount, Settings.Count - NativeCount, NativeCount));
         });
@@ -277,10 +274,18 @@ public sealed class MainViewModel : ObservableObject
         AddLog(ok ? "✔ " + msg : "✖ " + msg);
     }
 
-    private async Task ChangeAsync(IReadOnlyList<SettingViewModel> items, bool enable, bool restorePoint)
+    private async Task ChangeAsync(IReadOnlyList<SettingViewModel> items, bool enable)
     {
         if (items.Count == 0) { AddLog(Loc.T("Log.Nothing")); return; }
-        if (restorePoint) await CreateRestorePointAsync();
+        AddLog(Loc.T("Log.CreatingRp"));
+        var (rpOk, rpMsg) = await RestorePointService.CreateAsync($"WinGuard {DateTime.Now:yyyy-MM-dd HH:mm}");
+        AddLog(rpOk ? "✔ " + rpMsg : "✖ " + rpMsg);
+        if (!rpOk)
+        {
+            AddLog(Loc.T("Log.RpAborted"));
+            foreach (var s in items) await Redetect(s);
+            return;
+        }
         string file;
         try { file = await Task.Run(() => _backup.Create(items.Select(i => i.Model).ToList(), enable)); }
         catch (Exception ex)
@@ -345,7 +350,7 @@ public sealed class MainViewModel : ObservableObject
             MessageBox.Show(Loc.F("Msg.NotRecommended", s.Name),
                 "WinGuard", MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.Yes)
         { s.SetState(false); return; }
-        await RunBusy(s.Name, () => ChangeAsync(new[] { s }, enable, false));
+        await RunBusy(s.Name, () => ChangeAsync(new[] { s }, enable));
     }
 
     private async Task ApplyWhereAsync(Func<Recommendation, bool> predicate, string labelKey)
@@ -353,9 +358,9 @@ public sealed class MainViewModel : ObservableObject
         string label = Loc.T(labelKey);
         var items = Settings.Where(s => predicate(s.Recommendation) && !s.IsApplied).ToList();
         if (items.Count == 0) { AddLog(Loc.F("Log.AllApplied", label)); return; }
-        if (MessageBox.Show(Loc.F("Msg.ApplyConfirm", items.Count, label, RestorePointBeforeApply ? Loc.T("Msg.AndRp") : ""),
+        if (MessageBox.Show(Loc.F("Msg.ApplyConfirm", items.Count, label),
                 "WinGuard", MessageBoxButton.OKCancel, MessageBoxImage.Question) != MessageBoxResult.OK) return;
-        await RunBusy(Loc.F("Status.ApplyingSet", label), () => ChangeAsync(items, true, RestorePointBeforeApply));
+        await RunBusy(Loc.F("Status.ApplyingSet", label), () => ChangeAsync(items, true));
         AddLog(Loc.T("Log.NeedRestart"));
     }
 
@@ -365,7 +370,7 @@ public sealed class MainViewModel : ObservableObject
         if (items.Count == 0) { AddLog(Loc.T("Log.NoneToUndo")); return; }
         if (MessageBox.Show(Loc.F("Msg.UndoConfirm", items.Count), "WinGuard",
                 MessageBoxButton.OKCancel, MessageBoxImage.Question) != MessageBoxResult.OK) return;
-        await RunBusy(Loc.T("Status.RestoringDefaults"), () => ChangeAsync(items, false, RestorePointBeforeApply));
+        await RunBusy(Loc.T("Status.RestoringDefaults"), () => ChangeAsync(items, false));
     }
 
     private async Task RestoreBackupAsync()
@@ -378,6 +383,10 @@ public sealed class MainViewModel : ObservableObject
             try { file = _backup.Load(dlg.FileName); }
             catch (Exception ex) when (ex is InvalidDataException or IOException or UnauthorizedAccessException)
             { AddLog("✖ " + ex.Message); return; }
+            AddLog(Loc.T("Log.CreatingRp"));
+            var (rpOk, rpMsg) = await RestorePointService.CreateAsync($"WinGuard restore backup {DateTime.Now:yyyy-MM-dd HH:mm}");
+            AddLog(rpOk ? "✔ " + rpMsg : "✖ " + rpMsg);
+            if (!rpOk) { AddLog(Loc.T("Log.RpAborted")); return; }
             int failed = await Task.Run(() => _backup.RestoreRegistry(file, AddLog));
             // Non-registry actions (tasks/apps) are reverted through the engine.
             foreach (var s in Settings.Where(s => file.AppliedSettingIds.Contains(s.Id) && TweakEngine.NeedsProcess(s.Model)).ToList())
@@ -427,8 +436,8 @@ public sealed class MainViewModel : ObservableObject
                 MessageBoxButton.OKCancel, MessageBoxImage.Question) != MessageBoxResult.OK) return;
         await RunBusy(Loc.T("Status.Importing"), async () =>
         {
-            await ChangeAsync(toApply, true, RestorePointBeforeApply);
-            await ChangeAsync(toRevert, false, false);
+            await ChangeAsync(toApply, true);
+            await ChangeAsync(toRevert, false);
         });
     }
 }

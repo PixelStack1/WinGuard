@@ -1,12 +1,13 @@
 using System.Globalization;
 using System.IO;
 using Microsoft.Win32;
+using WinGuard.Core;
 using WinGuard.Models;
 
 namespace WinGuard.Services;
 
 /// <summary>Reads/writes registry values. Missing keys are treated as "not set" (works on Home and Pro alike).</summary>
-public sealed class RegistryService
+public sealed class RegistryService : IRegistryStore
 {
     private static RegistryKey OpenBase(string hive) => hive.ToUpperInvariant() switch
     {
@@ -24,18 +25,6 @@ public sealed class RegistryService
             using RegistryKey root = OpenBase(hive);
             using RegistryKey? key = root.OpenSubKey(path, false);
             return key?.GetValue(name, null, RegistryValueOptions.DoNotExpandEnvironmentNames);
-        }
-        catch { return null; }
-    }
-
-    public RegistryValueKind? ReadKind(string hive, string path, string name)
-    {
-        try
-        {
-            using RegistryKey root = OpenBase(hive);
-            using RegistryKey? key = root.OpenSubKey(path, false);
-            if (key is null || key.GetValue(name) is null) return null;
-            return key.GetValueKind(name);
         }
         catch { return null; }
     }
@@ -66,8 +55,28 @@ public sealed class RegistryService
     };
 
     public bool IsApplied(SettingAction a) => Matches(a, a.EnabledValue);
-    public void Apply(SettingAction a) => Write(a.Hive!, a.Path!, a.Name ?? "", a.Kind, a.EnabledValue);
-    public void Revert(SettingAction a) => Write(a.Hive!, a.Path!, a.Name ?? "", a.Kind, a.DisabledValue);
+
+    /// <summary>Like <see cref="Read"/> but access errors propagate. A missing value is <see cref="RegValue.Existed"/> false, not an error.</summary>
+    public RegValue ReadStrict(string hive, string path, string name)
+    {
+        using RegistryKey root = OpenBase(hive);
+        using RegistryKey? key = root.OpenSubKey(path, false);
+        if (key is null) return RegValue.Missing();
+        if (!key.GetValueNames().Contains(name, StringComparer.OrdinalIgnoreCase)) return RegValue.Missing();
+        object? raw = key.GetValue(name, null, RegistryValueOptions.DoNotExpandEnvironmentNames);
+        RegistryValueKind kind = key.GetValueKind(name);
+        return new RegValue { Existed = true, Kind = KindName(kind), Value = ValueText(raw) };
+    }
+
+    public bool SubKeyExists(string hive, string path)
+    {
+        using RegistryKey root = OpenBase(hive);
+        using RegistryKey? key = root.OpenSubKey(path, false);
+        return key is not null;
+    }
+
+    RegValue IRegistryStore.Read(string hive, string path, string name) => ReadStrict(hive, path, name);
+    void IRegistryStore.Write(string hive, string path, string name, string kind, string? value) => Write(hive, path, name, kind, value);
 
     /// <summary>Writes a value; null deletes the value (missing key/value is ignored).
     /// Access problems surface as UnauthorizedAccessException so callers can log a clear "access denied".</summary>
@@ -92,6 +101,11 @@ public sealed class RegistryService
             k?.DeleteValue(name, false);
             return;
         }
+        if (ServiceKeyPolicy.IsServiceStart(path, name))
+        {
+            using RegistryKey? existing = root.OpenSubKey(path, false);
+            if (existing is null) throw new ServiceMissingException($@"{hive}\{path}");
+        }
         (object data, RegistryValueKind rk) = ToRegistryData(kind, value); // validate before touching the registry
         using RegistryKey key = root.CreateSubKey(path, true)
             ?? throw new InvalidOperationException($@"Cannot create {hive}\{path}");
@@ -109,29 +123,34 @@ public sealed class RegistryService
 
     public BackupEntry Snapshot(string hive, string path, string name)
     {
-        object? v = Read(hive, path, name);
-        RegistryValueKind? k = ReadKind(hive, path, name);
+        RegValue v = ReadStrict(hive, path, name);
         return new BackupEntry
         {
-            Hive = hive, Path = path, Name = name, Existed = v is not null,
-            Kind = k switch
-            {
-                RegistryValueKind.QWord => "QWord",
-                RegistryValueKind.String => "String",
-                RegistryValueKind.ExpandString => "ExpandString",
-                RegistryValueKind.MultiString => "MultiString",
-                _ => "DWord"
-            },
-            Value = v switch
-            {
-                null => null,
-                string[] arr => string.Join("|", arr),
-                int i => i.ToString(CultureInfo.InvariantCulture),
-                long l => l.ToString(CultureInfo.InvariantCulture),
-                _ => System.Convert.ToString(v, CultureInfo.InvariantCulture)
-            }
+            Hive = hive, Path = path, Name = name, Existed = v.Existed,
+            Kind = v.Kind, Value = v.Value
         };
     }
+
+    private static string KindName(RegistryValueKind kind) => kind switch
+    {
+        RegistryValueKind.DWord => "DWord",
+        RegistryValueKind.QWord => "QWord",
+        RegistryValueKind.String => "String",
+        RegistryValueKind.ExpandString => "ExpandString",
+        RegistryValueKind.MultiString => "MultiString",
+        _ => throw new InvalidDataException($"Unsupported registry type {kind}.")
+    };
+
+    private static string? ValueText(object? raw) => raw switch
+    {
+        null => null,
+        string[] arr => string.Join("|", arr),
+        int i => i.ToString(CultureInfo.InvariantCulture),
+        long l => l.ToString(CultureInfo.InvariantCulture),
+        uint u => u.ToString(CultureInfo.InvariantCulture),
+        string s => s,
+        _ => Convert.ToString(raw, CultureInfo.InvariantCulture)
+    };
 
     public void Restore(BackupEntry e) => Write(e.Hive, e.Path, e.Name, e.Kind, e.Existed ? e.Value : null);
 }

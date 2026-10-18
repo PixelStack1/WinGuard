@@ -225,10 +225,6 @@
                 </Button>
             </WrapPanel>
             <WrapPanel Margin="0,2,0,0">
-                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,24,8">
-                    <CheckBox Style="{StaticResource ToggleSwitch}" IsChecked="{Binding RestorePointBeforeApply}" VerticalAlignment="Center" Margin="0,0,8,0"/>
-                    <TextBlock Text="{loc:Tr RpBeforeApply}" Foreground="{StaticResource TextSecondary}" VerticalAlignment="Center"/>
-                </StackPanel>
                 <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="0,0,0,8" ToolTip="{loc:Tr AutoReapplyTip}">
                     <CheckBox Style="{StaticResource ToggleSwitch}" IsChecked="{Binding AutoReapply}" VerticalAlignment="Center" Margin="0,0,8,0"/>
                     <TextBlock Text="{loc:Tr AutoReapply}" Foreground="{StaticResource TextSecondary}" VerticalAlignment="Center"/>

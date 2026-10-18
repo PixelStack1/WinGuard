@@ -4,6 +4,10 @@ VisualStudioVersion = 17.8.34330.188
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinGuard", "WinGuard\WinGuard.csproj", "{6B1E2C4A-8F3D-4E2B-9C1A-5D7E8F9A0B12}"
 EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinGuard.Core", "WinGuard.Core\WinGuard.Core.csproj", "{C3A1E8B2-4D5F-4A6B-9C0D-1E2F3A4B5C6D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinGuard.Tests", "WinGuard.Tests\WinGuard.Tests.csproj", "{D4B2F9C3-5E60-4B7C-8D1E-2F3A4B5C6D7E}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -14,5 +18,13 @@ Global
 		{6B1E2C4A-8F3D-4E2B-9C1A-5D7E8F9A0B12}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B1E2C4A-8F3D-4E2B-9C1A-5D7E8F9A0B12}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B1E2C4A-8F3D-4E2B-9C1A-5D7E8F9A0B12}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C3A1E8B2-4D5F-4A6B-9C0D-1E2F3A4B5C6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C3A1E8B2-4D5F-4A6B-9C0D-1E2F3A4B5C6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C3A1E8B2-4D5F-4A6B-9C0D-1E2F3A4B5C6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C3A1E8B2-4D5F-4A6B-9C0D-1E2F3A4B5C6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4B2F9C3-5E60-4B7C-8D1E-2F3A4B5C6D7E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4B2F9C3-5E60-4B7C-8D1E-2F3A4B5C6D7E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4B2F9C3-5E60-4B7C-8D1E-2F3A4B5C6D7E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4B2F9C3-5E60-4B7C-8D1E-2F3A4B5C6D7E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
