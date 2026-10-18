@@ -1,0 +1,60 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: windows-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: "8.0.x"
+
+      - name: Unit tests
+        run: dotnet test WinGuard.Tests/WinGuard.Tests.csproj -c Release --nologo
+
+      - name: Publish single-file
+        run: dotnet publish WinGuard/WinGuard.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true -p:IncludeNativeLibrariesForSelfExtract=true -o publish --nologo
+
+      - name: Install Inno Setup
+        shell: pwsh
+        run: |
+          choco install innosetup -y --no-progress
+          if ($LASTEXITCODE -eq 3010) { exit 0 }
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+
+      - name: Compile installer
+        shell: pwsh
+        run: |
+          $iscc = Get-ChildItem -Path "C:\Program Files*\Inno Setup*\ISCC.exe" -ErrorAction SilentlyContinue |
+            Select-Object -First 1
+          if (-not $iscc) { throw "ISCC.exe introuvable après l'installation d'Inno Setup." }
+          & $iscc.FullName "WinGuard.iss"
+          if ($LASTEXITCODE -ne 0) { exit $LASTEXITCODE }
+          $setup = Get-Item "dist\WinGuardSetup.exe"
+          if ($setup.Length -le 0) { throw "WinGuardSetup.exe est vide." }
+          Write-Host "WinGuardSetup.exe $($setup.Length) bytes"
+
+      - name: GitHub release
+        shell: pwsh
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          $tag = "${{ github.ref_name }}"
+          $notes = ".github\release-notes\$tag.md"
+          if (-not (Test-Path $notes)) { throw "Notes de version absentes : $notes" }
+          $title = "WinGuard $($tag.TrimStart('v'))"
+          gh release create $tag "dist\WinGuardSetup.exe" --title $title --notes-file $notes --latest
+          $size = gh release view $tag --json assets --jq '[.assets[] | select(.name=="WinGuardSetup.exe")][0].size'
+          if (-not $size -or [int64]$size -le 0) { throw "L'asset WinGuardSetup.exe est absent ou vide." }
+          Write-Host "Release $tag asset WinGuardSetup.exe $size bytes"
