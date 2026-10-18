@@ -29,10 +29,7 @@ public sealed class BackupService
         {
             if (applying) file.AppliedSettingIds.Add(s.Id);
             foreach (SettingAction a in s.Actions.Where(a => a.Type == ActionType.Registry && !string.IsNullOrEmpty(a.Hive) && !string.IsNullOrEmpty(a.Path)))
-            {
-                try { file.Registry.Add(_reg.Snapshot(a.Hive!, a.Path!, a.Name ?? "")); }
-                catch (Exception ex) { AppLog.Warn($"Snapshot failed for {s.Id} ({a}): {ex.Message}"); }
-            }
+                file.Registry.Add(_reg.Snapshot(a.Hive!, a.Path!, a.Name ?? ""));
         }
         string json = JsonSerializer.Serialize(file, SettingsRepository.Json);
         string path = Path.Combine(BackupFolder, $"backup-{DateTime.Now:yyyyMMdd-HHmmss-fff}.json");

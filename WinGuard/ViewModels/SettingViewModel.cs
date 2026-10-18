@@ -58,8 +58,7 @@ public sealed class SettingViewModel : ObservableObject
     }
 
     private NativeKind _native;
-    /// <summary>Already in the target state on this PC without WinGuard (app not installed, task absent/already off):
-    /// shown ON but locked, with a badge, and never counted or reverted.</summary>
+    /// <summary>Already in the target state without WinGuard having changed it: shown ON but locked, and never counted or reverted.</summary>
     public NativeKind Native => _native;
     public bool IsNative => _native != NativeKind.None;
     public bool IsAppliedByUs => _isApplied && !IsNative;
@@ -67,9 +66,16 @@ public sealed class SettingViewModel : ObservableObject
     {
         NativeKind.NotInstalled => Loc.T(Model.Actions.All(a => a.Type == ActionType.Appx) ? "Badge.NotInstalled" : "Badge.Absent"),
         NativeKind.AlreadyOff => Loc.T("Badge.AlreadyOff"),
+        NativeKind.AlreadySet => Loc.T("Badge.AlreadySet"),
         _ => ""
     };
-    public string NativeTooltip => _native == NativeKind.None ? "" : Loc.T(_native == NativeKind.AlreadyOff ? "Badge.AlreadyOffTip" : "Badge.NotInstalledTip");
+    public string NativeTooltip => _native switch
+    {
+        NativeKind.None => "",
+        NativeKind.AlreadyOff => Loc.T("Badge.AlreadyOffTip"),
+        NativeKind.AlreadySet => Loc.T("Badge.AlreadySetTip"),
+        _ => Loc.T("Badge.NotInstalledTip")
+    };
 
     public bool IsBusy { get => _isBusy; set { if (SetProperty(ref _isBusy, value)) OnPropertyChanged(nameof(IsEditable)); } }
     public bool IsKnown { get => _isKnown; set { if (SetProperty(ref _isKnown, value)) OnPropertyChanged(nameof(IsEditable)); } }

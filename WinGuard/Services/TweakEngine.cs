@@ -1,39 +1,74 @@
+using WinGuard.Core;
 using WinGuard.Models;
 
 namespace WinGuard.Services;
 
 /// <summary>Evaluates and applies settings across registry, scheduled tasks and Appx packages.</summary>
-public enum NativeKind { None, NotInstalled, AlreadyOff }
+public enum NativeKind { None, NotInstalled, AlreadyOff, AlreadySet }
 
 public sealed class TweakEngine
 {
     public RegistryService Registry { get; } = new();
+    private readonly BackupCatalog _backups;
+    private readonly RegistryEditor _editor;
+
+    public TweakEngine()
+    {
+        _backups = new BackupCatalog(BackupService.BackupFolder);
+        _editor = new RegistryEditor(Registry, ChangeLedger.Store, _backups);
+    }
 
     public static bool NeedsProcess(Setting s) => s.Actions.Any(a => a.Type != ActionType.Registry);
 
-    /// <summary>Applied state plus, when applied, whether WinGuard actually did it or the PC was already like that
-    /// (app never installed / task absent or already disabled). Only Appx/ScheduledTask-only settings can be native.</summary>
+    /// <summary>Applied state plus whether WinGuard changed it. A registry-only setting already at the target value,
+    /// with no stored original, is AlreadySet. An app/task WinGuard did not remove or disable is NotInstalled or AlreadyOff.</summary>
     public async Task<(bool Applied, NativeKind Native)> DetectAsync(Setting s)
     {
         bool applied = await IsAppliedAsync(s).ConfigureAwait(false);
-        if (!applied || s.Actions.Any(a => a.Type is not (ActionType.Appx or ActionType.ScheduledTask))) return (applied, NativeKind.None);
+        if (!applied) return (false, NativeKind.None);
+        if (s.Actions.All(a => a.Type is ActionType.Appx or ActionType.ScheduledTask))
+            return (true, await TaskAppxNativeAsync(s).ConfigureAwait(false));
+        if (s.Actions.Count > 0 && s.Actions.All(a => a.Type == ActionType.Registry) && !RegistryOwned(s))
+            return (true, NativeKind.AlreadySet);
+        return (true, NativeKind.None);
+    }
+
+    /// <summary>Appx/task-only setting that already matches, and that WinGuard did not change.</summary>
+    private async Task<NativeKind> TaskAppxNativeAsync(Setting s)
+    {
         NativeKind kind = NativeKind.NotInstalled;
         foreach (SettingAction a in s.Actions)
         {
-            if (string.IsNullOrEmpty(a.Target)) return (applied, NativeKind.None);
+            if (string.IsNullOrEmpty(a.Target)) return NativeKind.None;
             if (a.Type == ActionType.Appx)
             {
-                if (ChangeLedger.Contains(ChangeLedger.AppKey(a.Target))) return (applied, NativeKind.None);
+                if (AppxPolicy.WasRemovedByUs(ChangeLedger.Store.Find(ChangeLedger.AppKey(a.Target)))) return NativeKind.None;
             }
             else
             {
                 (string? real, string state) = await ResolveTaskAsync(a.Target).ConfigureAwait(false);
-                if (real is not null && state == "Disabled" && ChangeLedger.IsLegacy) ChangeLedger.Add(ChangeLedger.TaskKey(real));
-                if (real is not null && ChangeLedger.Contains(ChangeLedger.TaskKey(real))) return (applied, NativeKind.None);
+                if (real is not null && TaskPolicy.WasDisabledByUs(ChangeLedger.Store.Find(ChangeLedger.TaskKey(real)))) return NativeKind.None;
                 if (state != "Missing") kind = NativeKind.AlreadyOff;
             }
         }
-        return (applied, kind);
+        return kind;
+    }
+
+    private bool RegistryOwned(Setting s)
+    {
+        foreach (SettingAction a in s.Actions)
+        {
+            if (a.Type != ActionType.Registry || string.IsNullOrEmpty(a.Hive) || string.IsNullOrEmpty(a.Path)) continue;
+            string key = ChangeLedger.RegistryKey(a.Hive, a.Path, a.Name ?? "");
+            try
+            {
+                RegValue current = Registry.ReadStrict(a.Hive, a.Path, a.Name ?? "");
+                if (OriginalValuePolicy.IsRegistryOwned(ChangeLedger.Store.Find(key), _backups.Oldest(a.Hive, a.Path, a.Name ?? ""), current))
+                    return true;
+            }
+            catch (Exception ex) { AppLog.Warn($"Ownership read failed for {s.Id}: {ex.Message}"); }
+        }
+        return false;
     }
 
     /// <summary>True when every action is in its "privacy" state. Never throws: an action whose state can't be read counts as not applied.</summary>
@@ -80,18 +115,46 @@ public sealed class TweakEngine
                 switch (a.Type)
                 {
                     case ActionType.Registry:
-                        if (enable) Registry.Apply(a); else Registry.Revert(a);
+                        if (string.IsNullOrEmpty(a.Hive) || string.IsNullOrEmpty(a.Path)) { Fail(Localization.Loc.F("Log.ActionFailed", a, "no hive/path")); break; }
+                        if (enable)
+                        {
+                            try { _editor.Apply(a.Hive, a.Path, a.Name ?? "", a.Kind, a.EnabledValue); }
+                            catch (ServiceMissingException) { Fail(Localization.Loc.F("Log.ServiceMissing", a.Path)); }
+                        }
+                        else
+                        {
+                            switch (_editor.Revert(a.Hive, a.Path, a.Name ?? ""))
+                            {
+                                case RevertResult.Unknown:
+                                    Log(Localization.Loc.F("Log.OriginalUnknown", $@"{a.Hive}\{a.Path}\{a.Name}"));
+                                    break;
+                                case RevertResult.ServiceMissing:
+                                    Fail(Localization.Loc.F("Log.ServiceMissing", a.Path));
+                                    break;
+                                case RevertResult.ReadFailed:
+                                    Fail(Localization.Loc.F("Log.ActionFailed", a, "read failed"));
+                                    break;
+                            }
+                        }
                         break;
 
                     case ActionType.ScheduledTask:
                     {
                         if (string.IsNullOrEmpty(a.Target)) { Fail(Localization.Loc.F("Log.ActionFailed", a, "no target")); break; }
-                        (string? real, _) = await ResolveTaskAsync(a.Target).ConfigureAwait(false);
+                        (string? real, string state) = await ResolveTaskAsync(a.Target).ConfigureAwait(false);
                         if (real is null) { Log(Localization.Loc.F("Log.TaskMissing", a.Target)); break; }
-                        if (!enable && !ChangeLedger.Contains(ChangeLedger.TaskKey(real)) && !ForceTaskRevert)
+                        string taskKey = ChangeLedger.TaskKey(real);
+                        if (enable)
                         {
-                            // WinGuard never disabled this task: leave the user's/Windows' own choice alone.
-                            Log(Localization.Loc.F("Log.TaskNotOurs", real));
+                            if (!TaskPolicy.ShouldRecordDisable(state))
+                            {
+                                Log(Localization.Loc.F("Log.TaskNotOurs", real));
+                                break;
+                            }
+                        }
+                        else if (!TaskPolicy.WasDisabledByUs(ChangeLedger.Store.Find(taskKey)))
+                        {
+                            Log(Localization.Loc.F("Log.OriginalUnknown", real));
                             break;
                         }
                         (string dir, string name) = SplitTask(real);
@@ -101,8 +164,8 @@ public sealed class TweakEngine
                             $"if($t){{ $was=[string]$t.State; try {{ $t | {verb} -ErrorAction Stop | Out-Null; 'OK ' + $was }} catch {{ 'ERR: ' + $_.Exception.Message }} }} else {{ 'Missing' }}", 120_000).ConfigureAwait(false);
                         if (r.Output.Contains("Missing")) Log(Localization.Loc.F("Log.TaskMissing", real));
                         else if (r.ExitCode != 0 || !r.Output.Contains("OK")) Fail(Localization.Loc.F("Log.TaskFailed", real, Short(r.Output)));
-                        else if (enable) { if (!r.Output.Contains("OK Disabled")) ChangeLedger.Add(ChangeLedger.TaskKey(real)); }
-                        else ChangeLedger.Remove(ChangeLedger.TaskKey(real));
+                        else if (enable) ChangeLedger.Store.RememberOriginal(taskKey, true, "State", state);
+                        else ChangeLedger.Remove(taskKey);
                         break;
                     }
 
@@ -130,13 +193,13 @@ public sealed class TweakEngine
                                 "if(-not $p){ 'Missing' } else { try { $p | Remove-AppxPackage -AllUsers -ErrorAction Stop; 'OK' } catch { 'ERR: ' + $_.Exception.Message } }").ConfigureAwait(false);
                             if (rr.Output.Contains("Missing")) Log(Localization.Loc.F("Log.AppxMissing", a.Target));
                             else if (rr.ExitCode != 0 || rr.Output.Contains("ERR:")) Fail(Localization.Loc.F("Log.AppxFailed", a.Target, Short(rr.Output)));
-                            else ChangeLedger.Add(ChangeLedger.AppKey(a.Target));
+                            else ChangeLedger.Store.RememberOriginal(ChangeLedger.AppKey(a.Target), true, "State", "installed");
                         }
                         else if (await AppxInstalledAsync(a.Target).ConfigureAwait(false) == true)
                         {
                             ChangeLedger.Remove(ChangeLedger.AppKey(a.Target)); // already present: nothing to reinstall
                         }
-                        else if (!ChangeLedger.Contains(ChangeLedger.AppKey(a.Target)))
+                        else if (!AppxPolicy.WasRemovedByUs(ChangeLedger.Store.Find(ChangeLedger.AppKey(a.Target))))
                         {
                             // Never installed on this PC (WinGuard didn't remove it): nothing to undo.
                             Log(Localization.Loc.F("Log.AppxNotOurs", a.Target));
@@ -242,9 +305,6 @@ public sealed class TweakEngine
 
     /// <summary>Packages WinGuard removed that couldn't be put back automatically during the current batch (UI drains it).</summary>
     public System.Collections.Concurrent.ConcurrentBag<string> ManualReinstall { get; } = new();
-
-    /// <summary>Self-test only: revert tasks even if the ledger doesn't list them.</summary>
-    public bool ForceTaskRevert { get; set; }
 
     /// <summary>A task target may list alternates separated by '|' (Windows renamed some tasks, e.g. 24H2's
     /// "Microsoft Compatibility Appraiser Exp"). Returns the first one that exists and its state, or (null, "Missing").</summary>

@@ -20,24 +20,26 @@ public partial class App : Application
             args.SetObserved();
         };
 
-        string ver = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion ?? "1.0.1";
+        string ver = Assembly.GetExecutingAssembly().GetCustomAttribute<AssemblyInformationalVersionAttribute>()?.InformationalVersion ?? "1.0.2";
         AppLog.Info($"WinGuard {ver} starting (args: {string.Join(' ', e.Args)}) on {Environment.OSVersion}");
 
         if (e.Args.Any(a => a.Equals("--reapply", StringComparison.OrdinalIgnoreCase)))
         {
             ShutdownMode = ShutdownMode.OnExplicitShutdown;
-            try { await AutoReapplyService.ReapplyAsync(); }
+            bool reapplied = false;
+            try { reapplied = await AutoReapplyService.ReapplyAsync(); }
             catch (Exception ex) { AppLog.Error("Headless reapply failed", ex); }
-            Shutdown();
+            Shutdown(reapplied ? 0 : 1);
             return;
         }
 
         if (e.Args.Any(a => a.Equals("--uninstall", StringComparison.OrdinalIgnoreCase)))
         {
             ShutdownMode = ShutdownMode.OnExplicitShutdown;
-            try { await Services.UninstallCleanup.RunAsync(); }
+            bool cleaned = false;
+            try { cleaned = await Services.UninstallCleanup.RunAsync(); }
             catch (Exception ex) { AppLog.Error("Uninstall cleanup failed", ex); }
-            Shutdown();
+            Shutdown(cleaned ? 0 : 1);
             return;
         }
 

@@ -8,7 +8,8 @@ public enum Recommendation { Recommended, LimitedRecommended, NotRecommended }
 [JsonConverter(typeof(JsonStringEnumConverter))]
 public enum ActionType { Registry, ScheduledTask, Appx, Hosts, Firewall }
 
-/// <summary>One atomic change. "Enabled" = privacy tweak applied; "Disabled" = Windows default (null = value deleted).</summary>
+/// <summary>One atomic change. "Enabled" is the privacy state. Undo does not use DisabledValue;
+/// it restores the snapshotted original or writes nothing.</summary>
 public sealed class SettingAction
 {
     public ActionType Type { get; set; } = ActionType.Registry;
@@ -17,6 +18,7 @@ public sealed class SettingAction
     public string? Name { get; set; }
     public string Kind { get; set; } = "DWord";
     public string? EnabledValue { get; set; }
+    /// <summary>Kept for catalogue compatibility. Undo ignores it.</summary>
     public string? DisabledValue { get; set; }
     /// <summary>Scheduled task full path or Appx package name.</summary>
     public string? Target { get; set; }

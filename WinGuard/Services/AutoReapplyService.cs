@@ -59,24 +59,55 @@ public static class AutoReapplyService
     public static void SaveProfile(IEnumerable<ProfileEntry> profile) =>
         AppLog.WriteAllTextAtomic(ProfilePath, JsonSerializer.Serialize(profile, SettingsRepository.Json));
 
-    /// <summary>Headless mode: re-apply every setting marked applied in the saved profile. Each setting is isolated.</summary>
-    public static async Task ReapplyAsync()
+    /// <summary>Headless mode: re-apply every setting marked applied in the saved profile. Each setting is isolated.
+    /// Returns false when a restore point or backup could not be created: nothing is written in that case.</summary>
+    public static async Task<bool> ReapplyAsync()
     {
         AppLog.Info("Headless --reapply started.");
-        if (!File.Exists(ProfilePath)) { AppLog.Info("No auto-reapply profile; nothing to do."); return; }
+        if (!File.Exists(ProfilePath)) { AppLog.Info("No auto-reapply profile; nothing to do."); return true; }
         List<ProfileEntry> profile;
         try { profile = JsonSerializer.Deserialize<List<ProfileEntry>>(File.ReadAllText(ProfilePath), SettingsRepository.Json) ?? new(); }
-        catch (Exception ex) { AppLog.Error("Auto-reapply profile is corrupt; skipping.", ex); return; }
+        catch (Exception ex) { AppLog.Error("Auto-reapply profile is corrupt; skipping.", ex); return false; }
         var wanted = profile.Where(p => p is not null && p.Applied).Select(p => p.Id).ToHashSet();
         var engine = new TweakEngine();
         string log = Path.Combine(BackupService.BackupFolder, "reapply.log");
         void L(string m) { AppLog.Info("reapply: " + m.Trim()); try { File.AppendAllText(log, m + Environment.NewLine); } catch { } }
         int done = 0, failed = 0;
+        var pending = new List<Setting>();
         foreach (Setting s in SettingsRepository.Load().Where(s => wanted.Contains(s.Id)))
         {
             try
             {
                 if (await engine.IsAppliedAsync(s).ConfigureAwait(false)) continue;
+                pending.Add(s);
+            }
+            catch (Exception ex) { failed++; L($"{DateTime.Now:s} FAILED {s.Id}: {ex.Message}"); }
+        }
+        if (pending.Count == 0)
+        {
+            AppLog.Info($"Headless --reapply finished: nothing to write ({failed} read errors).");
+            return failed == 0;
+        }
+
+        var (rpOk, rpMsg) = await RestorePointService.CreateAsync($"WinGuard reapply {DateTime.Now:yyyy-MM-dd HH:mm}").ConfigureAwait(false);
+        L(rpOk ? "Restore point: " + rpMsg : "Restore point failed: " + rpMsg);
+        if (!rpOk)
+        {
+            L("No restore point, so nothing was changed.");
+            return false;
+        }
+        try { new BackupService(engine.Registry).Create(pending, true); }
+        catch (Exception ex)
+        {
+            AppLog.Error("Reapply backup failed; nothing was changed.", ex);
+            L("Backup failed, so nothing was changed: " + ex.Message);
+            return false;
+        }
+
+        foreach (Setting s in pending)
+        {
+            try
+            {
                 bool ok = await engine.ApplyAsync(s, true, L).ConfigureAwait(false);
                 if (ok) done++; else failed++;
                 L($"{DateTime.Now:s} re-applied {s.Id}{(ok ? "" : " (with warnings)")}");
@@ -84,5 +115,6 @@ public static class AutoReapplyService
             catch (Exception ex) { failed++; L($"{DateTime.Now:s} FAILED {s.Id}: {ex.Message}"); }
         }
         AppLog.Info($"Headless --reapply finished: {done} re-applied, {failed} with errors.");
+        return true;
     }
 }
