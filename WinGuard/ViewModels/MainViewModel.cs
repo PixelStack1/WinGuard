@@ -235,11 +235,11 @@ public sealed class MainViewModel : ObservableObject
         }
     }
 
-    /// <summary>Reads one setting's state; on any error logs it and reports "not applied" so the UI stays usable.</summary>
+    /// <summary>Reads one setting's state; on any error logs it and reports an unknown state so the UI stays usable.</summary>
     private async Task<(bool, NativeKind)> SafeDetectAsync(SettingViewModel s)
     {
         try { return await _engine.DetectAsync(s.Model); }
-        catch (Exception ex) { AddLog(Loc.F("Log.ReadFailed", s.Name, ex.Message)); return (false, NativeKind.None); }
+        catch (Exception ex) { AddLog(Loc.F("Log.ReadFailed", s.Name, ex.Message)); return (false, NativeKind.Unknown); }
     }
     private async Task Redetect(SettingViewModel s) { var (a, n) = await SafeDetectAsync(s); s.SetState(a, n); }
 
@@ -258,7 +258,7 @@ public sealed class MainViewModel : ObservableObject
             {
                 await gate.WaitAsync();
                 try { return await _engine.DetectAsync(s.Model); }
-                catch (Exception ex) { AppLog.Warn($"State read failed for {s.Id}: {ex.Message}"); return (false, NativeKind.None); }
+                catch (Exception ex) { AppLog.Warn($"State read failed for {s.Id}: {ex.Message}"); return (false, NativeKind.Unknown); }
                 finally { gate.Release(); }
             })));
             for (int i = 0; i < slow.Count; i++) slow[i].SetState(results[i].Item1, results[i].Item2);
@@ -326,8 +326,12 @@ public sealed class MainViewModel : ObservableObject
                 UpdateCounters();
             }
         }
-        if (items.Count > 1) AddLog(Loc.F("Log.BatchSummary", okCount, warnCount, errCount));
+        string summary = Loc.F("Log.BatchSummary", okCount, warnCount, errCount);
+        AddLog(summary);
         if (stuck.Count > 0) AddLog(Loc.F(enable ? "Log.StuckOff" : "Log.StuckOn", string.Join(", ", stuck)));
+        if (stuck.Count > 0) summary += Environment.NewLine + Loc.F(enable ? "Log.StuckOff" : "Log.StuckOn", string.Join(", ", stuck));
+        MessageBox.Show(summary + Environment.NewLine + Loc.T("Log.NeedRestart"), "WinGuard",
+            MessageBoxButton.OK, errCount > 0 || warnCount > 0 || stuck.Count > 0 ? MessageBoxImage.Warning : MessageBoxImage.Information);
         var manual = _engine.ManualReinstall.Distinct().ToList();
         if (!enable && manual.Count > 0)
         {
@@ -345,21 +349,56 @@ public sealed class MainViewModel : ObservableObject
 
     private async Task OnToggleAsync(SettingViewModel s, bool enable)
     {
-        if (IsBusy || s.IsNative) { s.SetState(!enable); return; }
+        if (IsBusy || !s.IsKnown || s.IsNative) { await Redetect(s); return; }
         if (enable && s.Recommendation == Recommendation.NotRecommended &&
             MessageBox.Show(Loc.F("Msg.NotRecommended", s.Name),
                 "WinGuard", MessageBoxButton.YesNo, MessageBoxImage.Warning) != MessageBoxResult.Yes)
         { s.SetState(false); return; }
+        if (!ConfirmChanges(enable ? new[] { s } : Array.Empty<SettingViewModel>(),
+                enable ? Array.Empty<SettingViewModel>() : new[] { s }))
+        { await Redetect(s); return; }
         await RunBusy(s.Name, () => ChangeAsync(new[] { s }, enable));
+    }
+
+    private static bool ConfirmChanges(IReadOnlyList<SettingViewModel> apply, IReadOnlyList<SettingViewModel> revert)
+    {
+        var text = new System.Text.StringBuilder();
+        text.AppendLine(Loc.Pick("Review the changes before continuing.", "Vérifiez les changements avant de continuer."));
+        foreach (var group in new[] { (Items: apply, Title: Loc.Pick("Apply", "Appliquer")), (Items: revert, Title: Loc.Pick("Restore", "Restaurer")) })
+        {
+            if (group.Items.Count == 0) continue;
+            text.AppendLine($"\n{group.Title} ({group.Items.Count})");
+            foreach (var item in group.Items)
+                text.AppendLine($"• {item.Name} — {item.RecommendationText}\n{item.Description}\n{item.InfoText}\n");
+        }
+        text.AppendLine(Loc.Pick(
+            "A restore point and registry backup are required before changes. Undo uses recorded original values where available. Removed apps may require manual reinstallation. A full rollback is not guaranteed. Restart Windows after applying changes.",
+            "Un point de restauration et une sauvegarde du registre sont requis avant modification. L’annulation utilise les valeurs d’origine enregistrées lorsqu’elles sont disponibles. Les applications supprimées peuvent nécessiter une réinstallation manuelle. Un retour arrière complet n’est pas garanti. Redémarrez Windows après application."));
+        var window = new Window { Title = Loc.Pick("Review changes", "Changements prévus"), Width = 720, Height = 620,
+            Owner = Application.Current?.MainWindow, WindowStartupLocation = WindowStartupLocation.CenterOwner };
+        var panel = new System.Windows.Controls.DockPanel { Margin = new Thickness(20) };
+        var buttons = new System.Windows.Controls.StackPanel { Orientation = System.Windows.Controls.Orientation.Horizontal,
+            HorizontalAlignment = HorizontalAlignment.Right, Margin = new Thickness(0, 12, 0, 0) };
+        var cancel = new System.Windows.Controls.Button { Content = Loc.Pick("Cancel", "Annuler"), IsCancel = true, Padding = new Thickness(16, 8, 16, 8) };
+        var confirm = new System.Windows.Controls.Button { Content = Loc.Pick("Confirm", "Confirmer"), Margin = new Thickness(12, 0, 0, 0), Padding = new Thickness(16, 8, 16, 8) };
+        confirm.Click += (_, _) => window.DialogResult = true;
+        buttons.Children.Add(cancel); buttons.Children.Add(confirm);
+        System.Windows.Controls.DockPanel.SetDock(buttons, System.Windows.Controls.Dock.Bottom);
+        panel.Children.Add(buttons);
+        panel.Children.Add(new System.Windows.Controls.ScrollViewer { VerticalScrollBarVisibility = System.Windows.Controls.ScrollBarVisibility.Auto,
+            Content = new System.Windows.Controls.TextBlock { Text = text.ToString(), TextWrapping = TextWrapping.Wrap } });
+        window.Content = panel;
+        return window.ShowDialog() == true;
     }
 
     private async Task ApplyWhereAsync(Func<Recommendation, bool> predicate, string labelKey)
     {
         string label = Loc.T(labelKey);
-        var items = Settings.Where(s => predicate(s.Recommendation) && !s.IsApplied).ToList();
+        int unknown = Settings.Count(s => predicate(s.Recommendation) && !s.IsKnown);
+        if (unknown > 0) AddLog(Loc.Pick($"{unknown} settings skipped: state unknown. Refresh to retry.", $"{unknown} réglages ignorés : état inconnu. Actualisez pour réessayer."));
+        var items = Settings.Where(s => predicate(s.Recommendation) && s.IsKnown && !s.IsApplied).ToList();
         if (items.Count == 0) { AddLog(Loc.F("Log.AllApplied", label)); return; }
-        if (MessageBox.Show(Loc.F("Msg.ApplyConfirm", items.Count, label),
-                "WinGuard", MessageBoxButton.OKCancel, MessageBoxImage.Question) != MessageBoxResult.OK) return;
+        if (!ConfirmChanges(items, Array.Empty<SettingViewModel>())) return;
         await RunBusy(Loc.F("Status.ApplyingSet", label), () => ChangeAsync(items, true));
         AddLog(Loc.T("Log.NeedRestart"));
     }
@@ -368,8 +407,7 @@ public sealed class MainViewModel : ObservableObject
     {
         var items = Settings.Where(s => s.IsAppliedByUs).ToList();
         if (items.Count == 0) { AddLog(Loc.T("Log.NoneToUndo")); return; }
-        if (MessageBox.Show(Loc.F("Msg.UndoConfirm", items.Count), "WinGuard",
-                MessageBoxButton.OKCancel, MessageBoxImage.Question) != MessageBoxResult.OK) return;
+        if (!ConfirmChanges(Array.Empty<SettingViewModel>(), items)) return;
         await RunBusy(Loc.T("Status.RestoringDefaults"), () => ChangeAsync(items, false));
     }
 
@@ -377,6 +415,7 @@ public sealed class MainViewModel : ObservableObject
     {
         var dlg = new OpenFileDialog { Filter = Loc.T("Filter.Backup"), InitialDirectory = BackupService.BackupFolder };
         if (dlg.ShowDialog() != true) return;
+        if (MessageBox.Show(Loc.Pick("Restore the registry snapshot from this backup? Tasks and apps are reverted using WinGuard history; apps may require manual reinstallation. This is not a complete system rollback.", "Restaurer les valeurs du registre de cette sauvegarde ? Les tâches et applications sont rétablies selon l’historique WinGuard ; une réinstallation manuelle peut être nécessaire. Ce n’est pas un retour complet du système à cette date."), "WinGuard", MessageBoxButton.OKCancel, MessageBoxImage.Warning) != MessageBoxResult.OK) return;
         await RunBusy(Loc.T("Status.RestoringBackup"), async () =>
         {
             BackupFile file;
@@ -430,10 +469,9 @@ public sealed class MainViewModel : ObservableObject
         // Tolerate duplicates/nulls in hand-edited profiles (last entry wins).
         var map = new Dictionary<string, bool>();
         foreach (var p in profile.Where(p => p is not null && !string.IsNullOrEmpty(p.Id))) map[p.Id] = p.Applied;
-        var toApply = Settings.Where(s => map.TryGetValue(s.Id, out bool a) && a && !s.IsApplied).ToList();
+        var toApply = Settings.Where(s => map.TryGetValue(s.Id, out bool a) && a && s.IsKnown && !s.IsApplied).ToList();
         var toRevert = Settings.Where(s => map.TryGetValue(s.Id, out bool a) && !a && s.IsAppliedByUs).ToList();
-        if (MessageBox.Show(Loc.F("Msg.ImportConfirm", toApply.Count, toRevert.Count), "WinGuard",
-                MessageBoxButton.OKCancel, MessageBoxImage.Question) != MessageBoxResult.OK) return;
+        if (!ConfirmChanges(toApply, toRevert)) return;
         await RunBusy(Loc.T("Status.Importing"), async () =>
         {
             await ChangeAsync(toApply, true);
@@ -441,3 +479,4 @@ public sealed class MainViewModel : ObservableObject
         });
     }
 }
+
