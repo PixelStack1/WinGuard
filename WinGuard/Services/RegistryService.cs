@@ -32,7 +32,8 @@ public sealed class RegistryService : IRegistryStore
     public bool Matches(SettingAction a, string? expected)
     {
         if (string.IsNullOrEmpty(a.Hive) || string.IsNullOrEmpty(a.Path)) return false;
-        object? current = Read(a.Hive, a.Path, a.Name ?? "");
+        RegValue snapshot = ReadStrict(a.Hive, a.Path, a.Name ?? "");
+        object? current = snapshot.Existed ? snapshot.Value : null;
         if (expected is null) return current is null;
         if (current is null) return false;
         return a.Kind.ToLowerInvariant() switch
@@ -154,3 +155,4 @@ public sealed class RegistryService : IRegistryStore
 
     public void Restore(BackupEntry e) => Write(e.Hive, e.Path, e.Name, e.Kind, e.Existed ? e.Value : null);
 }
+
