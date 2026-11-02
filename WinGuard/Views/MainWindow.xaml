@@ -329,7 +329,7 @@
                                         <TextBlock Text="{Binding Description}" Foreground="{StaticResource TextSecondary}" FontSize="12.5"
                                                    TextWrapping="Wrap" Margin="0,4,0,0"/>
                                     </StackPanel>
-                                    <TextBlock Grid.Column="1" Text="{Binding StateText}" Width="30"
+                                    <TextBlock Grid.Column="1" Text="{Binding StateText}" MinWidth="55"
                                                Foreground="{StaticResource TextSecondary}" VerticalAlignment="Center" Margin="0,0,10,0"/>
                                     <CheckBox Grid.Column="2" Style="{StaticResource ToggleSwitch}" VerticalAlignment="Center"
                                               IsEnabled="{Binding IsEditable}" IsChecked="{Binding IsApplied, Mode=TwoWay}"/>
@@ -398,3 +398,4 @@
     </Grid>
     </Border>
 </Window>
+

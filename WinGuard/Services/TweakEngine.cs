@@ -4,7 +4,7 @@ using WinGuard.Models;
 namespace WinGuard.Services;
 
 /// <summary>Evaluates and applies settings across registry, scheduled tasks and Appx packages.</summary>
-public enum NativeKind { None, NotInstalled, AlreadyOff, AlreadySet }
+public enum NativeKind { None, NotInstalled, AlreadyOff, AlreadySet, Unknown }
 
 public sealed class TweakEngine
 {
@@ -24,7 +24,9 @@ public sealed class TweakEngine
     /// with no stored original, is AlreadySet. An app/task WinGuard did not remove or disable is NotInstalled or AlreadyOff.</summary>
     public async Task<(bool Applied, NativeKind Native)> DetectAsync(Setting s)
     {
-        bool applied = await IsAppliedAsync(s).ConfigureAwait(false);
+        bool applied;
+        try { applied = await IsAppliedAsync(s).ConfigureAwait(false); }
+        catch (Exception ex) { AppLog.Warn($"State unavailable for {s.Id}: {ex.Message}"); return (false, NativeKind.Unknown); }
         if (!applied) return (false, NativeKind.None);
         if (s.Actions.All(a => a.Type is ActionType.Appx or ActionType.ScheduledTask))
             return (true, await TaskAppxNativeAsync(s).ConfigureAwait(false));
@@ -71,7 +73,7 @@ public sealed class TweakEngine
         return false;
     }
 
-    /// <summary>True when every action is in its "privacy" state. Never throws: an action whose state can't be read counts as not applied.</summary>
+    /// <summary>True when every action is in its "privacy" state. Unreadable state propagates to DetectAsync as Unknown.</summary>
     public async Task<bool> IsAppliedAsync(Setting s)
     {
         if (s.Actions.Count == 0) return false;
@@ -83,8 +85,8 @@ public sealed class TweakEngine
                 ok = a.Type switch
                 {
                     ActionType.Registry => Registry.IsApplied(a),
-                    ActionType.ScheduledTask => !string.IsNullOrEmpty(a.Target) && (await ResolveTaskAsync(a.Target).ConfigureAwait(false)).State is "Disabled" or "Missing",
-                    ActionType.Appx => !string.IsNullOrEmpty(a.Target) && await AppxInstalledAsync(a.Target).ConfigureAwait(false) == false,
+                    ActionType.ScheduledTask => !string.IsNullOrEmpty(a.Target) && TaskIsOff((await ResolveTaskAsync(a.Target).ConfigureAwait(false)).State),
+                    ActionType.Appx => !string.IsNullOrEmpty(a.Target) && !(await AppxInstalledAsync(a.Target).ConfigureAwait(false) ?? throw new InvalidOperationException("Application state unavailable")),
                     ActionType.Hosts => HostsService.IsApplied(s.Id),
                     ActionType.Firewall => !string.IsNullOrEmpty(a.Target) && await FirewallRuleExistsAsync(s.Id, a.Target).ConfigureAwait(false),
                     _ => false
@@ -93,12 +95,19 @@ public sealed class TweakEngine
             catch (Exception ex)
             {
                 AppLog.Warn($"State read failed for {s.Id} ({a}): {ex.Message}");
-                ok = false;
+                throw;
             }
             if (!ok) return false;
         }
         return true;
     }
+
+    private static bool TaskIsOff(string state) => state switch
+    {
+        "Disabled" or "Missing" => true,
+        "Ready" or "Running" or "Queued" => false,
+        _ => throw new InvalidOperationException("Scheduled task state unavailable")
+    };
 
     /// <summary>Applies every action. Errors on one action don't stop the others; they're reported via log. Never throws.
     /// Returns false if at least one action genuinely failed (a "not applicable" skip is not a failure).</summary>
@@ -126,7 +135,7 @@ public sealed class TweakEngine
                             switch (_editor.Revert(a.Hive, a.Path, a.Name ?? ""))
                             {
                                 case RevertResult.Unknown:
-                                    Log(Localization.Loc.F("Log.OriginalUnknown", $@"{a.Hive}\{a.Path}\{a.Name}"));
+                                    Fail(Localization.Loc.F("Log.OriginalUnknown", $@"{a.Hive}\{a.Path}\{a.Name}"));
                                     break;
                                 case RevertResult.ServiceMissing:
                                     Fail(Localization.Loc.F("Log.ServiceMissing", a.Path));
@@ -293,7 +302,9 @@ public sealed class TweakEngine
     {
         var r = await ProcessRunner.PowerShellAsync(
             $"if(Get-NetFirewallRule -DisplayName {ProcessRunner.Ps(RuleName(id, program))} -ErrorAction SilentlyContinue){{'Yes'}}else{{'No'}}", 60_000);
-        return r.ExitCode == 0 && r.Output.Contains("Yes");
+        if (r.ExitCode != 0 || (!r.Output.Contains("Yes") && !r.Output.Contains("No")))
+            throw new InvalidOperationException("Firewall state unavailable");
+        return r.Output.Contains("Yes");
     }
 
     private static (string Dir, string Name) SplitTask(string full)
@@ -313,6 +324,7 @@ public sealed class TweakEngine
         foreach (string t in target.Split('|', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries))
         {
             string st = await TaskStateAsync(t).ConfigureAwait(false);
+            if (st == "Unknown") throw new InvalidOperationException("Scheduled task state unavailable");
             if (st != "Missing") return (t, st);
         }
         return (null, "Missing");
@@ -339,3 +351,4 @@ public sealed class TweakEngine
         return null;
     }
 }
+

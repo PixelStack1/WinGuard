@@ -1,0 +1,23 @@
+name: Validate
+
+on:
+  pull_request:
+  push:
+    branches:
+      - codex/clear-changes-and-restore
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: '8.0.x'
+      - name: Unit tests
+        run: dotnet test WinGuard.Tests/WinGuard.Tests.csproj -c Release --nologo
+      - name: Windows state tests and build
+        run: dotnet test WinGuard.Windows.Tests/WinGuard.Windows.Tests.csproj -c Release --nologo

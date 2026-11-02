@@ -28,7 +28,7 @@ public sealed class SettingViewModel : ObservableObject
     public string ScopeText => Strings.Scope(Model.Scope);
     public void RefreshLanguage() { OnPropertyChanged(nameof(Name)); OnPropertyChanged(nameof(Description)); OnPropertyChanged(nameof(InfoText)); OnPropertyChanged(nameof(ScopeText)); OnPropertyChanged(nameof(RecommendationText)); OnPropertyChanged(nameof(StateText)); OnPropertyChanged(nameof(NativeBadge)); OnPropertyChanged(nameof(NativeTooltip)); }
     public string RecommendationText => Recommendation switch { Recommendation.Recommended => Loc.T("Recommended"), Recommendation.LimitedRecommended => Loc.T("Limited"), _ => Loc.T("NotRecommended") };
-    public string StateText => Loc.T(_isApplied ? "On" : "Off");
+    public string StateText => !IsKnown ? Loc.Pick("Unknown", "Inconnu") : Loc.T(_isApplied ? "On" : "Off");
     public string Category => Model.Category;
     public string Scope => Model.Scope;
     public Recommendation Recommendation => Model.Recommendation;
@@ -50,8 +50,8 @@ public sealed class SettingViewModel : ObservableObject
     /// <summary>Updates state without triggering an apply.</summary>
     public void SetState(bool applied, NativeKind native = NativeKind.None)
     {
-        _isApplied = applied; IsKnown = true;
-        _native = applied ? native : NativeKind.None;
+        _isApplied = applied; IsKnown = native != NativeKind.Unknown;
+        _native = native == NativeKind.Unknown ? native : applied ? native : NativeKind.None;
         OnPropertyChanged(nameof(IsApplied)); OnPropertyChanged(nameof(StateText));
         OnPropertyChanged(nameof(Native)); OnPropertyChanged(nameof(IsNative)); OnPropertyChanged(nameof(NativeBadge));
         OnPropertyChanged(nameof(NativeTooltip)); OnPropertyChanged(nameof(IsEditable)); OnPropertyChanged(nameof(IsAppliedByUs));
@@ -60,7 +60,7 @@ public sealed class SettingViewModel : ObservableObject
     private NativeKind _native;
     /// <summary>Already in the target state without WinGuard having changed it: shown ON but locked, and never counted or reverted.</summary>
     public NativeKind Native => _native;
-    public bool IsNative => _native != NativeKind.None;
+    public bool IsNative => _native is not NativeKind.None and not NativeKind.Unknown;
     public bool IsAppliedByUs => _isApplied && !IsNative;
     public string NativeBadge => _native switch
     {
@@ -107,3 +107,4 @@ public sealed class CategoryViewModel : ObservableObject
     public string CountText => $"{AppliedCount}/{Total}";
     public bool IsAll => Name == "All settings";
 }
+
